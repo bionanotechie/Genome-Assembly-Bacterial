@@ -1,5 +1,5 @@
 #!/bin/bash
-#SBATCH --job-name=bowtie2_test
+#SBATCH --job-name=bowtie2
 #SBATCH -N 1
 #SBATCH -n 1
 #SBATCH -c 1
@@ -7,7 +7,7 @@
 #SBATCH --qos=general
 #SBATCH --mail-type=END
 #SBATCH --mem=50G
-#SBATCH --mail-user=jacqueline.guillemin@uconn.edu
+#SBATCH --mail-user=your.email@uconn.edu
 #SBATCH -o bowtie2_%j.out
 #SBATCH -e bowtie2_%j.err
 cat Sample_1.fastq Sample_2.fastq > genome.fastq
