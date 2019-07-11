@@ -4,7 +4,7 @@ This repository is a usable, publicly available tutorial for analyzing different
   
 Contents
 
-# Genome-Assembly-Tutorial-Temp
+# Genome Assembly Tutorial
 
 ## Overview
 
