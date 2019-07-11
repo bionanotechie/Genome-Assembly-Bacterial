@@ -293,3 +293,19 @@ The statistics that are outputted via QUAST should follow this pattern.
 |L50                     |20         |44           |42         |33         |8          |
 |L75                     |41         |91           |84         |69         |16         |
 |# N's per 100 kbp       |0          |26547.43     |25459.35   |22602.08   |20.48      |
+
+According to our requirements regarding n50 and contigs it would appear that the best assembly perfromed was via SPAdes.
+# Long Read Assembly
+
+## Step 1: Base Calling with Guppy
+
+## Step 2: Assembly with Flye and Falcon
+
+## Step 3: Checking completeness with BUSCOMP
+
+## Step 4: Polishing with Nanopolish 
+
+## Step 5: Organizing with Purge Haplotigs
+
+
+# Hybrid Assembly 
