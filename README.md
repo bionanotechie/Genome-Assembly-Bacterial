@@ -8,6 +8,9 @@ This repository is a usable, publicly available tutorial. All steps have been pr
    - [Copy the Assembly Directory to your account node](#copy)
    - [Quality Control with Sickle](#sickle)
    - [Assembly with SOAPdenovo, SPAdes, and MaSuRCA](#short-assemble)
+     - [Assembly with SOAPdenovo](#soap)
+     - [Assembly with SPAdes](#spades)
+     - [Assembly with MaSuRCA](#ma)
    - [Assembly Statistics with QUAST](#quast)
 2. [Long Read Assembly](#long)
    - [Base Calling with Guppy](#gup)
@@ -95,7 +98,7 @@ sbatch Sample_assembly.sh
 You should expect an output of an .out and .err file. Check these to assure your assembly ran properly.
 
 Here is an explanation of each step within Sample_assembly.sh:
-
+<a name="soap"></a>
 ### **Assembly with SOAPdenovo:**
 
 This is a de novo assembler, this assembler, like MaSuRCA which we will be encountering later, requires a config file to run through the data. The configuration of this file is as follows:
@@ -145,7 +148,7 @@ The meaning of the flags within the command have these meanings:
 - 1 is for the assembly log and 2 is for the assembly errors. 
 
 For this assembly we use the reads that have been run through Sickle for quality control.
-
+<a name="spades"></a>
 ### **Assembly with SPAdes:**
 
 Instead of manually selecting k-mers, SPAdes automatically selects k-mers based off the maximum read length data of your input. This is a called a de Bruijn graph based assembler, meaning that it assigns (k-1)-mers to nodes and every possible matching prefix and suffix of these nodes are connected with a line(Compeau). 
@@ -169,7 +172,7 @@ The meanings of the flags are:
 - -s for the path to the singles reads 
 
 ***If desired, a list of kmers can be specified with the -k flag which will override automatic kmer selection.
-
+<a name="ma"></a>
 ### **Assembly with MaSuRCA:**
 
 This assembler is a combination of a De Bruijn graph and an Overlap-Layout-Consensus model. The Overlap-Layout-Consensus model consists of three steps, Overlap, which is the process of overlapping matching sequences in the data, this forms a long branched line. Layout, which is the process of picking the least branched line in from the overlap sequence created earlier, the final product here is called a contig. Consensus is the process of lining up all the contigs and picking out the most similar nucleotide line up in this set of sequences (OIRC). This assembly DOES NOT require a preprocessing step, such as Sickle, you will only input the raw data. For this assembly you will have a config.txt file with the general format of:
