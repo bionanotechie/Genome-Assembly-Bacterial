@@ -1,11 +1,22 @@
 # Bacterial Genome Assembly  
   
-This repository is a usable, publicly available tutorial for analyzing differential expression data and creating topological gene networks. All steps have been provided for the UConn CBC Xanadu cluster here with appropriate headers for the Slurm scheduler that can be modified simply to run.  Commands should never be executed on the submit nodes of any HPC machine.  If working on the Xanadu cluster, you should use sbatch scriptname after modifying the script for each stage.  Basic editing of all scripts can be performed on the server with tools such as nano, vim, or emacs.  If you are new to Linux, please use [this](https://bioinformatics.uconn.edu/unix-basics) handy guide for the operating system commands.  In this guide, you will be working with common bio Informatic file formats, such as [FASTA](https://en.wikipedia.org/wiki/FASTA_format), [FASTQ](https://en.wikipedia.org/wiki/FASTQ_format), [SAM/BAM](https://en.wikipedia.org/wiki/SAM_(file_format)), and [GFF3/GTF](https://en.wikipedia.org/wiki/General_feature_format). You can learn even more about each file format [here](https://bioinformatics.uconn.edu/resources-and-events/tutorials/file-formats-tutorial/). If you do not have a Xanadu account and are an affiliate of UConn/UCHC, please apply for one **[here](https://bioinformatics.uconn.edu/contact-us/)**.   
+This repository is a usable, publicly available tutorial. All steps have been provided for the UConn CBC Xanadu cluster here with appropriate headers for the Slurm scheduler that can be modified simply to run.  Commands should never be executed on the submit nodes of any HPC machine.  If working on the Xanadu cluster, you should use sbatch scriptname after modifying the script for each stage.  Basic editing of all scripts can be performed on the server with tools such as nano, vim, or emacs.  If you are new to Linux, please use [this](https://bioinformatics.uconn.edu/unix-basics) handy guide for the operating system commands.  In this guide, you will be working with common bio Informatic file formats, such as [FASTA](https://en.wikipedia.org/wiki/FASTA_format), [FASTQ](https://en.wikipedia.org/wiki/FASTQ_format), [SAM/BAM](https://en.wikipedia.org/wiki/SAM_(file_format)), and [GFF3/GTF](https://en.wikipedia.org/wiki/General_feature_format). You can learn even more about each file format [here](https://bioinformatics.uconn.edu/resources-and-events/tutorials/file-formats-tutorial/). If you do not have a Xanadu account and are an affiliate of UConn/UCHC, please apply for one **[here](https://bioinformatics.uconn.edu/contact-us/)**.   
   
 ## Table of Contents  
 1. [Short Read Genome Assembly](#short)  
-- [Overview](#over)
-- [Copying the Directory](#copy)
+   - [Overview](#over)
+   - [Copy the Assembly Directory to your account node](#copy)
+   - [Quality Control with Sickle](#sickle)
+   - [Assembly with SOAPdenovo, SPAdes, and MaSuRCA](#short-assemble)
+   - [Assembly Statistics with QUAST](#quast)
+2. [Long Read Assembly](#long)
+   - [Base Calling with Guppy](#gup)
+   - [Assembly with Flye and Falcon](#ff)
+   - [Checking completeness with BUSCOMP](#bus)
+   - [Polishing with Nanopolish](#nano)
+   - [Organizing with Purge Haplotigs](#ph)
+3. [Hybrid Assembly](#ha)
+
 
 <a name="short"></a>
 # Short Read Genome Assembly
@@ -40,6 +51,7 @@ Make sure to not be in the head node in order for the download to be quick and s
 Enter the directory you created.
 
 
+<a name="sickle"></a>
 ## Step 2: Quality Control with Sickle
 Sickle takes raw reads and outputs data with the 3’ and 5’ ends trimmed to assure that the quality of the read is high enough for assembly, it will also trim low quality reads. 
 
@@ -73,6 +85,7 @@ File_with_tutorial/
 |-- Sample_s.fastq
 ```
 
+<a name="short-assemble"></a>
 ## Step 3: Assembly with SOAPdenovo, SPAdes, and MaSuRCA
 
 Run Sample_assembly.sh in the Assembly folder to perform SOAPdenovo, SPAdes, and MaSuRCA at once.
@@ -244,7 +257,7 @@ masurca config.txt
 
 bash assemble.sh
 ```
-
+<a name="quast"></a>
 ## Step 4: Assembly Statistics with QUAST
 
 The final step for short read data is to analyze the quality of the assemblies. We will be using the program QUAST which will give us the number of contigs, total length and N50 value; the data we are most interested in. A good assembly would have small number of contigs, a total length that makes sense for the specific species, and a large N50 value. 
@@ -301,17 +314,23 @@ The statistics that are outputted via QUAST should follow this pattern.
 |# N's per 100 kbp       |0          |26547.43     |25459.35   |22602.08   |20.48      |
 
 According to our requirements regarding n50 and contigs it would appear that the best assembly perfromed was via SPAdes.
+<a name="long"></a>
 # Long Read Assembly
 
+<a name="gup"></a>
 ## Step 1: Base Calling with Guppy
 
+<a name="ff"></a>
 ## Step 2: Assembly with Flye and Falcon
 
+<a name="bus"></a>
 ## Step 3: Checking completeness with BUSCOMP
 
+<a name="nano"></a>
 ## Step 4: Polishing with Nanopolish 
 
+<a name="ph"></a>
 ## Step 5: Organizing with Purge Haplotigs
 
-
+<a name="ha"></a>
 # Hybrid Assembly 
