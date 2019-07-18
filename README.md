@@ -4,7 +4,7 @@ This repository is a usable, publicly available tutorial for analyzing different
   
 ## Table of Contents
 ##### Table of Contents  
-[Short Read](#Short Read Genome Assembly)  
+[Short Read Genome Assembly](#Short Read Genome Assembly)  
 [Emphasis](#emphasis)  
 
 # Short Read Genome Assembly
