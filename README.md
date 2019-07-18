@@ -12,7 +12,7 @@ This repository is a usable, publicly available tutorial. All steps have been pr
      - [Assembly with SPAdes](#spades)
      - [Assembly with MaSuRCA](#ma)
    - [Assembly Statistics with QUAST](#quast)
-2. [Long Read Assembly](#long)
+2. [Long Read Genome Assembly](#long)
    - [Base Calling with Guppy](#gup)
    - [Assembly with Flye and Falcon](#ff)
    - [Checking completeness with BUSCOMP](#bus)
@@ -318,7 +318,7 @@ The statistics that are outputted via QUAST should follow this pattern.
 
 According to our requirements regarding n50 and contigs it would appear that the best assembly perfromed was via SPAdes.
 <a name="long"></a>
-# Long Read Assembly
+# Long Read Genome Assembly
 
 <a name="gup"></a>
 ## Step 1: Base Calling with Guppy
