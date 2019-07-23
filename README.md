@@ -228,7 +228,9 @@ The statistics that are outputted via QUAST should follow this pattern.
 
 According to our requirements regarding n50 and contigs it would appear that the best assembly perfromed was via SPAdes.
 
-## Step 5: Read Alignment with Bowtie2
+## Step 5: Genomescope for Assessing Genome size
+
+## Step 6: Read Alignment with Bowtie2
 Bowtie2 takes read sequences and aligns them with long reference sequences. Since this is de novo assembly you will take the data from the assemblies you have and align them back to the raw read data. You want to use unpaired data. You will find the outputted data in the .err file, it should look like this:
 
 |MaSuRCA                                   |
@@ -276,7 +278,7 @@ Bowtie2 takes read sequences and aligns them with long reference sequences. Sinc
 |938 (0.10%) aligned >1 times              |
 |54.55% overall alignment rate             |
 
-## Step 6: Busco Evaluation
+## Step 7: Busco Evaluation
 <a name="long"></a>
 # Long Read Genome Assembly
 
