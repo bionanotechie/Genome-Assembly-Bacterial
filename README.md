@@ -317,6 +317,19 @@ The statistics that are outputted via QUAST should follow this pattern.
 |# N's per 100 kbp       |0          |26547.43     |25459.35   |22602.08   |20.48      |
 
 According to our requirements regarding n50 and contigs it would appear that the best assembly perfromed was via SPAdes.
+
+## Step 5: Read Alignment with Bowtie2
+Bowtie2 takes read sequences and aligns them with long reference sequences. Since this is de novo assembly you will take the data from the assemblies you have and align them back to the raw read data. 
+
+MaSuRCA
+894184 reads; of these:
+894184 (100.00%) were unpaired; of these:
+125031 (13.98%) aligned 0 times
+748206 (83.67%) aligned exactly 1 time
+20947 (2.34%) aligned >1 times
+86.02% overall alignment rate
+
+
 <a name="long"></a>
 # Long Read Genome Assembly
 
