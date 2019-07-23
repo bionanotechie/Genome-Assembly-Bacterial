@@ -101,8 +101,30 @@ Here is an explanation of each step within Sample_assembly.sh:
 <a name="soap"></a>
 ### **Assembly with SOAPdenovo:**
 
-This is a de novo assembler, this assembler, like MaSuRCA which we will be encountering later, requires a config file to run through the data. The configuration file can be found here https://github.com/CBC-UCONN/Genome-Assembly-Bacterial/blob/master/SOAPdenovo%20config%20file
-
+This is a de novo assembler, this assembler, like MaSuRCA which we will be encountering later, requires a config file to run through the data. The configuration file can be found here:
+```
+#maximal read length
+max_rd_len=250
+[LIB]
+#average insert size
+avg_ins=550
+#if sequence needs to be reversed
+reverse_seq=0
+#in which part(s) the reads are used
+asm_flags=3
+#use only first 250 bps of each read
+rd_len_cutoff=250
+#in which order the reads are used while scaffolding
+rank=1
+# cutoff of pair number for a reliable connection (at least 3 for short insert size)
+pair_num_cutoff=3
+#minimum aligned length to contigs for a reliable read location (at least 32 for short insert size)
+map_len=32
+# path to genes
+q1=/UCHC/PublicShare/Tutorials/Assembly_Tutorial/Quality_Control/Sample_1.fastq
+q2=/UCHC/PublicShare/Tutorials/Assembly_Tutorial/Quality_Control/Sample_2.fastq
+q=/UCHC/PublicShare/Tutorials/Assembly_Tutorial/Quality_Control/Sample_s.fastq
+```
 **Running SOAPdenovo:**
 
 Run SOAPdenovo with the following commands:
