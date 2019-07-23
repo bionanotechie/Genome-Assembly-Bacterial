@@ -101,7 +101,7 @@ Here is an explanation of each step within Sample_assembly.sh:
 <a name="soap"></a>
 ### **Assembly with SOAPdenovo:**
 
-This is a de novo assembler, this assembler, like MaSuRCA which we will be encountering later, requires a config file to run through the data. The configuration file can be found here:
+This is a de novo assembler, this assembler, like MaSuRCA which we will be encountering later, requires a config file to run through the data. The configuration file can be found [here](https://github.com/CBC-UCONN/Genome-Assembly-Bacterial/blob/master/Short%20Read/sample_soap_config.cfg):
 ```
 #maximal read length
 max_rd_len=250
