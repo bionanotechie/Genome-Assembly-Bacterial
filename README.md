@@ -276,6 +276,7 @@ Bowtie2 takes read sequences and aligns them with long reference sequences. Sinc
 |938 (0.10%) aligned >1 times              |
 |54.55% overall alignment rate             |
 
+## Step 6: Busco Evaluation
 <a name="long"></a>
 # Long Read Genome Assembly
 
