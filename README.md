@@ -12,7 +12,7 @@ This repository is a usable, publicly available tutorial. All steps have been pr
      - [Assembly with SPAdes](#spades)
      - [Assembly with MaSuRCA](#ma)
    - [Assembly Statistics with QUAST](#quast)
-   - [Genomescope for Assessing Genome size](#genome)
+   - [Assessing Genome size](#genome)
    - [Read Alignment with Bowtie2](#bow)
    - [Busco Evaluation](#bus)
 2. [Long Read Genome Assembly](#long)
@@ -323,7 +323,7 @@ The statistics that are outputted via QUAST should follow this pattern.
 According to our requirements regarding n50 and contigs it would appear that the best assembly perfromed was via SPAdes.
 
 <a name="genome"></a>
-## Step 5: Genomescope for Assessing Genome size
+## Step 5: Assessing Genome size
 https://bioinformatics.uconn.edu/genome-size-estimation-tutorial/
 
 <a name="bow"></a>
