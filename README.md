@@ -341,6 +341,31 @@ Bowtie2 takes read sequences and aligns them with long reference sequences. Sinc
 
 |SOAP31                                    |
 |------------------------------------------|
+|894184 reads; of these:                   | 
+|894184 (100.00%) were unpaired; of these: |
+|456710 (51.08%) aligned 0 times           |
+|437262 (48.90%) aligned exactly 1 time    |
+|212 (0.02%) aligned >1 times              |
+|48.92% overall alignment rate             |
+
+|SOAP35                                    |
+|------------------------------------------|
+|894184 reads; of these:                   |
+|894184 (100.00%) were unpaired; of these: |
+|440065 (49.21%) aligned 0 times           |
+|453682 (50.74%) aligned exactly 1 time    |
+|437 (0.05%) aligned >1 times              |
+|50.79% overall alignment rate             |
+
+|SOAP41                                    |
+|------------------------------------------|
+|894184 reads; of these:                   |
+|894184 (100.00%) were unpaired; of these: |
+|406420 (45.45%) aligned 0 times           |
+|486826 (54.44%) aligned exactly 1 time    |
+|938 (0.10%) aligned >1 times              |
+|54.55% overall alignment rate             |
+
 <a name="long"></a>
 # Long Read Genome Assembly
 
