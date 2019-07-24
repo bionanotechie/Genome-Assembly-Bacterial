@@ -376,7 +376,7 @@ bowtie2-build /home/CAM/jguillemin/Assembly_tutorial/Assembly_tutorial/Assembly/
 
 bowtie2 -x SOAP41.index -U /home/CAM/jguillemin/Assembly_tutorial/Assembly_tutorial/genome.fastq -S SOAP41.bowtie2.sam
 ```
-
+### Bowtie2 Results:
 |MaSuRCA                                   |
 |------------------------------------------|
 |894184 reads; of these:                   | 
