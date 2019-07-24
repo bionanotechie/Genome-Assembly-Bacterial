@@ -327,8 +327,6 @@ According to our requirements regarding n50 and contigs it would appear that the
 
 You can learn how to asses the genome size by refering to this [tutorial](https://bioinformatics.uconn.edu/genome-size-estimation-tutorial/)
 
-https://bioinformatics.uconn.edu/genome-size-estimation-tutorial/
-
 <a name="bow"></a>
 ## Step 6: Read Alignment with Bowtie2
 Bowtie2 takes read sequences and aligns them with long reference sequences. Since this is de novo assembly you will take the data from the assemblies you have and align them back to the raw read data. You want to use unpaired data. You will find the outputted data in the .err file, it should look like this:
