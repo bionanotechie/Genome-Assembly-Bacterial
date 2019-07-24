@@ -330,6 +330,53 @@ https://bioinformatics.uconn.edu/genome-size-estimation-tutorial/
 ## Step 6: Read Alignment with Bowtie2
 Bowtie2 takes read sequences and aligns them with long reference sequences. Since this is de novo assembly you will take the data from the assemblies you have and align them back to the raw read data. You want to use unpaired data. You will find the outputted data in the .err file, it should look like this:
 
+### Running Bowtie2
+You can run Bowtie2 by running [short_read_bowtie2.sh](https://github.com/CBC-UCONN/Genome-Assembly-Bacterial/blob/master/Short%20Read/short_read_bowtie2.sh).
+
+```
+#!/bin/bash
+#SBATCH --job-name=bowtie2
+#SBATCH -N 1
+#SBATCH -n 1
+#SBATCH -c 1
+#SBATCH --partition=general
+#SBATCH --qos=general
+#SBATCH --mail-type=END
+#SBATCH --mem=50G
+#SBATCH --mail-user=your.email@uconn.edu
+#SBATCH -o bowtie2_%j.out
+#SBATCH -e bowtie2_%j.err
+cat Sample_1.fastq Sample_2.fastq > genome.fastq
+mkdir index
+cd index
+module load bowtie2/2.3.3.1
+
+#Masurca
+bowtie2-build /home/CAM/jguillemin/Assembly_tutorial/Assembly_tutorial/samples/CA/final.genome.scf.fasta masurca.index
+
+bowtie2 -x masurca.index -U /home/CAM/jguillemin/Assembly_tutorial/Assembly_tutorial/genome.fastq -S masurca.bowtie2.sam
+
+#SPAdes
+bowtie2-build /home/CAM/jguillemin/Assembly_tutorial/Assembly_tutorial/Assembly/SPAdes_out/scaffolds.fasta SPAdes.index
+
+bowtie2 -x SPAdes.index -U /home/CAM/jguillemin/Assembly_tutorial/Assembly_tutorial/genome.fastq -S SPAdes.bowtie2.sam
+
+#SOAP31
+bowtie2-build /home/CAM/jguillemin/Assembly_tutorial/Assembly_tutorial/Assembly/SOAP/graph_Sample_31.scafSeq SOAP31.index
+
+bowtie2 -x SOAP31.index -U /home/CAM/jguillemin/Assembly_tutorial/Assembly_tutorial/genome.fastq -S SOAP31.bowtie2.sam
+
+#SOAP35
+bowtie2-build /home/CAM/jguillemin/Assembly_tutorial/Assembly_tutorial/Assembly/SOAP/graph_Sample_35.scafSeq SOAP35.index
+
+bowtie2 -x SOAP35.index -U /home/CAM/jguillemin/Assembly_tutorial/Assembly_tutorial/genome.fastq -S SOAP35.bowtie2.sam
+
+#SOAP41
+bowtie2-build /home/CAM/jguillemin/Assembly_tutorial/Assembly_tutorial/Assembly/SOAP/graph_Sample_41.scafSeq SOAP41.index
+
+bowtie2 -x SOAP41.index -U /home/CAM/jguillemin/Assembly_tutorial/Assembly_tutorial/genome.fastq -S SOAP41.bowtie2.sam
+```
+
 |MaSuRCA                                   |
 |------------------------------------------|
 |894184 reads; of these:                   | 
