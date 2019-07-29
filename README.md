@@ -427,7 +427,7 @@ bowtie2 -x SOAP41.index -U /home/CAM/jguillemin/Assembly_tutorial/Assembly_tutor
 ## Step 7: Busco Evaluation
 <a name="long"></a>
 # Long Read Genome Assembly
-For long read assembly there is an additional step that is not used for short read data called base calling. This will be performed first in this section. This is the process of taking the data that the sequencer outputs, which appears as a squiggle line, and applying a base to the hills and valleys of the squiggle. For this step we will use the basecaller Guppy. To complet the assemblies, we will use flye, canu, and falcon. Purge Haplotags will be used to assure that the contigs that are assembled are not being combined with the Haplotig of that sequence. After this, the assembly will be polished via Nanopolish. Assessment of the quality of the genome assembled will be completed through the same program as with the short read data, QUAST.
+For long read assembly there is an additional step that is not used for short read data called **base calling**. This is performed first before any long read assembly. The process involves taking the data that the sequencer outputs, which appears as a squiggle line, and applying a base to the hills and valleys of the squiggle. For this step we will use the basecaller **Guppy**. To complete the assemblies, we will use the assemblers **flye**, **canu**, and **falcon**. **Purge Haplotags** will be used to assure that the contigs that are assembled are not being combined with the Haplotig of that sequence. After this, the assembly will be polished via **Nanopolish**. Assessment of the quality of the genome assembled will be completed through the same program as with the short read data, QUAST.
 
 
 <a name="gup"></a>
@@ -435,6 +435,7 @@ For long read assembly there is an additional step that is not used for short re
 As mentioned earlier this is required as the data that is outputted via the sequencer is different from those outputted via a short read sequencer. Guppy runs via a neural network and can work off GPUs and CPUs.
 
 **Running Guppy:**
+
 To run guppy, run guppy.sh located in _______.
 
 *Include file preview here
@@ -448,6 +449,7 @@ In this step we will run all of the Long read genome assemblers on the basecalle
 This assembler takes data from Pacbio or Oxford Nanopore technologies sequencers and outputs polished contigs. It will repeat graph, that is similar in appearance to the De Bruijn graph. The manner in which this graph is assembled reveals the repeats in the genome allowing for the most accurate assembly. 
 
 **Running Flye**
+
 To run Flye runf flye.sh located in _______.
 
 *Include file preview here
@@ -457,11 +459,13 @@ Canu assembles the with the same data as Flye, in a three step process, these st
 
 
 **Running Canu**
+
 To run Flye runf canu.sh located in _______.
 
 *Include file preview here
 
 ### Assembly with Falcon
+
 Falcon is another de novo assembler which is used for PacBio Long Read data. 
 
 Falcon has 3 inputs:
@@ -470,6 +474,7 @@ Falcon has 3 inputs:
 - and a configuration file
 
 **Running Falcon**
+
 To run Flye runf falcon.sh located in _______.
 
 *Include file preview here
