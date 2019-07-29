@@ -440,6 +440,10 @@ To run guppy, run guppy.sh located in _______.
 
 *Include file preview here
 
+The output files of guppy will be:
+- guppy_basecaller_log-2019-06-26_14-07-05.log 
+- sequencing_telemetry.js 
+- sequencing_summary.txt
 
 <a name="ff"></a>
 ## Step 2: Assembly with Flye, Canu and Falcon
@@ -452,6 +456,13 @@ This assembler takes data from Pacbio or Oxford Nanopore technologies sequencers
 
 To run Flye runf flye.sh located in _______.
 
+The flags in flye are:
+- --pacbio-raw - fasta file
+- --out-dir - location of result
+- --genome-size
+- --threads
+
+
 *Include file preview here
 
 ### Assembly with Canu
@@ -461,6 +472,12 @@ Canu assembles the with the same data as Flye, in a three step process, these st
 **Running Canu**
 
 To run Flye runf canu.sh located in _______.
+
+The flags in Canu are:
+-p which applies to the prefix of the intermediate and output file names. 
+-d specifies the directory
+-s imports parameters from the specification file. 
+
 
 *Include file preview here
 
