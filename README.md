@@ -427,12 +427,52 @@ bowtie2 -x SOAP41.index -U /home/CAM/jguillemin/Assembly_tutorial/Assembly_tutor
 ## Step 7: Busco Evaluation
 <a name="long"></a>
 # Long Read Genome Assembly
+For long read assembly there is an additional step that is not used for short read data called base calling. This will be performed first in this section. This is the process of taking the data that the sequencer outputs, which appears as a squiggle line, and applying a base to the hills and valleys of the squiggle. For this step we will use the basecaller Guppy. To complet the assemblies, we will use flye, canu, and falcon. Purge Haplotags will be used to assure that the contigs that are assembled are not being combined with the Haplotig of that sequence. After this, the assembly will be polished via Nanopolish. Assessment of the quality of the genome assembled will be completed through the same program as with the short read data, QUAST.
+
 
 <a name="gup"></a>
 ## Step 1: Base Calling with Guppy
+As mentioned earlier this is required as the data that is outputted via the sequencer is different from those outputted via a short read sequencer. Guppy runs via a neural network and can work off GPUs and CPUs.
+
+**Running Guppy:**
+To run guppy, run guppy.sh located in _______.
+
+*Include file preview here
+
 
 <a name="ff"></a>
-## Step 2: Assembly with Flye and Falcon
+## Step 2: Assembly with Flye, Canu and Falcon
+In this step we will run all of the Long read genome assemblers on the basecalled data.
+
+### Assembly with Flye
+This assembler takes data from Pacbio or Oxford Nanopore technologies sequencers and outputs polished contigs. It will repeat graph, that is similar in appearance to the De Bruijn graph. The manner in which this graph is assembled reveals the repeats in the genome allowing for the most accurate assembly. 
+
+**Running Flye**
+To run Flye runf flye.sh located in _______.
+
+*Include file preview here
+
+### Assembly with Canu
+Canu assembles the with the same data as Flye, in a three step process, these steps are: Correction, trimming, and unitig construction.
+
+
+**Running Canu**
+To run Flye runf canu.sh located in _______.
+
+*Include file preview here
+
+### Assembly with Falcon
+Falcon is another de novo assembler which is used for PacBio Long Read data. 
+
+Falcon has 3 inputs:
+- your PacBio data in fasta format (can be one or many files), 
+- a text file telling FALCON where to find your fasta files,
+- and a configuration file
+
+**Running Falcon**
+To run Flye runf falcon.sh located in _______.
+
+*Include file preview here
 
 <a name="bus"></a>
 ## Step 3: Checking completeness with BUSCOMP
@@ -442,6 +482,8 @@ bowtie2 -x SOAP41.index -U /home/CAM/jguillemin/Assembly_tutorial/Assembly_tutor
 
 <a name="ph"></a>
 ## Step 5: Organizing with Purge Haplotigs
+Purge Haplotigs assures that there is not a combination of sequences between contigs and haplotigs. It uses a system that uses the mapped reads that you assembled and Minimap2 to assess which contigs should be kept in the assembly.
+
 
 <a name="ha"></a>
 # Hybrid Assembly 
