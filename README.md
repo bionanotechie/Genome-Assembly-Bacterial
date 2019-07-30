@@ -479,7 +479,7 @@ This assembler takes data from Pacbio or Oxford Nanopore technologies sequencers
 
 **Running Flye**
 
-To run Flye runf [flye.sh](https://github.com/CBC-UCONN/Genome-Assembly-Bacterial/blob/master/flye.sh) located in _______.
+To run Flye run [flye.sh](https://github.com/CBC-UCONN/Genome-Assembly-Bacterial/blob/master/flye.sh) located in _______.
 
 The flags in flye are:
 - --pacbio-raw - fasta file
@@ -533,7 +533,7 @@ Falcon has 3 inputs:
 
 **Running Falcon**
 
-To run Flye runf falcon.sh located in _______.
+To run Flye run falcon.sh located in _______.
 
 *Include file preview here
 
