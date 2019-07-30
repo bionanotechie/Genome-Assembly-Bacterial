@@ -332,7 +332,27 @@ You can learn how to asses the genome size by refering to this [tutorial](https:
 
 <a name="bow"></a>
 ## Step 6: Read Alignment with Bowtie2
-Bowtie2 takes read sequences and aligns them with long reference sequences. Since this is de novo assembly you will take the data from the assemblies you have and align them back to the raw read data. You want to use unpaired data. You will find the outputted data in the .err file, it should look like this:
+Bowtie2 takes read sequences and aligns them with long reference sequences. Since this is de novo assembly you will take the data from the assemblies you have and align them back to the raw read data. You want to use unpaired data. 
+
+The steps to perform a read alignment will be within the bowtie2.sh command. These steps include at first creating a combined fastq file  from your raw reads, to do this you use the command
+``` 
+Cat Sample_1.fastq Sample_2.fastq > genome.fastq
+```
+After this you will want to create directory where the all the indexes from your assemblies can be saved. After moving to that directory load bowtie2
+```
+Module load bowtie2/ 2.3.3.1
+```
+To create indexes from the assemblies you created you will need to use the command 
+```
+bowtie2-build PATH_TO_SCAFFOLD NAME_OF_SCAFFOLD.index
+```
+After this you will align the reads back to the combined raw read fastq file
+```
+bowtie2 -x NAME_OF_SCAFFOLD.index -U PATH_TO_COMBINED_RAWREAD.fastq -S NAME_OF_SCAFFOLD.bowtie2.sam
+```
+
+
+You will find the outputted data in the .err file, see the outputted results below. 
 
 **Running Bowtie2**
 
