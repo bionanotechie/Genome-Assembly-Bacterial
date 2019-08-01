@@ -457,7 +457,17 @@ bowtie2 -x SOAP41.index -U /home/CAM/jguillemin/Assembly_tutorial/Assembly_tutor
 |54.55% overall alignment rate             |
 
 <a name="bus"></a>
-## Step 7: Busco Evaluation
+## Step 7: BUSCO Evaluation
+BUSCO stands for Benchmarking Universal Single-Copy Orthologs. This program assists with checking assemblies, annotations, and transcriptomes to see if they appear complete. It does this by taking an orthologous gene set of your species of interest and comparing it back to the genome of interest, taking into consideration possibly evolutionary changes.
+
+BUSCO uses four flags, which are as follows for genome evaluation:
+-i which will be your sequence file in fasta format
+-l which is the lineage of your species of interest, in the tutorials case the bacterial lineage, these lineages can be obtained from the BUSCO website.
+-o which will be the name of you would like for your output file
+-m which will be the mode you plan to use BUSCO in, for this tutorial it is geno, which stands for genome
+
+To run BUSCO use the command [short_read_busco.sh] ( 
+
 Using the SPAdes data the BUSCO results look like:
 ```
 C:98.6%[S:98.6%,D:0.0%],F:0.0%,M:1.4%,n:148
