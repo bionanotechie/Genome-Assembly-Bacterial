@@ -561,6 +561,17 @@ To run Flye run falcon.sh located in _______.
 <a name="bus"></a>
 ## Step 3: Checking completeness with BUSCOMP
 
+BUSCO with flye:
+```
+C:56.1%[S:48.4%,D:7.7%],F:14.4%,M:29.5%,n:430
+
+	241	Complete BUSCOs (C)
+	208	Complete and single-copy BUSCOs (S)
+	33	Complete and duplicated BUSCOs (D)
+	62	Fragmented BUSCOs (F)
+	127	Missing BUSCOs (M)
+	430	Total BUSCO groups searched
+```
 <a name="nano"></a>
 ## Step 4: Polishing with Nanopolish 
 
