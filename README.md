@@ -370,49 +370,6 @@ You will find the outputted data in the .err file, see the outputted results bel
 
 You can run Bowtie2 by running [short_read_bowtie2.sh](https://github.com/CBC-UCONN/Genome-Assembly-Bacterial/blob/master/Short%20Read/short_read_bowtie2.sh).
 
-```
-#!/bin/bash
-#SBATCH --job-name=bowtie2
-#SBATCH -N 1
-#SBATCH -n 1
-#SBATCH -c 1
-#SBATCH --partition=general
-#SBATCH --qos=general
-#SBATCH --mail-type=END
-#SBATCH --mem=50G
-#SBATCH --mail-user=your.email@uconn.edu
-#SBATCH -o bowtie2_%j.out
-#SBATCH -e bowtie2_%j.err
-cat Sample_1.fastq Sample_2.fastq > genome.fastq
-mkdir index
-cd index
-module load bowtie2/2.3.3.1
-
-#Masurca
-bowtie2-build /home/CAM/jguillemin/Assembly_tutorial/Assembly_tutorial/samples/CA/final.genome.scf.fasta masurca.index
-
-bowtie2 -x masurca.index -U /home/CAM/jguillemin/Assembly_tutorial/Assembly_tutorial/genome.fastq -S masurca.bowtie2.sam
-
-#SPAdes
-bowtie2-build /home/CAM/jguillemin/Assembly_tutorial/Assembly_tutorial/Assembly/SPAdes_out/scaffolds.fasta SPAdes.index
-
-bowtie2 -x SPAdes.index -U /home/CAM/jguillemin/Assembly_tutorial/Assembly_tutorial/genome.fastq -S SPAdes.bowtie2.sam
-
-#SOAP31
-bowtie2-build /home/CAM/jguillemin/Assembly_tutorial/Assembly_tutorial/Assembly/SOAP/graph_Sample_31.scafSeq SOAP31.index
-
-bowtie2 -x SOAP31.index -U /home/CAM/jguillemin/Assembly_tutorial/Assembly_tutorial/genome.fastq -S SOAP31.bowtie2.sam
-
-#SOAP35
-bowtie2-build /home/CAM/jguillemin/Assembly_tutorial/Assembly_tutorial/Assembly/SOAP/graph_Sample_35.scafSeq SOAP35.index
-
-bowtie2 -x SOAP35.index -U /home/CAM/jguillemin/Assembly_tutorial/Assembly_tutorial/genome.fastq -S SOAP35.bowtie2.sam
-
-#SOAP41
-bowtie2-build /home/CAM/jguillemin/Assembly_tutorial/Assembly_tutorial/Assembly/SOAP/graph_Sample_41.scafSeq SOAP41.index
-
-bowtie2 -x SOAP41.index -U /home/CAM/jguillemin/Assembly_tutorial/Assembly_tutorial/genome.fastq -S SOAP41.bowtie2.sam
-```
 ### Bowtie2 Results:
 |MaSuRCA                                   |
 |------------------------------------------|
@@ -502,8 +459,6 @@ As mentioned earlier this is required as the data that is outputted via the sequ
 
 To run guppy, run guppy.sh located in _______.
 
-*Include file preview here
-
 The output files of guppy will be:
 - guppy_basecaller_log-2019-06-26_14-07-05.log 
 - sequencing_telemetry.js 
@@ -526,23 +481,6 @@ The flags in flye are:
 - --out-dir - location of result
 - --genome-size
 - --threads
-```
-#!/bin/bash
-#SBATCH --job-name=flye_assembly_tutorial
-#SBATCH -N 1
-#SBATCH -n 1
-#SBATCH -c 36
-#SBATCH --partition=himem
-#SBATCH --qos=himem
-#SBATCH --mail-type=END
-#SBATCH --mem=500G
-#SBATCH --mail-user=mail.user@uconn.edu
-#SBATCH -o %x_%j.out
-#SBATCH -e %x_%j.err
-module load flye/2.4.2
-flye --nano-raw /labs/Wegrzyn/Moss/Physcomitrellopsis_africana/Physcomitrellopsis_africana_Genome/RawData_Nanopore_5074/5074_test_LSK109_30JAN19/5074_test_LSK109_30JAN19-reads/5074_test_LSK109_30JAN19-reads-pass.fastq
- --genome-size 1g --out-dir /labs/Wegrzyn/Long_read_assembly_tutorial --threads 36
-```
 
 <a name="canu"></a>
 ### Assembly with Canu
@@ -559,8 +497,6 @@ The flags in Canu are:
 -s imports parameters from the specification file. 
 
 
-*Include file preview here
-
 <a name="falcon"></a>
 ### Assembly with Falcon
 
@@ -575,7 +511,6 @@ Falcon has 3 inputs:
 
 To run Flye run falcon.sh located in _______.
 
-*Include file preview here
 
 <a name="bus"></a>
 ## Step 3: Checking completeness with BUSCOMP
@@ -600,7 +535,7 @@ genomesize=6e8
 runs=PATH_TO_BUSCO_OUTPUT/run_*
 fastadir="PATH_TO_FASTA"
 basefile=physcomitrellopsis_africana
-```
+``
 <a name="nano"></a>
 ## Step 4: Polishing with Nanopolish 
 Nanopolish is used to strengthen consensus data from yoru assembly.It will take the assembly you have created and align it, break it into segments, and then a consensus algorithm can run through the segments to polish them.
