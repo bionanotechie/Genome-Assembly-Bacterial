@@ -329,8 +329,8 @@ According to our requirements regarding n50 and contigs it would appear that the
 ## Step 5: Assessing Genome size
 
 You can learn how to asses the genome size by refering to this [tutorial](https://bioinformatics.uconn.edu/genome-size-estimation-tutorial/)
-
-
+|Info                                 |             |
+|-------------------------------------|-------------|
 |Total k-mers                         |132587548    |
 |Genome size estimation               |3233843      |
 |Single copy region                   |2870240      |
