@@ -431,7 +431,7 @@ When preparing to run BUSCO you first need to have Augustus in your home directo
 -cp avr /isg/shared/apps/augustus/3.2.3 your_directory
 ```
 
-To run BUSCO use the command [short_read_busco.sh] (https://github.com/CBC-UCONN/Genome-Assembly-Bacterial/blob/master/Short%20Read/short_read_busco.sh)
+To run BUSCO use the command [short_read_busco.sh](https://github.com/CBC-UCONN/Genome-Assembly-Bacterial/blob/master/Short%20Read/short_read_busco.sh)
 
 
 Using the SPAdes data the BUSCO results look like:
