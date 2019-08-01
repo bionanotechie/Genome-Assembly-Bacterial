@@ -466,6 +466,11 @@ BUSCO uses four flags, which are as follows for genome evaluation:
 -o which will be the name of you would like for your output file
 -m which will be the mode you plan to use BUSCO in, for this tutorial it is geno, which stands for genome
 
+When preparing to run BUSCO you first need to have Augustus in your home directory, to do this use the command:
+```
+-cp avr /isg/shared/apps/augustus/3.2.3 your_directory
+```
+
 To run BUSCO use the command [short_read_busco.sh] (https://github.com/CBC-UCONN/Genome-Assembly-Bacterial/blob/master/Short%20Read/short_read_busco.sh)
 
 
@@ -572,7 +577,8 @@ To run Flye run falcon.sh located in _______.
 <a name="bus"></a>
 ## Step 3: Checking completeness with BUSCOMP
 In order to perform and assesment with BUSCOMP BUSCO files need to be created. Which was described earlier during the short read assembly.
-You can run BUSCO with [long_read_BUSCO.sh] (
+You can run BUSCO with [long_read_BUSCO.sh] (https://github.com/CBC-UCONN/Genome-Assembly-Bacterial/blob/master/Long_read_busco.sh)
+
 BUSCO with flye:
 ```
 C:56.1%[S:48.4%,D:7.7%],F:14.4%,M:29.5%,n:430
@@ -584,6 +590,14 @@ C:56.1%[S:48.4%,D:7.7%],F:14.4%,M:29.5%,n:430
 	127	Missing BUSCOs (M)
 	430	Total BUSCO groups searched
 ```
+BUSCOMP is used to assess multiple assemblies, allowing for best hits of the individual assemblies to be combined for the best possible complete genome assembly.
+In order to use BUSCOMP you will need a .ini file which appears as such:
+```
+genomesize=6e8
+runs=PATH_TO_BUSCO_OUTPUT/run_*
+fastadir="PATH_TO_FASTA"
+basefile=physcomitrellopsis_africana
+``
 <a name="nano"></a>
 ## Step 4: Polishing with Nanopolish 
 
