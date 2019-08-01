@@ -458,6 +458,18 @@ bowtie2 -x SOAP41.index -U /home/CAM/jguillemin/Assembly_tutorial/Assembly_tutor
 
 <a name="bus"></a>
 ## Step 7: Busco Evaluation
+Using the SPAdes data the BUSCO results look like:
+```
+C:98.6%[S:98.6%,D:0.0%],F:0.0%,M:1.4%,n:148
+
+	146	Complete BUSCOs (C)
+	146	Complete and single-copy BUSCOs (S)
+	0	Complete and duplicated BUSCOs (D)
+	0	Fragmented BUSCOs (F)
+	2	Missing BUSCOs (M)
+	148	Total BUSCO groups searched
+  ```
+  
 <a name="long"></a>
 # Long Read Genome Assembly
 For long read assembly there is an additional step that is not used for short read data called **base calling**. This is performed first before any long read assembly. The process involves taking the data that the sequencer outputs, which appears as a squiggle line, and applying a base to the hills and valleys of the squiggle. For this step we will use the basecaller [Guppy](https://github.com/rrwick/Basecalling-comparison/blob/master/basecalling_scripts/guppy_basecalling.sh). To complete the assemblies, we will use the assemblers [Flye](https://github.com/fenderglass/Flye), [Canu](https://canu.readthedocs.io/en/latest/), and [Falcon](https://pb-falcon.readthedocs.io/en/latest/). [Purge Haplotags](https://bitbucket.org/mroachawri/purge_haplotigs/src/master/) will be used to assure that the contigs that are assembled are not being combined with the Haplotig of that sequence. After this, the assembly will be polished via [Nanopolish](https://github.com/nanoporetech/nanopolish). Assessment of the quality of the genome assembled will be completed through the same program as with the short read data, QUAST.
