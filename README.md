@@ -600,6 +600,7 @@ basefile=physcomitrellopsis_africana
 ``
 <a name="nano"></a>
 ## Step 4: Polishing with Nanopolish 
+Nanopolish is used to strengthen consensus data from yoru assembly.It will take the assembly you have created and align it, break it into segments, and then a consensus algorithm can run through the segments to polish them.
 
 <a name="ph"></a>
 ## Step 5: Organizing with Purge Haplotigs
