@@ -329,6 +329,7 @@ According to our requirements regarding n50 and contigs it would appear that the
 ## Step 5: Assessing Genome size
 
 You can learn how to asses the genome size by refering to this [tutorial](https://bioinformatics.uconn.edu/genome-size-estimation-tutorial/)
+
 Using SPAdes data you can expect the output to appear as such:
 
 
@@ -339,7 +340,6 @@ Using SPAdes data you can expect the output to appear as such:
 |Single copy region                   |2870240      |
 |Single copy region/Genome estimation |0.8875633    |
 
-The genome size estimated it 
 
 
 <a name="bow"></a>
@@ -513,11 +513,11 @@ To run Flye run falcon.sh located in _______.
 
 
 <a name="bus"></a>
-## Step 3: Checking completeness with BUSCOMP
-In order to perform and assesment with BUSCOMP BUSCO files need to be created. Which was described earlier during the short read assembly.
+## Step 3: Checking completeness with BUSCO
+BUSCO was discussed earlier during the short read tutorial, here we will use it to assess the genome before and after polishing. Which was described earlier during the short read assembly.
 You can run BUSCO with [long_read_BUSCO.sh] (https://github.com/CBC-UCONN/Genome-Assembly-Bacterial/blob/master/Long_read_busco.sh)
 
-BUSCO with flye:
+BUSCO with flye before polishing:
 ```
 C:56.1%[S:48.4%,D:7.7%],F:14.4%,M:29.5%,n:430
 
@@ -528,13 +528,10 @@ C:56.1%[S:48.4%,D:7.7%],F:14.4%,M:29.5%,n:430
 	127	Missing BUSCOs (M)
 	430	Total BUSCO groups searched
 ```
-BUSCOMP is used to assess multiple assemblies, allowing for best hits of the individual assemblies to be combined for the best possible complete genome assembly.
-In order to use BUSCOMP you will need a .ini file which appears as such:
+
+BUSCO with flye after polishing:
 ```
-genomesize=6e8
-runs=PATH_TO_BUSCO_OUTPUT/run_*
-fastadir="PATH_TO_FASTA"
-basefile=physcomitrellopsis_africana
+
 ```
 <a name="nano"></a>
 ## Step 4: Polishing with Nanopolish 
