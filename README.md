@@ -544,3 +544,4 @@ Purge Haplotigs assures that there is not a combination of sequences between con
 
 <a name="ha"></a>
 # Hybrid Assembly 
+To perform a hybrid assembly it requires you have both short and long read data to complete the genome.
