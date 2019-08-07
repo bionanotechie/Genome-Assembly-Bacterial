@@ -531,7 +531,14 @@ C:56.1%[S:48.4%,D:7.7%],F:14.4%,M:29.5%,n:430
 
 BUSCO with flye after polishing:
 ```
+C:82.8%[S:71.4%,D:11.4%],F:4.7%,M:12.5%,n:430
 
+	356	Complete BUSCOs (C)
+	307	Complete and single-copy BUSCOs (S)
+	49	Complete and duplicated BUSCOs (D)
+	20	Fragmented BUSCOs (F)
+	54	Missing BUSCOs (M)
+	430	Total BUSCO groups searched
 ```
 <a name="nano"></a>
 ## Step 4: Polishing with Nanopolish 
