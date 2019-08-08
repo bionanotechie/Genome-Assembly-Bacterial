@@ -340,8 +340,7 @@ Using SPAdes data you can expect the output to appear as such:
 |Single copy region                   |2870240      |
 |Single copy region/Genome estimation |0.8875633    |
 
-![Screenshot] (Screen shot 2019-07-30 at 11.01.39 AM.png)
-
+![Image of Jelly](https://github.com/CBC-UCONN/Genome-Assembly-Bacterial/blob/master/Screen%20Shot%202019-07-30%20at%2011.01.39%20AM.png)
 
 <a name="bow"></a>
 ## Step 6: Read Alignment with Bowtie2
