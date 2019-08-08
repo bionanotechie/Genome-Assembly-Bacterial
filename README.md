@@ -514,6 +514,9 @@ To run Flye run falcon.sh located in _______.
 
 
 <a name="bus"></a>
+
+## Step___: Checking for errors with Centrifuge
+
 ## Step 3: Checking completeness with BUSCO
 BUSCO was discussed earlier during the short read tutorial, here we will use it to assess the genome before and after polishing. Which was described earlier during the short read assembly.
 You can run BUSCO with [long_read_BUSCO.sh] (https://github.com/CBC-UCONN/Genome-Assembly-Bacterial/blob/master/Long_read_busco.sh)
@@ -549,7 +552,12 @@ Nanopolish is used to strengthen consensus data from yoru assembly.It will take 
 ## Step 5: Organizing with Purge Haplotigs
 Purge Haplotigs assures that there is not a combination of sequences between contigs and haplotigs. It uses a system that uses the mapped reads that you assembled and Minimap2 to assess which contigs should be kept in the assembly.
 
+## 
 
 <a name="ha"></a>
 # Hybrid Assembly 
 To perform a hybrid assembly it requires you have both short and long read data to complete the genome.
+
+## Step 1:
+
+## Step 2: Assembly with Kraken and MaSuRCA
