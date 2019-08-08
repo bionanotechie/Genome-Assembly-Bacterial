@@ -21,7 +21,7 @@ This repository is a usable, publicly available tutorial. All steps have been pr
      - [Assembly with Flye](#flye)
      - [Assembly with Canu](#canu)
      - [Assembly with Falcon](#falcon)
-   - [Checking completeness with BUSCOMP](#bus)
+   - [Checking completeness with BUSCO](#bus)
    - [Polishing with Nanopolish](#nano)
    - [Organizing with Purge Haplotigs](#ph)
 3. [Hybrid Assembly](#ha)
