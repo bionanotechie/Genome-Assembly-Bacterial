@@ -342,6 +342,10 @@ Using SPAdes data you can expect the output to appear as such:
 
 ![Image of Jelly](https://github.com/CBC-UCONN/Genome-Assembly-Bacterial/blob/master/Screen%20Shot%202019-07-30%20at%2011.01.39%20AM.png)
 
+![Image of Jelly](https://github.com/CBC-UCONN/Genome-Assembly-Bacterial/blob/master/Screen%20Shot%202019-07-30%20at%2011.01.51%20AM.png)
+
+![Image of Jelly](https://github.com/CBC-UCONN/Genome-Assembly-Bacterial/blob/master/Screen%20Shot%202019-07-30%20at%2011.02.16%20AM.png)
+
 <a name="bow"></a>
 ## Step 6: Read Alignment with Bowtie2
 Bowtie2 takes read sequences and aligns them with long reference sequences. Since this is de novo assembly you will take the data from the assemblies you have and align them back to the raw read data. You want to use unpaired data. 
