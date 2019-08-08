@@ -1,27 +1,15 @@
 #!/bin/bash
-
 #SBATCH --job-name=canu_limulus_assembly
-
 #SBATCH -N 1
-
 #SBATCH -n 1
-
 #SBATCH -c 24
-
 #SBATCH --partition=general
-
 #SBATCH --qos=general
-
 #SBATCH --mail-type=END
-
 #SBATCH --mem=200G
-
 #SBATCH --mail-user=sunny.sarker@uconn.edu
-
 #SBATCH -o %x_%j.out
-
 #SBATCH -e %x_%j.err
-
 
 #module load gnuplot/5.2.2
 
