@@ -7,7 +7,7 @@
 #SBATCH --qos=general
 #SBATCH --mail-type=END
 #SBATCH --mem=200G
-#SBATCH --mail-user=sunny.sarker@uconn.edu
+#SBATCH --mail-user=mail.user@uconn.edu
 #SBATCH -o %x_%j.out
 #SBATCH -e %x_%j.err
 
