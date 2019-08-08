@@ -340,6 +340,7 @@ Using SPAdes data you can expect the output to appear as such:
 |Single copy region                   |2870240      |
 |Single copy region/Genome estimation |0.8875633    |
 
+[Screenshot] (11.01.39.png)
 
 
 <a name="bow"></a>
