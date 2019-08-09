@@ -478,7 +478,7 @@ This assembler takes data from Pacbio or Oxford Nanopore technologies sequencers
 
 **Running Flye**
 
-To run Flye run [flye.sh](https://github.com/CBC-UCONN/Genome-Assembly-Bacterial/blob/master/flye.sh) located in _______.
+To run Flye run [flye.sh](https://github.com/CBC-UCONN/Genome-Assembly-Bacterial/blob/master/flye.sh) located in the long read assembly folder.
 
 The flags in flye are:
 - --pacbio-raw - fasta file
@@ -493,7 +493,7 @@ Canu assembles the with the same data as Flye, in a three step process, these st
 
 **Running Canu**
 
-To run Flye run canu.sh located in _______.
+To run Flye run [canu.sh](https://github.com/CBC-UCONN/Genome-Assembly-Bacterial/blob/master/canu.sh) located in the long read assembly folder.
 
 The flags in Canu are:
 -p which applies to the prefix of the intermediate and output file names. 
