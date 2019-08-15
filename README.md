@@ -17,14 +17,16 @@ This repository is a usable, publicly available tutorial. All steps have been pr
    - [Busco Evaluation](#bus)
 3. [Long Read Genome Assembly](#long)
    - [Base Calling with Guppy](#gup)
-   - [Assembly with Flye, Canu and Falcon](#ff)
+   - [Assembly with Flye and Canu](#ff)
      - [Assembly with Flye](#flye)
      - [Assembly with Canu](#canu)
-     - [Assembly with Falcon](#falcon)
+   - [Checking for errors with Centrifuge](#cent)
    - [Checking completeness with BUSCO](#bus)
    - [Polishing with Nanopolish](#nano)
    - [Organizing with Purge Haplotigs](#ph)
 4. [Hybrid Assembly](#ha)
+   - Assembly with Falcon, MaSuRCA, and Kraken 
+     - [Assembly with Falcon](#falcon)
 
 <a name="over"></a>
 ## Overview  
@@ -461,7 +463,7 @@ As mentioned earlier this is required as the data that is outputted via the sequ
 
 **Running Guppy:**
 
-To run guppy, run guppy.sh located in _______.
+To run guppy, run guppy.sh located in the long read directory.
 
 The output files of guppy will be:
 - guppy_basecaller_log-2019-06-26_14-07-05.log 
@@ -469,7 +471,7 @@ The output files of guppy will be:
 - sequencing_summary.txt
 
 <a name="ff"></a>
-## Step 2: Assembly with Flye, Canu and Falcon
+## Step 2: Assembly with Flye and Canu 
 In this step we will run all of the Long read genome assemblers on the basecalled data.
 
 <a name="flye"></a>
@@ -496,31 +498,15 @@ Canu assembles the with the same data as Flye, in a three step process, these st
 To run Flye run [canu.sh](https://github.com/CBC-UCONN/Genome-Assembly-Bacterial/blob/master/canu.sh) located in the long read assembly folder.
 
 The flags in Canu are:
--p which applies to the prefix of the intermediate and output file names. 
--d specifies the directory
--s imports parameters from the specification file. 
+- -p which applies to the prefix of the intermediate and output file names. 
+- -d specifies the directory
+- -s imports parameters from the specification file. 
 
-
-<a name="falcon"></a>
-### Assembly with Falcon
-
-Falcon is another de novo assembler which is used for PacBio Long Read data. 
-
-Falcon has 3 inputs:
-- your PacBio data in fasta format (can be one or many files), 
-- a text file telling FALCON where to find your fasta files,
-- and a configuration file
-
-**Running Falcon**
-
-To run Flye run falcon.sh located in _______.
-
+<a name="cent"></a>
+## Step 3: Checking for errors with Centrifuge
 
 <a name="bus"></a>
-
-## Step___: Checking for errors with Centrifuge
-
-## Step 3: Checking completeness with BUSCO
+## Step 4: Checking completeness with BUSCO
 BUSCO was discussed earlier during the short read tutorial, here we will use it to assess the genome before and after polishing. Which was described earlier during the short read assembly.
 You can run BUSCO with [long_read_BUSCO.sh] (https://github.com/CBC-UCONN/Genome-Assembly-Bacterial/blob/master/Long_read_busco.sh)
 
@@ -548,11 +534,11 @@ C:82.8%[S:71.4%,D:11.4%],F:4.7%,M:12.5%,n:430
 	430	Total BUSCO groups searched
 ```
 <a name="nano"></a>
-## Step 4: Polishing with Nanopolish 
+## Step 5: Polishing with Nanopolish 
 Nanopolish is used to strengthen consensus data from yoru assembly.It will take the assembly you have created and align it, break it into segments, and then a consensus algorithm can run through the segments to polish them.
 
 <a name="ph"></a>
-## Step 5: Organizing with Purge Haplotigs
+## Step 6: Organizing with Purge Haplotigs
 Purge Haplotigs assures that there is not a combination of sequences between contigs and haplotigs. It uses a system that uses the mapped reads that you assembled and Minimap2 to assess which contigs should be kept in the assembly.
 
 ## 
@@ -563,4 +549,19 @@ To perform a hybrid assembly it requires you have both short and long read data 
 
 ## Step 1:
 
-## Step 2: Assembly with Kraken and MaSuRCA
+## Step 2: Assembly with Falcon, Kraken and MaSuRCA
+
+<a name="falcon"></a>
+### Assembly with Falcon
+
+Falcon is another de novo assembler which is used for PacBio Long Read data. 
+
+Falcon has 3 inputs:
+- your PacBio data in fasta format (can be one or many files), 
+- a text file telling FALCON where to find your fasta files,
+- and a configuration file
+
+**Running Falcon**
+
+To run Flye run falcon.sh located in the hybrid assembly directory.
+
