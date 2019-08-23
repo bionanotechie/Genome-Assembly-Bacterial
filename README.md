@@ -514,7 +514,7 @@ The flags in Canu are:
 <a name="bus"></a>
 ## Step 3: Checking completeness with BUSCO
 BUSCO was discussed earlier during the short read tutorial, here we will use it to assess the genome before and after polishing. Which was described earlier during the short read assembly.
-You can run BUSCO with [long_read_BUSCO.sh] (https://github.com/CBC-UCONN/Genome-Assembly-Bacterial/blob/master/Long_read_busco.sh)
+You can run BUSCO with [long_read_BUSCO.sh](https://github.com/CBC-UCONN/Genome-Assembly-Bacterial/blob/master/Long_read_busco.sh)
 
 BUSCO with flye before polishing:
 ```
