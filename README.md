@@ -547,6 +547,11 @@ Nanopolish is used to strengthen consensus data from yoru assembly.It will take 
 ## Step 5: Organizing with Purge Haplotigs
 Purge Haplotigs assures that there is not a combination of sequences between contigs and haplotigs. It uses a system that uses the mapped reads that you assembled and Minimap2 to assess which contigs should be kept in the assembly.
 
+This part must be done in seperate steps as the parameters in each part depend on the results of the previous steps.
+
+**Running Purge Haplotigs**
+To run purge haplotigs, you mut run each script seperately. you must run [purge_haplotigs_step1.sh](https://github.com/CBC-UCONN/Genome-Assembly-Bacterial/blob/master/purge_haplotigs_step1.sh), [purge_haplotigs_step2.sh](https://github.com/CBC-UCONN/Genome-Assembly-Bacterial/blob/master/purge_haplotigs_step2.sh), and [purge_haplotigs_step3.sh](https://github.com/CBC-UCONN/Genome-Assembly-Bacterial/blob/master/purge_haplotigs_step3.sh) in the long read folder.
+
 
 <a name="ha"></a>
 # Hybrid Assembly 
