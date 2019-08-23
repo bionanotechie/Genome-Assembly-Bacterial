@@ -20,7 +20,7 @@ This repository is a usable, publicly available tutorial. All steps have been pr
    - [Assembly with Flye and Canu](#ff)
      - [Assembly with Flye](#flye)
      - [Assembly with Canu](#canu)
-   - [Checking completeness with BUSCO](#bus)
+   - [Checking completeness with BUSCO](#bus2)
    - [Polishing with Nanopolish](#nano)
    - [Organizing with Purge Haplotigs](#ph)
 4. [Hybrid Assembly](#ha)
@@ -511,7 +511,7 @@ The flags in Canu are:
 - -d specifies the directory
 - -s imports parameters from the specification file. 
 
-<a name="bus"></a>
+<a name="bus2"></a>
 ## Step 3: Checking completeness with BUSCO
 BUSCO was discussed earlier during the short read tutorial, here we will use it to assess the genome before and after polishing. Which was described earlier during the short read assembly.
 You can run BUSCO with [long_read_BUSCO.sh](https://github.com/CBC-UCONN/Genome-Assembly-Bacterial/blob/master/Long_read_busco.sh)
