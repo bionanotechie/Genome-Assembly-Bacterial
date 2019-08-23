@@ -20,7 +20,6 @@ This repository is a usable, publicly available tutorial. All steps have been pr
    - [Assembly with Flye and Canu](#ff)
      - [Assembly with Flye](#flye)
      - [Assembly with Canu](#canu)
-   - [Checking for errors with Centrifuge](#cent)
    - [Checking completeness with BUSCO](#bus)
    - [Polishing with Nanopolish](#nano)
    - [Organizing with Purge Haplotigs](#ph)
@@ -512,11 +511,8 @@ The flags in Canu are:
 - -d specifies the directory
 - -s imports parameters from the specification file. 
 
-<a name="cent"></a>
-## Step 3: Checking for errors with Centrifuge
-
 <a name="bus"></a>
-## Step 4: Checking completeness with BUSCO
+## Step 3: Checking completeness with BUSCO
 BUSCO was discussed earlier during the short read tutorial, here we will use it to assess the genome before and after polishing. Which was described earlier during the short read assembly.
 You can run BUSCO with [long_read_BUSCO.sh] (https://github.com/CBC-UCONN/Genome-Assembly-Bacterial/blob/master/Long_read_busco.sh)
 
@@ -544,14 +540,13 @@ C:82.8%[S:71.4%,D:11.4%],F:4.7%,M:12.5%,n:430
 	430	Total BUSCO groups searched
 ```
 <a name="nano"></a>
-## Step 5: Polishing with Nanopolish 
+## Step 4: Polishing with Nanopolish 
 Nanopolish is used to strengthen consensus data from yoru assembly.It will take the assembly you have created and align it, break it into segments, and then a consensus algorithm can run through the segments to polish them.
 
 <a name="ph"></a>
-## Step 6: Organizing with Purge Haplotigs
+## Step 5: Organizing with Purge Haplotigs
 Purge Haplotigs assures that there is not a combination of sequences between contigs and haplotigs. It uses a system that uses the mapped reads that you assembled and Minimap2 to assess which contigs should be kept in the assembly.
 
-## 
 
 <a name="ha"></a>
 # Hybrid Assembly 
