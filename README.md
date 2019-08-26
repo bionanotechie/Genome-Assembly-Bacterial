@@ -562,6 +562,7 @@ Purge Haplotigs assures that there is not a combination of sequences between con
 This part must be done in seperate steps as the parameters in each part depend on the results of the previous steps.
 
 **Running Purge Haplotigs**
+
 To run purge haplotigs, you mut run each script seperately. you must run [purge_haplotigs_step1.sh](https://github.com/CBC-UCONN/Genome-Assembly-Bacterial/blob/master/purge_haplotigs_step1.sh), [purge_haplotigs_step2.sh](https://github.com/CBC-UCONN/Genome-Assembly-Bacterial/blob/master/purge_haplotigs_step2.sh), and [purge_haplotigs_step3.sh](https://github.com/CBC-UCONN/Genome-Assembly-Bacterial/blob/master/purge_haplotigs_step3.sh) in the long read folder.
 
 
