@@ -557,13 +557,17 @@ Nanopolish is used to strengthen consensus data from yoru assembly.It will take 
 
 <a name="ph"></a>
 ## Step 5: Organizing with Purge Haplotigs
-Purge Haplotigs assures that there is not a combination of sequences between contigs and haplotigs. It uses a system that uses the mapped reads that you assembled and Minimap2 to assess which contigs should be kept in the assembly.
+Purge Haplotigs assures that there is not a combination of sequences between contigs and haplotigs. It uses a system that uses the mapped reads that you assembled and Minimap2 to assess which contigs should be kept in the assembly. After this step is performed you see the duplication in your genome go down.
 
 This part must be done in seperate steps as the parameters in each part depend on the results of the previous steps.
 
 **Running Purge Haplotigs**
+To run purge haplotigs, you mut run each script seperately. you must run [purge_haplotigs_step1.sh](https://github.com/CBC-UCONN/Genome-Assembly-Bacterial/blob/master/purge_haplotigs_step1.sh)
+This step creates a histogram between your BAM files and your genome. They are designated with the flags -b for the sorted BAM files and -g for genome fasta file you are referencing.
 
-To run purge haplotigs, you mut run each script seperately. you must run [purge_haplotigs_step1.sh](https://github.com/CBC-UCONN/Genome-Assembly-Bacterial/blob/master/purge_haplotigs_step1.sh), [purge_haplotigs_step2.sh](https://github.com/CBC-UCONN/Genome-Assembly-Bacterial/blob/master/purge_haplotigs_step2.sh), and [purge_haplotigs_step3.sh](https://github.com/CBC-UCONN/Genome-Assembly-Bacterial/blob/master/purge_haplotigs_step3.sh) in the long read folder.
+
+[purge_haplotigs_step2.sh](https://github.com/CBC-UCONN/Genome-Assembly-Bacterial/blob/master/purge_haplotigs_step2.sh), and [purge_haplotigs_step3.sh](https://github.com/CBC-UCONN/Genome-Assembly-Bacterial/blob/master/purge_haplotigs_step3.sh) in the long read folder.
+Step 2 will use the genomecov file created in the first step as the main input, which will be flagged -i. 
 
 
 <a name="ha"></a>
