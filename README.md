@@ -541,7 +541,16 @@ C:82.8%[S:71.4%,D:11.4%],F:4.7%,M:12.5%,n:430
 ```
 
 BUSCO with flye after Purge Haplotigs:
+``` 
+C:81.1%[S:72.3%,D:8.8%],F:5.1%,M:13.8%,n:430
 
+	349    Complete BUSCOs (C)
+	311    Complete and single-copy BUSCOs (S)
+	38     Complete and duplicated BUSCOs (D)
+	22     Fragmented BUSCOs (F)
+	59     Missing BUSCOs (M)
+	430    Total BUSCO groups searched
+```
 <a name="nano"></a>
 ## Step 4: Polishing with Nanopolish 
 Nanopolish is used to strengthen consensus data from yoru assembly.It will take the assembly you have created and align it, break it into segments, and then a consensus algorithm can run through the segments to polish them.
