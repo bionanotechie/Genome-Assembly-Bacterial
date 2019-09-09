@@ -24,6 +24,7 @@ This repository is a usable, publicly available tutorial. All steps have been pr
    - [Polishing with Nanopolish](#nano)
    - [Organizing with Purge Haplotigs](#ph)
 4. [Hybrid Assembly](#ha)
+   - [Preprocessing with CCS](#ccs)
    - [Assembly with Falcon, MaSuRCA, and Kraken](#fkm)
      - [Assembly with Falcon](#falcon)
 
@@ -568,9 +569,16 @@ To run purge haplotigs, you mut run each script seperately. you must run [purge_
 
 <a name="ha"></a>
 # Hybrid Assembly 
-To perform a hybrid assembly it requires you have both short and long read data to complete the genome.
+To perform a hybrid assembly it requires you have both short and long read data to complete the genome. For this tutorial we are using data from a boxelder genome. We will begin with preprocessing with PacBio Circular Consensus Sequence analysis application (CCS), run the Falcon, Kraken, and MaSuRCA assemblers,
 
-## Step 1:
+<a name="ccs"></a>
+## Step 1:Preprocessing with PacBio CCS
+For our data, CCS was already run on the boxelder data. For more information on CCS please refer to [this PacBio CCS Tutorial](https://www.pacb.com/videos/tutorial-circular-consensus-sequence-analysis-application/) And if you have a UConn PacBio account please refer to [this tutorial](https://bioinformatics.uconn.edu/resources-and-events/tutorials-2/pacbio-v7/).
+
+
+
+
+
 
 <a name="fkm"></a>
 ## Step 2: Assembly with Falcon, Kraken and MaSuRCA
