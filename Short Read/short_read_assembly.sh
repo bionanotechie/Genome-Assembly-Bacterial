@@ -47,7 +47,7 @@ cd /Path_to_tutorial/Assembly_Tutorial/Assembly/MaSuRCA
 #run MaSuRCA
 
 
-module load MaSuRCA/3.2.4
+module load MaSuRCA/3.3.3
 
 
 masurca config.txt
