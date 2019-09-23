@@ -11,8 +11,8 @@ This repository is a usable, publicly available tutorial. All steps have been pr
      - [Assembly with SOAPdenovo](#soap)
      - [Assembly with SPAdes](#spades)
      - [Assembly with MaSuRCA](#ma)
-   - [Assembly Statistics with QUAST](#quast)
    - [Assessing Genome size](#genome)
+   - [Assembly Statistics with QUAST](#quast)
    - [Read Alignment with Bowtie2](#bow)
    - [Busco Evaluation](#bus)
 3. [Long Read Genome Assembly](#long)
@@ -269,8 +269,30 @@ masurca config.txt
 
 bash assemble.sh
 ```
+
+<a name="genome"></a>
+## Step 4: Assessing Genome size
+
+You can learn how to asses the genome size by refering to this [tutorial](https://bioinformatics.uconn.edu/genome-size-estimation-tutorial/)
+
+Using SPAdes data you can expect the output to appear as such:
+
+
+|Info                                 |             |
+|-------------------------------------|-------------|
+|Total k-mers                         |132587548    |
+|Genome size estimation               |3233843      |
+|Single copy region                   |2870240      |
+|Single copy region/Genome estimation |0.8875633    |
+
+![Image of Jelly](https://github.com/CBC-UCONN/Genome-Assembly-Bacterial/blob/master/Screen%20Shot%202019-07-30%20at%2011.01.39%20AM.png)
+
+![Image of Jelly](https://github.com/CBC-UCONN/Genome-Assembly-Bacterial/blob/master/Screen%20Shot%202019-07-30%20at%2011.01.51%20AM.png)
+
+![Image of Jelly](https://github.com/CBC-UCONN/Genome-Assembly-Bacterial/blob/master/Screen%20Shot%202019-07-30%20at%2011.02.16%20AM.png)
+
 <a name="quast"></a>
-## Step 4: Assembly Statistics with QUAST
+## Step 5: Assembly Statistics with QUAST
 
 The final step for short read data is to analyze the quality of the assemblies. We will be using the program QUAST which will give us the number of contigs, total length and N50 value; the data we are most interested in. A good assembly would have small number of contigs, a total length that makes sense for the specific species, and a large N50 value. 
 
@@ -327,26 +349,6 @@ The statistics that are outputted via QUAST should follow this pattern.
 
 According to our requirements regarding n50 and contigs it would appear that the best assembly perfromed was via SPAdes.
 
-<a name="genome"></a>
-## Step 5: Assessing Genome size
-
-You can learn how to asses the genome size by refering to this [tutorial](https://bioinformatics.uconn.edu/genome-size-estimation-tutorial/)
-
-Using SPAdes data you can expect the output to appear as such:
-
-
-|Info                                 |             |
-|-------------------------------------|-------------|
-|Total k-mers                         |132587548    |
-|Genome size estimation               |3233843      |
-|Single copy region                   |2870240      |
-|Single copy region/Genome estimation |0.8875633    |
-
-![Image of Jelly](https://github.com/CBC-UCONN/Genome-Assembly-Bacterial/blob/master/Screen%20Shot%202019-07-30%20at%2011.01.39%20AM.png)
-
-![Image of Jelly](https://github.com/CBC-UCONN/Genome-Assembly-Bacterial/blob/master/Screen%20Shot%202019-07-30%20at%2011.01.51%20AM.png)
-
-![Image of Jelly](https://github.com/CBC-UCONN/Genome-Assembly-Bacterial/blob/master/Screen%20Shot%202019-07-30%20at%2011.02.16%20AM.png)
 
 <a name="bow"></a>
 ## Step 6: Read Alignment with Bowtie2
