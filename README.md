@@ -25,8 +25,9 @@ This repository is a usable, publicly available tutorial. All steps have been pr
    - [Organizing with Purge Haplotigs](#ph)
 4. [Hybrid Assembly](#ha)
    - [Preprocessing with CCS](#ccs)
-   - [Assembly with Falcon, MaSuRCA, and Kraken](#fkm)
+   - [Assembly with Falcon and MaSuRCA](#fkm)
      - [Assembly with Falcon](#falcon)
+     - [Assembly with MaSuRCA](#mas)
 
 <a name="over"></a>
 ## Overview  
@@ -598,4 +599,8 @@ Falcon has 3 inputs:
 **Running Falcon**
 
 To run Flye run falcon.sh located in the hybrid assembly directory.
+
+
+<a name="mas"></a>
+### Assembly with MaSuRCA 
 
