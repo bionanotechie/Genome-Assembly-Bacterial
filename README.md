@@ -17,9 +17,9 @@ This repository is a usable, publicly available tutorial. All steps have been pr
    - [Busco Evaluation](#bus)
 3. [Long Read Genome Assembly](#long)
    - [Base Calling with Guppy](#gup)
-   - [Assembly with Flye and Canu](#ff)
+   - [Assembly with Flye and Shasta](#ff)
      - [Assembly with Flye](#flye)
-     - [Assembly with Canu](#canu)
+     - [Assembly with Canu](#shas)
    - [Checking completeness with BUSCO](#bus2)
    - [Polishing with Nanopolish](#nano)
    - [Organizing with Purge Haplotigs](#ph)
@@ -502,15 +502,19 @@ The flags in flye are:
 - --threads
 
 <a name="canu"></a>
-### Assembly with Canu
-Canu assembles the with the same data as Flye, in a three step process, these steps are: Correction, trimming, and unitig construction.
+### Assembly with Shasta
+Similar to Flye, the Shasta long read assemblers purpose is to rapidly produce an accurate assembled sequence using Oxford Nanopoore sequencing data.
+
+The computational methods used in the Shasta assembler are:
+- A run-length representation of the read sequence which makes the assembly process more resilient to errors in homopolymer repeat counts (very commmon in nanopore data).
+- Using a fixed subset of kmers in some phases of the computation a representation of the read sequence based on markers.
 
 
-**Running Canu**
+**Running Shasta**
 
-To run Flye run [canu.sh](https://github.com/CBC-UCONN/Genome-Assembly-Bacterial/blob/master/canu.sh) located in the long read assembly folder.
+To run Shasta run [shasta.sh](https://github.com/CBC-UCONN/Genome-Assembly-Bacterial/blob/master/shasta.sh) located in the long read assembly folder.
 
-The flags in Canu are:
+The flags in Shasta are:
 - -p which applies to the prefix of the intermediate and output file names. 
 - -d specifies the directory
 - -s imports parameters from the specification file. 
