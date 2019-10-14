@@ -561,7 +561,8 @@ C:81.1%[S:72.3%,D:8.8%],F:5.1%,M:13.8%,n:430
 ```
 <a name="nano"></a>
 ## Step 4: Polishing with Nanopolish 
-Nanopolish is used to strengthen consensus data from yoru assembly.It will take the assembly you have created and align it, break it into segments, and then a consensus algorithm can run through the segments to polish them.
+Nanopolish is used to strengthen consensus data from your assembly.It will take the assembly you have created and align it, break it into segments, and then a consensus algorithm can run through the segments to polish them.
+The original purpose of nanopolish was to improve the consensus accuracy of an assembly of Oxford Nanopore Technology sequencing reads. Here we provide a step-by-step tutorial to help you get started.
 
 <a name="ph"></a>
 ## Step 5: Organizing with Purge Haplotigs
