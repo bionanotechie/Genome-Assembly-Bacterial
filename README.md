@@ -472,7 +472,9 @@ For long read assembly there is an additional step that is not used for short re
 
 <a name="gup"></a>
 ## Step 1: Base Calling with Guppy
-As mentioned earlier this is required as the data that is outputted via the sequencer is different from those outputted via a short read sequencer. Guppy runs via a neural network and can work off GPUs and CPUs.
+Oxford Nanopore long-read sequencing works by doing the following: pass a single strand of DNA through a membrane with a nanopore and apply a voltage difference across the membrane. By doing so the nucleotides present in the pore will affect the pore’s electrical resistance so current measurements over time indicate the sequence of DNA bases passing through the pore. This  current signal is the raw data gathered by an ONT sequencer. 
+
+Basecalling for ONT devices is the process of translating this raw signal into a DNA sequence. Guppy runs via a neural network and can work off GPUs and CPUs.
 
 **Running Guppy:**
 
@@ -562,6 +564,7 @@ C:81.1%[S:72.3%,D:8.8%],F:5.1%,M:13.8%,n:430
 <a name="nano"></a>
 ## Step 4: Polishing with Nanopolish 
 Nanopolish is used to strengthen consensus data from your assembly.It will take the assembly you have created and align it, break it into segments, and then a consensus algorithm can run through the segments to polish them.
+
 The original purpose of nanopolish was to improve the consensus accuracy of an assembly of Oxford Nanopore Technology sequencing reads. Here we provide a step-by-step tutorial to help you get started.
 
 <a name="ph"></a>
@@ -581,7 +584,10 @@ To run purge haplotigs, you mut run each script seperately. you must run [purge_
 
 <a name="ha"></a>
 # Hybrid Assembly 
-To perform a hybrid assembly it requires you have both short and long read data to complete the genome. For this tutorial we are using data from a boxelder genome. We will begin with preprocessing with PacBio Circular Consensus Sequence analysis application (CCS), run the Falcon, Kraken, and MaSuRCA assemblers,
+
+For the long read assembly section, we have been working with long read Nanopore data. In this section we will be working with hybrid assemblers which will be compatible with long read PacBio Data and Short read Illumina data. Nanopore and PacBio are currently both the main long read sequencing technologies but the major differences in them are that PacBio reads a molecule multiple times to generate high-quality consensus data while Nanopore can only sequence a molecule twice. As a result, PacBio generates data with lower error rates compared to Oxford Nanopore. 
+
+To perform a hybrid assembly it requires you have both short and long read data to complete the genome. Hybrid assembly uses short read data to resolve ambiguity in the long read data as it is assembled. For this tutorial we are using data from a boxelder genome. We will begin with preprocessing with PacBio Circular Consensus Sequence analysis application (CCS), run the Falcon, Kraken, and MaSuRCA assemblers,
 
 <a name="ccs"></a>
 ## Step 1:Preprocessing with PacBio CCS
