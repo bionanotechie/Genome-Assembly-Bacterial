@@ -585,6 +585,8 @@ To perform a hybrid assembly it requires you have both short and long read data 
 
 <a name="ccs"></a>
 ## Step 1:Preprocessing with PacBio CCS
+CCS takes multiple subreads of the same molecule and combines them using a statistical model to produce one accurate consensus sequence (HiFi read), with base quality values. For more information, refer to the [PacBio Website](https://www.pacb.com/smrt-science/smrt-sequencing/smrt-sequencing-modes/)
+
 For our data, CCS was already run on the boxelder data. For more information on CCS please refer to [this PacBio CCS Tutorial](https://www.pacb.com/videos/tutorial-circular-consensus-sequence-analysis-application/) And if you have a UConn PacBio account please refer to [this tutorial](https://bioinformatics.uconn.edu/resources-and-events/tutorials-2/pacbio-v7/).
 
 
