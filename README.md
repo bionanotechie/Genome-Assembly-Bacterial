@@ -152,7 +152,7 @@ module unload SOAP-denovo/2.04
 
 The meaning of the flags within the command have these meanings: 
 - -s is the path to the config file
-- -K is the size of the k-mer, a k-mer is a set of nucleotides, k is the number of nucleotides in that set. (biostar)
+- -K is the size of the k-mer, a k-mer is a set of nucleotides, k is the number of nucleotides in that set. It is a crucial parameter in most de Brujin Graph assemblers and assemblers work with the highest accuracy if the k-mer size estimation is accurate. 
 - -o is the output file
 - 1 is for the assembly log and 2 is for the assembly errors. 
 
