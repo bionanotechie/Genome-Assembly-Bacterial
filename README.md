@@ -353,7 +353,9 @@ According to our requirements regarding n50 and contigs it would appear that the
 
 <a name="bow"></a>
 ## Step 6: Read Alignment with Bowtie2
-Bowtie2 takes read sequences and aligns them with long reference sequences. Since this is de novo assembly you will take the data from the assemblies you have and align them back to the raw read data. You want to use unpaired data. 
+Bowtie2 is a tool you would use for comparitive genomics via alignment. Alignment is the process where we discover how and where the read sequences are similar to a reference sequence. An alignment is a way of lining up the characters in the read with some characters from the reference to reveal how they are similar. 
+
+Bowtie2 in our case takes read sequences and aligns them with long reference sequences. Since this is de novo assembly you will take the data from the assemblies you have and align them back to the raw read data. You want to use unpaired data. 
 
 You will find the outputted data in the .err file, see the outputted results below. 
 
