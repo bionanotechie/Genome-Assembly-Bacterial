@@ -355,24 +355,6 @@ According to our requirements regarding n50 and contigs it would appear that the
 ## Step 6: Read Alignment with Bowtie2
 Bowtie2 takes read sequences and aligns them with long reference sequences. Since this is de novo assembly you will take the data from the assemblies you have and align them back to the raw read data. You want to use unpaired data. 
 
-The steps to perform a read alignment will be within the bowtie2.sh command. These steps include at first creating a combined fastq file  from your raw reads, to do this you use the command
-``` 
-Cat Sample_1.fastq Sample_2.fastq > genome.fastq
-```
-After this you will want to create directory where the all the indexes from your assemblies can be saved. After moving to that directory load bowtie2
-```
-Module load bowtie2/ 2.3.3.1
-```
-To create indexes from the assemblies you created you will need to use the command 
-```
-bowtie2-build PATH_TO_SCAFFOLD NAME_OF_SCAFFOLD.index
-```
-After this you will align the reads back to the combined raw read fastq file
-```
-bowtie2 -x NAME_OF_SCAFFOLD.index -U PATH_TO_COMBINED_RAWREAD.fastq -S NAME_OF_SCAFFOLD.bowtie2.sam
-```
-
-
 You will find the outputted data in the .err file, see the outputted results below. 
 
 **Running Bowtie2**
@@ -382,48 +364,48 @@ You can run Bowtie2 by running [short_read_bowtie2.sh](https://github.com/CBC-UC
 ### Bowtie2 Results:
 |MaSuRCA                                   |
 |------------------------------------------|
-|894184 reads; of these:                   | 
-|894184 (100.00%) were unpaired; of these: |
-|125031 (13.98%) aligned 0 times           |
-|748206 (83.67%) aligned exactly 1 time    |
-|20947 (2.34%) aligned >1 times            |
-|86.02% overall alignment rate             |
+|447092 reads; of these:                   | 
+|447092 (100.00%) were paired; of these:   |
+|189344 (42.35%) aligned 0 times           |
+|255081 (57.05%) aligned exactly 1 time    |
+|2667 (0.60%) aligned  >1 times            |
+|88.51% overall alignment rate             |
 
 |SPAdes                                    |
 |------------------------------------------|
-|894184 reads; of these:                   | 
-|894184 (100.00%) were unpaired; of these: |
+|447092 reads; of these:                   | 
+|447092 (100.00%) were paired; of these    |
 |93720 (10.48%) aligned 0 times            |
-|784462 (87.73%) aligned exactly 1 time    |
-|16002 (1.79%) aligned >1 times            |
+|267852 (59.91%) aligned exactly 1 time    |
+|3681 (0.82%) aligned  >1 times            |
 |89.52% overall alignment rate             |
 
 |SOAP31                                    |
 |------------------------------------------|
-|894184 reads; of these:                   | 
-|894184 (100.00%) were unpaired; of these: |
-|456710 (51.08%) aligned 0 times           |
-|437262 (48.90%) aligned exactly 1 time    |
-|212 (0.02%) aligned >1 times              |
-|48.92% overall alignment rate             |
+|447092 reads; of these:                   | 
+|447092 (100.00%) were paired; of these:   |
+|338885 (75.80%) aligned 0 times           |
+|108205 (24.20%) aligned exactly 1 time    |
+|2 (0.00%) aligned >1 times                |
+|48.96% overall alignment rate             |
 
 |SOAP35                                    |
 |------------------------------------------|
-|894184 reads; of these:                   |
-|894184 (100.00%) were unpaired; of these: |
-|440065 (49.21%) aligned 0 times           |
-|453682 (50.74%) aligned exactly 1 time    |
-|437 (0.05%) aligned >1 times              |
-|50.79% overall alignment rate             |
+|447092 reads; of these:                   |
+|447092 (100.00%) were paired; of these:   |
+|332703 (74.41%) aligned 0 times           |
+|114376 (25.58%) aligned exactly 1 time    |
+|13 (0.00%) aligned  >1 times              |
+|50.82% overall alignment rate             
 
 |SOAP41                                    |
 |------------------------------------------|
-|894184 reads; of these:                   |
-|894184 (100.00%) were unpaired; of these: |
-|406420 (45.45%) aligned 0 times           |
-|486826 (54.44%) aligned exactly 1 time    |
-|938 (0.10%) aligned >1 times              |
-|54.55% overall alignment rate             |
+|447092 reads; of these:                   |
+|447092 (100.00%) were paired; of these:   |
+|318539 (71.25%) aligned 0 times           |
+|128499 (28.74%) aligned exactly 1 time    |
+|54 (0.01%) aligned  >1 times              |
+|54.57% overall alignment rate             |
 
 <a name="bus"></a>
 ## Step 7: BUSCO Evaluation
