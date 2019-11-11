@@ -1,0 +1,37 @@
+---
+title: "Jellyfish"
+output: html_document
+---
+```{r}
+directory<-("~/jellyfish")
+```
+
+
+```{r}
+dataframe19 <- read.table("19mer_out.histo") 
+plot(dataframe19[1:200,], type="l") #plots the data points 1 through 200 in the dataframe19 using a line
+```
+```{r}
+plot(dataframe19[5:200,], type="l")
+```
+
+```{r}
+plot(dataframe19[5:100,], type="l") #plot line graph 
+points(dataframe19[5:100,]) #plot the data points from 2 through 100
+```
+
+```{r}
+sum(as.numeric(dataframe19[5:1196,1]*dataframe19[5:1196,2]))
+```
+
+```{r}
+sum(as.numeric(dataframe19[5:1196,1]*dataframe19[5:1196,2]))/41
+```
+
+```{r}
+sum(as.numeric(dataframe19[5:100,1]*dataframe19[5:100,2]))/41
+```
+
+```{r}
+sum(as.numeric(dataframe19[5:100,1]*dataframe19[5:100,2]))/sum(as.numeric(dataframe19[5:1196,1]*dataframe19[5:1196,2]))
+```
