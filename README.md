@@ -585,7 +585,7 @@ For our data, CCS was already run on the boxelder data. For more information on 
 
 
 <a name="fkm"></a>
-## Step 2: Assembly with Falcon, Kraken and MaSuRCA
+## Step 2: Assembly with Falcon and MaSuRCA
 
 <a name="falcon"></a>
 ### Assembly with Falcon
