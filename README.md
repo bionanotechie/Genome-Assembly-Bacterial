@@ -20,14 +20,13 @@ This repository is a usable, publicly available tutorial. All steps have been pr
    - [Assembly with Flye and Shasta](#ff)
      - [Assembly with Flye](#flye)
      - [Assembly with Shasta](#shas)
+     - [Assembly with Falcon](#falcon)
    - [Checking completeness with BUSCO](#bus2)
    - [Polishing with Nanopolish](#nano)
    - [Organizing with Purge Haplotigs](#ph)
 4. [Hybrid Assembly](#ha)
    - [Preprocessing with CCS](#ccs)
-   - [Assembly with Falcon and MaSuRCA](#fkm)
-     - [Assembly with Falcon](#falcon)
-     - [Assembly with MaSuRCA](#mas)
+   - [Assembly with MaSuRCA](#mas)
 
 <a name="over"></a>
 ## Overview  
@@ -505,6 +504,20 @@ The flags in Shasta are:
 - -d specifies the directory
 - -s imports parameters from the specification file. 
 
+<a name="falcon"></a>
+### Assembly with Falcon
+
+Falcon is another de novo assembler which is used for PacBio Long Read data. 
+
+Falcon has 3 inputs:
+- your PacBio data in fasta format (can be one or many files), 
+- a text file telling FALCON where to find your fasta files,
+- and a configuration file
+
+**Running Falcon**
+
+To run Flye run falcon.sh located in the hybrid assembly directory.
+
 <a name="bus2"></a>
 ## Step 3: Checking completeness with BUSCO
 BUSCO was discussed earlier during the short read tutorial, here we will use it to assess the genome before and after polishing. Which was described earlier during the short read assembly.
@@ -585,23 +598,6 @@ For our data, CCS was already run on the boxelder data. For more information on 
 
 
 <a name="fkm"></a>
-## Step 2: Assembly with Falcon and MaSuRCA
+## Step 2: Assembly with MaSuRCA
 
-<a name="falcon"></a>
-### Assembly with Falcon
-
-Falcon is another de novo assembler which is used for PacBio Long Read data. 
-
-Falcon has 3 inputs:
-- your PacBio data in fasta format (can be one or many files), 
-- a text file telling FALCON where to find your fasta files,
-- and a configuration file
-
-**Running Falcon**
-
-To run Flye run falcon.sh located in the hybrid assembly directory.
-
-
-<a name="mas"></a>
-### Assembly with MaSuRCA 
 
