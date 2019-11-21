@@ -276,7 +276,7 @@ bash assemble.sh
 
 You can learn how to asses the genome size by refering to this [tutorial](https://bioinformatics.uconn.edu/genome-size-estimation-tutorial/)
 
-Using SPAdes data you can expect the output to appear as such:
+Using the raw data you can expect the output to appear as such:
 
 
 |Info                                 |             |
