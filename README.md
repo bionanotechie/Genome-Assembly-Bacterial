@@ -19,7 +19,7 @@ This repository is a usable, publicly available tutorial. All steps have been pr
    - [Base Calling with Guppy](#gup)
    - [Assembly with Flye and Shasta](#ff)
      - [Assembly with Flye](#flye)
-     - [Assembly with Canu](#shas)
+     - [Assembly with Shasta](#shas)
    - [Checking completeness with BUSCO](#bus2)
    - [Polishing with Nanopolish](#nano)
    - [Organizing with Purge Haplotigs](#ph)
