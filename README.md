@@ -514,9 +514,11 @@ Falcon has 3 inputs:
 - a text file telling FALCON where to find your fasta files,
 - and a configuration file
 
+for falcon there is fc_run and fc_unzip. FALCON is a diploid-aware assembler which is optimized for large genome assembly and produces a set of primary contigs wheras fc_unzip is a true diploid assembler which takes the contigs from FALCON and phases the reads based on heterozygous SNPs identified in the initial assembly to produce a set of partially phased primary contigs and fully phased haplotigs to represent different haplotyes.
+
 **Running Falcon**
 
-To run Flye run falcon.sh located in the hybrid assembly directory.
+To run Flye run [falcon.sh](https://github.com/CBC-UCONN/Genome-Assembly-Bacterial/blob/master/Long%20Read/1-assembly/falcon/falcon.sh) located in the hybrid assembly directory. falcon is run by inputting subreads.bam.fofn and subreads.fasta.fofn and loading miniconda and denovo_py3 modules. You have the options of either running fc_run on fc_run.cfg or fc_unzip.py on fc_unzip.cfg.
 
 <a name="bus2"></a>
 ## Step 3: Checking completeness with BUSCO
