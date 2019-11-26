@@ -608,10 +608,12 @@ For our data, CCS was already run on the boxelder data. For more information on 
 
 <a name="fkm"></a>
 ## Step 2: Assembly with MaSuRCA
+
 MaSuRCA was introduced in the Short Read Section and was used in the case of short read assembly but can also be used as a Hybrid Assembler if inputed long read PacBio Data and short read illumina data. 
 
 **Running MaSuRCA**
-To run MaSuRCA rou can run the [masurca.sh](https://github.com/CBC-UCONN/Genome-Assembly-Bacterial/blob/master/Hybrid/MaSuRCA/masurca.sh) file in the Hybrid Folder. 
+
+To run MaSuRCA you can run the [masurca.sh](https://github.com/CBC-UCONN/Genome-Assembly-Bacterial/blob/master/Hybrid/MaSuRCA/masurca.sh) file in the Hybrid Folder. 
  
  You first need to load masurca and then run it on a config file. you can find a sample [here](https://github.com/CBC-UCONN/Genome-Assembly-Bacterial/blob/master/Hybrid/MaSuRCA/config.txt) and edit to the genome size and path you need for your inputs. 
  
