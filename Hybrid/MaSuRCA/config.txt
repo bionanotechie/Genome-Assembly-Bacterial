@@ -1,0 +1,24 @@
+DATA
+PE= aa 300 50 /labs/Wegrzyn/Moss/Physcomitrellopsis_africana/Physcomitrellopsis_africana_Genome/RawData_Illumina_5074/Trimmomatic_Trimming/Kraken2/unclassified_1.fastq /labs/Wegrzyn/Moss/Physcomitrellopsis_africana/Physcomitrellopsis_africana_Genome/RawData_Illumina_5074/Trimmomatic_Trimming/Kraken2/unclassified_2.fastq
+NANOPORE=/labs/Wegrzyn/Moss/Physcomitrellopsis_africana/Physcomitrellopsis_africana_Genome/RawData_Nanopore_5074/5074_test_LSK109_30JAN19/5074_test_LSK109_30JAN19-reads/5074_test_LSK109_30JAN19-reads-pass.fastq 
+END
+
+PARAMETERS
+EXTEND_JUMP_READS=0
+GRAPH_KMER_SIZE = auto
+USE_LINKING_MATES = 0
+USE_GRID=1
+GRID_ENGINE=SLURM
+GRID_QUEUE=general
+GRID_BATCH_SIZE=500000000
+LHE_COVERAGE=25
+MEGA_READS_ONE_PASS=0
+LIMIT_JUMP_COVERAGE = 300
+CA_PARAMETERS =  cgwErrorRate=0.15
+CLOSE_GAPS=1
+NUM_THREADS = 16
+JF_SIZE = 10000000000
+SOAP_ASSEMBLY=0
+FLYE_ASSEMBLY=0
+END
+
