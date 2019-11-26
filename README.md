@@ -17,7 +17,7 @@ This repository is a usable, publicly available tutorial. All steps have been pr
    - [Busco Evaluation](#bus)
 3. [Long Read Genome Assembly](#long)
    - [Base Calling with Guppy](#gup)
-   - [Assembly with Flye and Shasta](#ff)
+   - [Assembly with Flye Shasta, and Falcon](#ff)
      - [Assembly with Flye](#flye)
      - [Assembly with Shasta](#shas)
      - [Assembly with Falcon](#falcon)
@@ -469,7 +469,7 @@ The output files of guppy will be:
 - sequencing_summary.txt
 
 <a name="ff"></a>
-## Step 2: Assembly with Flye and Canu 
+## Step 2: Assembly with Flye, Shasta and Falcon 
 In this step we will run all of the Long read genome assemblers on the basecalled data.
 
 <a name="flye"></a>
@@ -562,7 +562,18 @@ C:81.1%[S:72.3%,D:8.8%],F:5.1%,M:13.8%,n:430
 ## Step 4: Polishing with Nanopolish 
 Nanopolish is used to strengthen consensus data from your assembly.It will take the assembly you have created and align it, break it into segments, and then a consensus algorithm can run through the segments to polish them.
 
-The original purpose of nanopolish was to improve the consensus accuracy of an assembly of Oxford Nanopore Technology sequencing reads. Here we provide a step-by-step tutorial to help you get started.
+The original purpose of nanopolish was to improve the consensus accuracy of an assembly of Oxford Nanopore Technology sequencing reads. 
+
+**Running Nanopolish**
+To run nanopolish run the [nanopolish0-10kb.sh](https://github.com/CBC-UCONN/Genome-Assembly-Bacterial/blob/master/Long%20Read/3-nanopolish/nanopolish.sh) file located in the long read folder inside folder 3.
+
+In our script we first run nanopolish_makerange.py in order to split the draft of larger genomes so that the algorithm can run in parallel on each part. In our case we first run the divide_genome.py script on our full genome assembly (whichever you want to access, we used the flye output). then we run nanopolish_0-10kb.sh and just run nanopolish on that portion.
+
+Here are the following meanings of the parameters:
+- -r is the input of the raw reads
+- -b is the bam file of the raw reads
+- -g is the partial genome you want to examine
+- -o is the output (a vcf file)
 
 <a name="ph"></a>
 ## Step 5: Organizing with Purge Haplotigs
