@@ -17,7 +17,7 @@ This repository is a usable, publicly available tutorial. All steps have been pr
    - [Busco Evaluation](#bus)
 3. [Long Read Genome Assembly](#long)
    - [Base Calling with Guppy](#gup)
-   - [Assembly with Flye and Shasta](#ff)
+   - [Assembly with Flye Shasta, and Falcon](#ff)
      - [Assembly with Flye](#flye)
      - [Assembly with Shasta](#shas)
      - [Assembly with Falcon](#falcon)
@@ -469,7 +469,7 @@ The output files of guppy will be:
 - sequencing_summary.txt
 
 <a name="ff"></a>
-## Step 2: Assembly with Flye and Canu 
+## Step 2: Assembly with Flye, Shasta and Falcon 
 In this step we will run all of the Long read genome assemblers on the basecalled data.
 
 <a name="flye"></a>
@@ -514,9 +514,11 @@ Falcon has 3 inputs:
 - a text file telling FALCON where to find your fasta files,
 - and a configuration file
 
+for falcon there is fc_run and fc_unzip. FALCON is a diploid-aware assembler which is optimized for large genome assembly and produces a set of primary contigs wheras fc_unzip is a true diploid assembler which takes the contigs from FALCON and phases the reads based on heterozygous SNPs identified in the initial assembly to produce a set of partially phased primary contigs and fully phased haplotigs to represent different haplotyes.
+
 **Running Falcon**
 
-To run Flye run falcon.sh located in the hybrid assembly directory.
+To run Flye run [falcon.sh](https://github.com/CBC-UCONN/Genome-Assembly-Bacterial/blob/master/Long%20Read/1-assembly/falcon/falcon.sh) located in the hybrid assembly directory. falcon is run by inputting subreads.bam.fofn and subreads.fasta.fofn and loading miniconda and denovo_py3 modules. You have the options of either running fc_run on fc_run.cfg or fc_unzip.py on fc_unzip.cfg.
 
 <a name="bus2"></a>
 ## Step 3: Checking completeness with BUSCO
@@ -562,7 +564,18 @@ C:81.1%[S:72.3%,D:8.8%],F:5.1%,M:13.8%,n:430
 ## Step 4: Polishing with Nanopolish 
 Nanopolish is used to strengthen consensus data from your assembly.It will take the assembly you have created and align it, break it into segments, and then a consensus algorithm can run through the segments to polish them.
 
-The original purpose of nanopolish was to improve the consensus accuracy of an assembly of Oxford Nanopore Technology sequencing reads. Here we provide a step-by-step tutorial to help you get started.
+The original purpose of nanopolish was to improve the consensus accuracy of an assembly of Oxford Nanopore Technology sequencing reads. 
+
+**Running Nanopolish**
+To run nanopolish run the [nanopolish0-10kb.sh](https://github.com/CBC-UCONN/Genome-Assembly-Bacterial/blob/master/Long%20Read/3-nanopolish/nanopolish.sh) file located in the long read folder inside folder 3.
+
+In our script we first run nanopolish_makerange.py in order to split the draft of larger genomes so that the algorithm can run in parallel on each part. In our case we first run the divide_genome.py script on our full genome assembly (whichever you want to access, we used the flye output). then we run nanopolish_0-10kb.sh and just run nanopolish on that portion.
+
+Here are the following meanings of the parameters:
+- -r is the input of the raw reads
+- -b is the bam file of the raw reads
+- -g is the partial genome you want to examine
+- -o is the output (a vcf file)
 
 <a name="ph"></a>
 ## Step 5: Organizing with Purge Haplotigs
