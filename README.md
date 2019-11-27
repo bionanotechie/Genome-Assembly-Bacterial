@@ -33,6 +33,8 @@ This repository is a usable, publicly available tutorial. All steps have been pr
 
 This tutorial will teach you how to use open source quality control, genome assembly, and assembly assessment tools to complete a high quality de novo assembly which is commonly utilized when you dont have a reference genome. Moving through the tutorial, you will take pair end short read data from a bacterial species and perform assemblies via various commonly used genome assmeblers. With these assemblies completed we will then need to assess the quality of the data produced. Once finished with the short read data we will move on to performing a long read assembly with long read nanopore data using basecalling and commonly used long read assemblers. Finally, we will then move on to Hybrid PacBio data. 
 
+The tutorial is organized into 3 parts; the short read, long read and hybrid sections as shown in the Table of Contents. In the main github repository there are 3 folders with those names that contain each of the folders/script files necessary to run each job on the cluster. Each script and path is also linked within the tutorial for quick reference as well. 
+
 <a name="short"></a>
 # Short Read Genome Assembly
 
@@ -53,9 +55,9 @@ If you would like to include your email to be notified when the jobs are done en
 Run the following command to download the directory:
 
 ```
-cp -avr /UCHC/PublicShare/Tutorials/Assembly_Tutorial your_directory
+cp -avr /UCHC/PublicShare/Genome-Assembly-Bacterial your_directory
 ```
-Wait for download to finish (3.6 gb file will take a bit).
+Wait for download to finish.
 
 Make sure to not be in the head node in order for the download to be quick and secure.
 
@@ -64,6 +66,9 @@ Enter the directory you created.
 
 <a name="sickle"></a>
 ## Step 2: Quality Control with Sickle
+
+**Current working Directory: /UCHC/PublicShare/Genome-Assembly-Bacterial/Short Read/0-quality_control**
+
 Sickle takes raw reads and outputs data with the 3’ and 5’ ends trimmed to assure that the quality of the read is high enough for assembly, it will also trim low quality reads. 
 
 The flags meanings are as follows:
@@ -84,7 +89,7 @@ Module load sickle/1.33
 sickle pe -f /UCHC/PublicShare/Tutorials/Assembly_Tutorial/Sample_R1.fastq -r /UCHC/PublicShare/Tutorials/Assembly_Tutorial/Sample_R2.fastq -t sanger -o Sample_1.fastq -p Sample_2.fastq -s Sample_s.fastq -q 30 -l 45
 ```
 
-The commands are located in Sample_QC.sh in Quality Control.
+The commands are located in [short_read_qc.sh](https://github.com/CBC-UCONN/Genome-Assembly-Bacterial/blob/master/Short%20Read/0-quality_control/short_read_qc.sh) in Quality Control.
 
 Run the shell script file with sbatch.
 
@@ -99,13 +104,15 @@ File_with_tutorial/
 <a name="short-assemble"></a>
 ## Step 3: Assembly with SOAPdenovo, SPAdes, and MaSuRCA
 
-Run Sample_assembly.sh in the Assembly folder to perform SOAPdenovo, SPAdes, and MaSuRCA at once.
+**Current working Directory: /UCHC/PublicShare/Genome-Assembly-Bacterial/Short Read/1-assembly**
+
+Run [short_read_assembly.sh](https://github.com/CBC-UCONN/Genome-Assembly-Bacterial/blob/master/Short%20Read/1-assembly/short_read_assembly.sh) in the Assembly folder to perform SOAPdenovo, SPAdes, and MaSuRCA at once.
 ```
-sbatch Sample_assembly.sh
+sbatch short_read_assembly.sh
 ```
 You should expect an output of an .out and .err file. Check these to assure your assembly ran properly.
 
-Here is an explanation of each step within Sample_assembly.sh:
+Here is an explanation of each step within short_read_assembly.sh:
 <a name="soap"></a>
 ### **Assembly with SOAPdenovo:**
 
@@ -298,6 +305,8 @@ The final step for short read data is to analyze the quality of the assemblies. 
 
 **Running QUAST:**
 
+**Current working directory: /UCHC/PublicShare/Genome-Assembly-Bacterial/Short Read/3-quast**
+
 We run QUAST with the following commands:
 
 ```
@@ -359,6 +368,8 @@ Bowtie2 in our case takes read sequences and aligns them with long reference seq
 You will find the outputted data in the .err file, see the outputted results below. 
 
 **Running Bowtie2**
+
+**Current working directory: /UCHC/PublicShare/Genome-Assembly-Bacterial/Short Read/4-bowtie_2" 
 
 You can run Bowtie2 by running [short_read_bowtie2.sh](https://github.com/CBC-UCONN/Genome-Assembly-Bacterial/blob/master/Short%20Read/short_read_bowtie2.sh).
 
@@ -423,6 +434,10 @@ When preparing to run BUSCO you first need to have Augustus in your home directo
 -cp avr /isg/shared/apps/augustus/3.2.3 your_directory
 ```
 
+**Running BUSCO**
+
+**Current working directory: /UCHC/PublicShare/Genome-Assembly-Bacterial/Short Read/5-busco**
+
 To run BUSCO use the command [short_read_busco.sh](https://github.com/CBC-UCONN/Genome-Assembly-Bacterial/blob/master/Short%20Read/short_read_busco.sh)
 
 
@@ -478,6 +493,8 @@ This assembler takes data from Pacbio or Oxford Nanopore technologies sequencers
 
 **Running Flye**
 
+**Current working Directory: /UCHC/PublicShare/Genome-Assembly-Bacterial/Long Read/1-assembly/flye**
+
 To run Flye run [flye.sh](https://github.com/CBC-UCONN/Genome-Assembly-Bacterial/blob/master/flye.sh) located in the long read assembly folder.
 
 The flags in flye are:
@@ -496,6 +513,8 @@ The computational methods used in the Shasta assembler are:
 
 
 **Running Shasta**
+
+**Current working Directory: /UCHC/PublicShare/Genome-Assembly-Bacterial/Long Read/1-assembly/shasta**
 
 To run Shasta run [shasta.sh](https://github.com/CBC-UCONN/Genome-Assembly-Bacterial/blob/master/shasta.sh) located in the long read assembly folder.
 
@@ -518,12 +537,21 @@ for falcon there is fc_run and fc_unzip. FALCON is a diploid-aware assembler whi
 
 **Running Falcon**
 
+**Current working Directory: /UCHC/PublicShare/Genome-Assembly-Bacterial/Long Read/1-assembly/falcon**
+
 To run Flye run [falcon.sh](https://github.com/CBC-UCONN/Genome-Assembly-Bacterial/blob/master/Long%20Read/1-assembly/falcon/falcon.sh) located in the hybrid assembly directory. falcon is run by inputting subreads.bam.fofn and subreads.fasta.fofn and loading miniconda and denovo_py3 modules. You have the options of either running fc_run on fc_run.cfg or fc_unzip.py on fc_unzip.cfg.
 
 <a name="bus2"></a>
 ## Step 3: Checking completeness with BUSCO
 BUSCO was discussed earlier during the short read tutorial, here we will use it to assess the genome before and after polishing. Which was described earlier during the short read assembly.
+
+**Running BUSCO:**
+
+**Current Working Directory: /UCHC/PublicShare/Genome-Assembly-Bacterial/Long Read/2-busco**
+
 You can run BUSCO with [long_read_BUSCO.sh](https://github.com/CBC-UCONN/Genome-Assembly-Bacterial/blob/master/Long_read_busco.sh)
+
+**BUSCO Results:**
 
 BUSCO with flye before polishing:
 ```
@@ -567,6 +595,9 @@ Nanopolish is used to strengthen consensus data from your assembly.It will take 
 The original purpose of nanopolish was to improve the consensus accuracy of an assembly of Oxford Nanopore Technology sequencing reads. 
 
 **Running Nanopolish**
+
+**Current working directory: /UCHC/PublicShare/Genome-Assembly-Bacterial/Long Read/3-nanopolish**
+
 To run nanopolish run the [nanopolish0-10kb.sh](https://github.com/CBC-UCONN/Genome-Assembly-Bacterial/blob/master/Long%20Read/3-nanopolish/nanopolish.sh) file located in the long read folder inside folder 3.
 
 In our script we first run nanopolish_makerange.py in order to split the draft of larger genomes so that the algorithm can run in parallel on each part. In our case we first run the divide_genome.py script on our full genome assembly (whichever you want to access, we used the flye output). then we run nanopolish_0-10kb.sh and just run nanopolish on that portion.
@@ -589,6 +620,8 @@ This part must be done in seperate steps as the parameters in each part depend o
 
 **Running Purge Haplotigs**
 
+**Current Working Directory: /UCHC/PublicShare/Genome-Assembly-Bacterial/Long Read/4-purge_haplotigs** 
+
 To run purge haplotigs, you mut run each script seperately. you must run [purge_haplotigs_step1.sh](https://github.com/CBC-UCONN/Genome-Assembly-Bacterial/blob/master/purge_haplotigs_step1.sh), [purge_haplotigs_step2.sh](https://github.com/CBC-UCONN/Genome-Assembly-Bacterial/blob/master/purge_haplotigs_step2.sh), and [purge_haplotigs_step3.sh](https://github.com/CBC-UCONN/Genome-Assembly-Bacterial/blob/master/purge_haplotigs_step3.sh) in the long read folder.
 
 
@@ -600,7 +633,7 @@ For the long read assembly section, we have been working with long read Nanopore
 To perform a hybrid assembly it requires you have both short and long read data to complete the genome. Hybrid assembly uses short read data to resolve ambiguity in the long read data as it is assembled. For this tutorial we are using data from a boxelder genome. We will begin with preprocessing with PacBio Circular Consensus Sequence analysis application (CCS), run the Falcon, Kraken, and MaSuRCA assemblers,
 
 <a name="ccs"></a>
-## Step 1:Preprocessing with PacBio CCS
+## Step 1: Preprocessing with PacBio CCS
 CCS takes multiple subreads of the same molecule and combines them using a statistical model to produce one accurate consensus sequence (HiFi read), with base quality values. For more information, refer to the [PacBio Website](https://www.pacb.com/smrt-science/smrt-sequencing/smrt-sequencing-modes/)
 
 For our data, CCS was already run on the boxelder data. For more information on CCS please refer to [this PacBio CCS Tutorial](https://www.pacb.com/videos/tutorial-circular-consensus-sequence-analysis-application/) And if you have a UConn PacBio account please refer to [this tutorial](https://bioinformatics.uconn.edu/resources-and-events/tutorials-2/pacbio-v7/).
@@ -613,10 +646,12 @@ MaSuRCA was introduced in the Short Read Section and was used in the case of sho
 
 **Running MaSuRCA**
 
+**Current working directory: /UCHC/PublicShare/Genome-Assembly-Bacterial/Hybrid/MaSuRCA**
+
 To run MaSuRCA you can run the [masurca.sh](https://github.com/CBC-UCONN/Genome-Assembly-Bacterial/blob/master/Hybrid/MaSuRCA/masurca.sh) file in the Hybrid Folder. 
  
  You first need to load masurca and then run it on a config file. you can find a sample [here](https://github.com/CBC-UCONN/Genome-Assembly-Bacterial/blob/master/Hybrid/MaSuRCA/config.txt) and edit to the genome size and path you need for your inputs. 
  
- After running it on the config file, you then need to run assemble.sh afterwards. 
+ After running it on the config file, you then need to run assemble.sh which should be outputted afterwards. 
 
 
