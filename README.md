@@ -166,18 +166,9 @@ The meaning of the flags within the command have these meanings:
 
 For this assembly we use the reads that have been run through Sickle for quality control.
 
-Here are the following outputted files:
+Here are the following outputted files in the  /UCHC/PublicShare/Genome-Assembly-Bacterial/Short Read/1-assembly/SOAP/
+ directory:
 ```
- /UCHC/PublicShare/Genome-Assembly-Bacterial/Short Read/1-assembly/SOAP/
-  |---  ass31.err
-  |---  ass31.log 
-  |--- ass35.err
-  |---ass35.log
-  |--- ass41.err
-  |--- ass41.log
-  |--- graph_Sample_31.Arc
-  |--- graph_Sample_31.bubbleInScaff
-  
 ass31.err                         graph_Sample_35.markOnEdge
 ass31.log                         graph_Sample_35.newContigIndex
 ass35.err                         graph_Sample_35.path
