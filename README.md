@@ -167,6 +167,7 @@ The meaning of the flags within the command have these meanings:
 For this assembly we use the reads that have been run through Sickle for quality control.
 
 Here are the following outputted files:
+```
  /UCHC/PublicShare/Genome-Assembly-Bacterial/Short Read/1-assembly/SOAP/
   |---  ass31.err
   |---  ass31.log 
@@ -215,7 +216,7 @@ graph_Sample_35.edge.gz           graph_Sample_41.scafStatistics
 graph_Sample_35.gapSeq            graph_Sample_41.updated.edge
 graph_Sample_35.kmerFreq          graph_Sample_41.vertex
 graph_Sample_35.links
-
+```
 <a name="spades"></a>
 ### **Assembly with SPAdes:**
 
