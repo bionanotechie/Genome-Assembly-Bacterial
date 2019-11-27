@@ -21,9 +21,9 @@ This repository is a usable, publicly available tutorial. All steps have been pr
      - [Assembly with Flye](#flye)
      - [Assembly with Shasta](#shas)
      - [Assembly with Falcon](#falcon)
-   - [Checking completeness with BUSCO](#bus2)
    - [Polishing with Nanopolish](#nano)
    - [Organizing with Purge Haplotigs](#ph)
+   - [Checking completeness with BUSCO](#bus2)
 4. [Hybrid Assembly](#ha)
    - [Preprocessing with CCS](#ccs)
    - [Assembly with MaSuRCA](#mas)
@@ -240,6 +240,32 @@ The meanings of the flags are:
 - -2 for the location of the reverse reads file
 - -s for the path to the singles reads 
 
+The following will be outputed after running SPAdes:
+
+```
+ /UCHC/PublicShare/Genome-Assembly-Bacterial/Short Read/1-assembly/SOAP/
+  |---  before_rr.fasta
+  |---  before_rr.fastg 
+  |--- contigs.fasta
+  |---contigs.fastg
+  |--- corrected
+  |--- ass41.log
+  |--- dataset.info
+  |--- input_dataset.yaml
+  |---  K127
+  |---  K21
+  |--- K33
+  |--- K55
+  |--- K77
+  |---  K99
+  |---  misc
+  |--- params.txt
+  |---scaffolds.fasta
+  |--- scaffolds.fastg
+  |---  tmp
+  |---  warnings.log
+
+```
 ***If desired, a list of kmers can be specified with the -k flag which will override automatic kmer selection.
 <a name="ma"></a>
 ### **Assembly with MaSuRCA:**
@@ -331,6 +357,38 @@ masurca config.txt
 bash assemble.sh
 ```
 
+The directory after running MaSuRCA should like loke the following:
+
+```
+ /UCHC/PublicShare/Genome-Assembly-Bacterial/Short Read/1-assembly/MaSuRCA/
+  |---  assemble.sh
+  |---  CA 
+  |--- config.txt
+  |---environment.sh
+  |--- ESTIMATED_GENOME_SIZE.txt
+  |--- genome.uid
+  |--- global_arrival_rate.txt
+  |--- KUnitigsAtLeast32bases_all.fasta
+  |--- KUnitigsAtLeast32bases_all.jump.fasta
+  |--- meanAndStdevByPrefix.pe.txt
+  |--- pe.cor.fa
+  |--- pe.cor.log
+  |--- pe_data.tmp
+  |--- pe.renamed.fastq
+  |--- PLOIDY.txt
+  |--- PLOIDY.txtTERMINATOR=9-terminator
+  |--- quorum.err
+  |--- quorum_mer_db.jf
+  |--- runCA1.out
+  |--- runCA2.out
+  |--- runCA3.out
+  |--- super1.err
+  |--- tigStore.err
+  |--- unitig_cov.txt
+  |--- unitig_layout.txt
+  |--- work1
+```
+
 <a name="genome"></a>
 ## Step 4: Assessing Genome size
 
@@ -382,6 +440,8 @@ After running QUAST you will be able to access output files through two differen
 The first process would be to use an application like Cyberduck and pull the files from the transfer server to you home for viewing. 
 The second would be to use pscp through the windows command prompt.
 
+After running quast, you should find quast.log files in each assembly directory that was created. 
+
 The statistics that are outputted via QUAST should follow this pattern.
 
 |Info                    | MaSuRCA   | SOAPdenovo  |           |           | SPAdes    |
@@ -420,6 +480,17 @@ Bowtie2 is a tool you would use for comparitive genomics via alignment. Alignmen
 Bowtie2 in our case takes read sequences and aligns them with long reference sequences. Since this is de novo assembly you will take the data from the assemblies you have and align them back to the raw read data. You want to use unpaired data. 
 
 You will find the outputted data in the .err file, see the outputted results below. 
+
+The orgirinal directory should look like this:
+ ```
+/UCHC/PublicShare/Genome-Assembly-Bacterial/Short Read/3-quast/
+  |--- Sample_quast_93285.err
+  |--- Sample_quast_93285.out
+  |--- Sample_quast.sh
+  |--- SOAP
+  |--- SPAdes
+ 
+ ```
 
 **Running Bowtie2**
 
@@ -495,7 +566,7 @@ When preparing to run BUSCO you first need to have Augustus in your home directo
 To run BUSCO use the command [short_read_busco.sh](https://github.com/CBC-UCONN/Genome-Assembly-Bacterial/blob/master/Short%20Read/short_read_busco.sh)
 
 
-Using the SPAdes data the BUSCO results look like:
+Using the SPAdes data the BUSCO results in the .out file should look like:
 ```
 C:98.6%[S:98.6%,D:0.0%],F:0.0%,M:1.4%,n:148
 
@@ -557,6 +628,26 @@ The flags in flye are:
 - --genome-size
 - --threads
 
+The flye output directory should like like the following:
+
+ ```
+/UCHC/PublicShare/Genome-Assembly-Bacterial/Long Read/1-assembly/flye
+  |--- 00-assembly
+  |--- 10-consensus
+  |--- 20-repeat
+  |--- 21-trestle
+  |--- 30-contigger
+  |--- 40-polishing
+  |--- assembly.fasta
+  |--- assembly_graph.gfa
+  |--- assembly_graph.gv
+  |--- assembly_info.txt
+  |--- flye.log
+  |--- params.json
+  |--- scaffolds.fasta
+ 
+ ```
+
 <a name="canu"></a>
 ### Assembly with Shasta
 Similar to Flye, the Shasta long read assemblers purpose is to rapidly produce an accurate assembled sequence using Oxford Nanopoore sequencing data.
@@ -577,6 +668,19 @@ The flags in Shasta are:
 - -d specifies the directory
 - -s imports parameters from the specification file. 
 
+The directory will look like th following afterwards:
+```
+/UCHC/PublicShare/Genome-Assembly-Bacterial/Long Read/1-assembly/flye
+  |--- 5074_test_LSK109_30JAN19-reads-pass.fasta
+  |--- shasta_assembly_tut_379544.err
+  |--- shasta_assembly_tut_379544.out
+  |--- shasta_assembly_tut_388309.err
+  |--- shasta_assembly_tut_388309.out
+  |--- ShastaRun
+  |--- assembly.fasta
+  |--- shasta.sh
+ 
+ ```
 <a name="falcon"></a>
 ### Assembly with Falcon
 
@@ -594,6 +698,43 @@ for falcon there is fc_run and fc_unzip. FALCON is a diploid-aware assembler whi
 **Current working Directory: /UCHC/PublicShare/Genome-Assembly-Bacterial/Long Read/1-assembly/falcon**
 
 To run Flye run [falcon.sh](https://github.com/CBC-UCONN/Genome-Assembly-Bacterial/blob/master/Long%20Read/1-assembly/falcon/falcon.sh) located in the hybrid assembly directory. falcon is run by inputting subreads.bam.fofn and subreads.fasta.fofn and loading miniconda and denovo_py3 modules. You have the options of either running fc_run on fc_run.cfg or fc_unzip.py on fc_unzip.cfg.
+
+
+<a name="nano"></a>
+## Step 4: Polishing with Nanopolish 
+Nanopolish is used to strengthen consensus data from your assembly.It will take the assembly you have created and align it, break it into segments, and then a consensus algorithm can run through the segments to polish them.
+
+The original purpose of nanopolish was to improve the consensus accuracy of an assembly of Oxford Nanopore Technology sequencing reads. 
+
+**Running Nanopolish**
+
+**Current working directory: /UCHC/PublicShare/Genome-Assembly-Bacterial/Long Read/3-nanopolish**
+
+To run nanopolish run the [nanopolish0-10kb.sh](https://github.com/CBC-UCONN/Genome-Assembly-Bacterial/blob/master/Long%20Read/3-nanopolish/nanopolish.sh) file located in the long read folder inside folder 3.
+
+In our script we first run nanopolish_makerange.py in order to split the draft of larger genomes so that the algorithm can run in parallel on each part. In our case we first run the divide_genome.py script on our full genome assembly (whichever you want to access, we used the flye output). then we run nanopolish_0-10kb.sh and just run nanopolish on that portion.
+
+Here are the following meanings of the parameters:
+- -r is the input of the raw reads
+- -b is the bam file of the raw reads
+- -g is the partial genome you want to examine
+- -o is the output (a vcf file)
+
+<a name="ph"></a>
+## Step 5: Organizing with Purge Haplotigs
+Purge Haplotigs is a pipeline to help with curating genome assemblies. It assures that there is not a combination of sequences between contigs and haplotigs. It uses a system that uses the mapped reads that you assembled and Minimap2 to assess which contigs should be kept in the assembly.
+
+We use this because some parts of a genome may have a very high degree of heterozygosity which causes contigs for both haplotypes of that part of the genome to be assembled as separate primary contigs, rather than as a contig with a haplotig which may cause an error in analysis.
+
+What the purge halpotigs algortihm does is identify pairs of contigs that are syntenic and group them as haplotig. The pipeline uses mapped read coverage and blast/lastz alignments to determine which contigs to keep for the assembly. Dotplots are produced for all flagged contig matches to help the user analyze any remaining ambiguous contigs. 
+
+This part must be done in seperate steps as the parameters in each part depend on the results of the previous steps.
+
+**Running Purge Haplotigs**
+
+**Current Working Directory: /UCHC/PublicShare/Genome-Assembly-Bacterial/Long Read/4-purge_haplotigs** 
+
+To run purge haplotigs, you mut run each script seperately. you must run [purge_haplotigs_step1.sh](https://github.com/CBC-UCONN/Genome-Assembly-Bacterial/blob/master/purge_haplotigs_step1.sh), [purge_haplotigs_step2.sh](https://github.com/CBC-UCONN/Genome-Assembly-Bacterial/blob/master/purge_haplotigs_step2.sh), and [purge_haplotigs_step3.sh](https://github.com/CBC-UCONN/Genome-Assembly-Bacterial/blob/master/purge_haplotigs_step3.sh) in the long read folder.
 
 <a name="bus2"></a>
 ## Step 3: Checking completeness with BUSCO
@@ -642,42 +783,6 @@ C:81.1%[S:72.3%,D:8.8%],F:5.1%,M:13.8%,n:430
 	59     Missing BUSCOs (M)
 	430    Total BUSCO groups searched
 ```
-<a name="nano"></a>
-## Step 4: Polishing with Nanopolish 
-Nanopolish is used to strengthen consensus data from your assembly.It will take the assembly you have created and align it, break it into segments, and then a consensus algorithm can run through the segments to polish them.
-
-The original purpose of nanopolish was to improve the consensus accuracy of an assembly of Oxford Nanopore Technology sequencing reads. 
-
-**Running Nanopolish**
-
-**Current working directory: /UCHC/PublicShare/Genome-Assembly-Bacterial/Long Read/3-nanopolish**
-
-To run nanopolish run the [nanopolish0-10kb.sh](https://github.com/CBC-UCONN/Genome-Assembly-Bacterial/blob/master/Long%20Read/3-nanopolish/nanopolish.sh) file located in the long read folder inside folder 3.
-
-In our script we first run nanopolish_makerange.py in order to split the draft of larger genomes so that the algorithm can run in parallel on each part. In our case we first run the divide_genome.py script on our full genome assembly (whichever you want to access, we used the flye output). then we run nanopolish_0-10kb.sh and just run nanopolish on that portion.
-
-Here are the following meanings of the parameters:
-- -r is the input of the raw reads
-- -b is the bam file of the raw reads
-- -g is the partial genome you want to examine
-- -o is the output (a vcf file)
-
-<a name="ph"></a>
-## Step 5: Organizing with Purge Haplotigs
-Purge Haplotigs is a pipeline to help with curating genome assemblies. It assures that there is not a combination of sequences between contigs and haplotigs. It uses a system that uses the mapped reads that you assembled and Minimap2 to assess which contigs should be kept in the assembly.
-
-We use this because some parts of a genome may have a very high degree of heterozygosity which causes contigs for both haplotypes of that part of the genome to be assembled as separate primary contigs, rather than as a contig with a haplotig which may cause an error in analysis.
-
-What the purge halpotigs algortihm does is identify pairs of contigs that are syntenic and group them as haplotig. The pipeline uses mapped read coverage and blast/lastz alignments to determine which contigs to keep for the assembly. Dotplots are produced for all flagged contig matches to help the user analyze any remaining ambiguous contigs. 
-
-This part must be done in seperate steps as the parameters in each part depend on the results of the previous steps.
-
-**Running Purge Haplotigs**
-
-**Current Working Directory: /UCHC/PublicShare/Genome-Assembly-Bacterial/Long Read/4-purge_haplotigs** 
-
-To run purge haplotigs, you mut run each script seperately. you must run [purge_haplotigs_step1.sh](https://github.com/CBC-UCONN/Genome-Assembly-Bacterial/blob/master/purge_haplotigs_step1.sh), [purge_haplotigs_step2.sh](https://github.com/CBC-UCONN/Genome-Assembly-Bacterial/blob/master/purge_haplotigs_step2.sh), and [purge_haplotigs_step3.sh](https://github.com/CBC-UCONN/Genome-Assembly-Bacterial/blob/master/purge_haplotigs_step3.sh) in the long read folder.
-
 
 <a name="ha"></a>
 # Hybrid Assembly 
