@@ -797,6 +797,36 @@ BUSCO with Shasta after polishing:
 
 BUSCO with Shasta after purge haplotigs:
 
+
+
+##QUAST Final Analysis:
+
+
+|Info                    | Shasta    | Flye        |Falcon     | 
+| -------------          | --------- | ----------  | --------- |    
+|# contigs (>=0bp)       |11999      |             |           |
+|# contigs (>= 1000bp)   |7964       |             |           |
+|# contigs (>= 5000bp)   |6122       |             |           |              
+|# contigs (>=10000bp)   |4724       |             |           |                
+|# contigs(>=25000bp)    |2333       |             |           |                 
+|# contigs (>=50000bp)   |830        |             |           |           
+|Total length (>=0bp)    |212224887  |             |           |
+|Total length (>=1000bp) |211289492  |             |           |
+|Total length (>=5000bp) |206025185  |             |           |
+|Total length (>=10000bp)|195732425  |             |           |   
+|Total length (>=25000bp)|156716488  |             |           |
+|Total length (>=50000bp)|104188099  |             |           |
+|# contigs               |8515       |             |           |    
+|Largest contig          |4100869    |             |           |
+|Total length            |211680036  |             |           |
+|GC (%)                  |44.16      |             |           |
+|N50                     |48947      |             |           |
+|N75                     |24221      |             |           |
+|L50                     |864        |             |           |
+|L75                     |2417       |             |           |
+|# N's per 100 kbp       |0          |             |           |
+
+
 <a name="ha"></a>
 # Hybrid Assembly 
 
