@@ -804,27 +804,27 @@ BUSCO with Shasta after purge haplotigs:
 
 |Info                    | Shasta    | Flye        |Falcon     | 
 | -------------          | --------- | ----------  | --------- |    
-|# contigs (>=0bp)       |11999      |             |           |
-|# contigs (>= 1000bp)   |7964       |             |           |
-|# contigs (>= 5000bp)   |6122       |             |           |              
-|# contigs (>=10000bp)   |4724       |             |           |                
-|# contigs(>=25000bp)    |2333       |             |           |                 
-|# contigs (>=50000bp)   |830        |             |           |           
-|Total length (>=0bp)    |212224887  |             |           |
-|Total length (>=1000bp) |211289492  |             |           |
-|Total length (>=5000bp) |206025185  |             |           |
-|Total length (>=10000bp)|195732425  |             |           |   
-|Total length (>=25000bp)|156716488  |             |           |
-|Total length (>=50000bp)|104188099  |             |           |
-|# contigs               |8515       |             |           |    
-|Largest contig          |4100869    |             |           |
-|Total length            |211680036  |             |           |
-|GC (%)                  |44.16      |             |           |
-|N50                     |48947      |             |           |
-|N75                     |24221      |             |           |
-|L50                     |864        |             |           |
-|L75                     |2417       |             |           |
-|# N's per 100 kbp       |0          |             |           |
+|# contigs (>=0bp)       |11999      |9815         |           |
+|# contigs (>= 1000bp)   |7964       |9350         |           |
+|# contigs (>= 5000bp)   |6122       |7674         |           |              
+|# contigs (>=10000bp)   |4724       |6367         |           |                
+|# contigs(>=25000bp)    |2333       |4278         |           |                 
+|# contigs (>=50000bp)   |830        |2793         |           |           
+|Total length (>=0bp)    |212224887  |540824188    |           |
+|Total length (>=1000bp) |211289492  |540497864    |           |
+|Total length (>=5000bp) |206025185  |535836831    |           |
+|Total length (>=10000bp)|195732425  |526298687    |           |   
+|Total length (>=25000bp)|156716488  |492309793    |           |
+|Total length (>=50000bp)|104188099  |438907904    |           |
+|# contigs               |8515       |9796         |           |    
+|Largest contig          |4100869    |6909738      |           |
+|Total length            |211680036  |540816378    |           |
+|GC (%)                  |44.16      |38.13        |           |
+|N50                     |48947      |151896       |           |
+|N75                     |24221      |65368        |           |
+|L50                     |864        |830          |           |
+|L75                     |2417       |2215         |           |
+|# N's per 100 kbp       |0          |0.07         |           |
 
 
 <a name="ha"></a>
