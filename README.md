@@ -739,41 +739,63 @@ You can run BUSCO with [long_read_BUSCO.sh](https://github.com/CBC-UCONN/Genome-
 
 **BUSCO Results:**
 
+We got the following BUSCO results after running it using the embrophyta database:
+
 BUSCO with flye before polishing:
 ```
-C:56.1%[S:48.4%,D:7.7%],F:14.4%,M:29.5%,n:430
+        C:57.9%[S:54.3%,D:3.6%],F:11.3%,M:30.8%,n:1375
 
-	241	Complete BUSCOs (C)
-	208	Complete and single-copy BUSCOs (S)
-	33	Complete and duplicated BUSCOs (D)
-	62	Fragmented BUSCOs (F)
-	127	Missing BUSCOs (M)
-	430	Total BUSCO groups searched
+        796     Complete BUSCOs (C)
+        746     Complete and single-copy BUSCOs (S)
+        50      Complete and duplicated BUSCOs (D)
+        155     Fragmented BUSCOs (F)
+        424     Missing BUSCOs (M)
+        1375    Total BUSCO groups searched
+
 ```
 
 BUSCO with flye after polishing:
 ```
-C:82.8%[S:71.4%,D:11.4%],F:4.7%,M:12.5%,n:430
+C:70.9%[S:63.6%,D:7.3%],F:6.0%,M:23.1%,n:1375
 
-	356	Complete BUSCOs (C)
-	307	Complete and single-copy BUSCOs (S)
-	49	Complete and duplicated BUSCOs (D)
-	20	Fragmented BUSCOs (F)
-	54	Missing BUSCOs (M)
-	430	Total BUSCO groups searched
+        974     Complete BUSCOs (C)
+        874     Complete and single-copy BUSCOs (S)
+        100     Complete and duplicated BUSCOs (D)
+        82      Fragmented BUSCOs (F)
+        319     Missing BUSCOs (M)
+        1375    Total BUSCO groups searched
 ```
 
 BUSCO with flye after Purge Haplotigs:
 ``` 
-C:81.1%[S:72.3%,D:8.8%],F:5.1%,M:13.8%,n:430
+C:71.1%[S:65.3%,D:5.8%],F:6.5%,M:22.4%,n:1375
 
-	349    Complete BUSCOs (C)
-	311    Complete and single-copy BUSCOs (S)
-	38     Complete and duplicated BUSCOs (D)
-	22     Fragmented BUSCOs (F)
-	59     Missing BUSCOs (M)
-	430    Total BUSCO groups searched
+        978     Complete BUSCOs (C)
+        898     Complete and single-copy BUSCOs (S)
+        80      Complete and duplicated BUSCOs (D)
+        90      Fragmented BUSCOs (F)
+        307     Missing BUSCOs (M)
+        1375    Total BUSCO groups searched
 ```
+
+BUSCO with Shasta before polishing:
+
+```
+        C:30.4%[S:29.2%,D:1.2%],F:13.5%,M:56.1%,n:1375
+
+        419     Complete BUSCOs (C)
+        402     Complete and single-copy BUSCOs (S)
+        17      Complete and duplicated BUSCOs (D)
+        186     Fragmented BUSCOs (F)
+        770     Missing BUSCOs (M)
+        1375    Total BUSCO groups searched
+```
+
+BUSCO with Shasta after polishing:
+
+
+
+BUSCO with Shasta after purge haplotigs:
 
 <a name="ha"></a>
 # Hybrid Assembly 
