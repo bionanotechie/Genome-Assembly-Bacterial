@@ -198,10 +198,10 @@ graph_Sample_31.scaf_gap
 graph_Sample_31.scafSeq           
 graph_Sample_31.scafStatistics    
 graph_Sample_31.updated.edge      
-graph_Sample_31.vertex            
-graph_Sample_35.Arc               
+graph_Sample_31.vertex
+graph_Sample_35.Arc
 graph_Sample_35.bubbleInScaff     
-graph_Sample_35.contig            
+graph_Sample_35.contig
 graph_Sample_35.ContigIndex       
 graph_Sample_35.contigPosInscaff  
 graph_Sample_35.edge.gz           
