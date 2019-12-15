@@ -168,8 +168,9 @@ For this assembly we use the reads that have been run through Sickle for quality
 
 Here are the following outputted files in the  /UCHC/PublicShare/Genome-Assembly-Bacterial/Short Read/1-assembly/SOAP/
  directory:
-```
-ass31.err                         graph_Sample_35.markOnEdge
+ 
+
+>ass31.err                         graph_Sample_35.markOnEdge
 ass31.log                         graph_Sample_35.newContigIndex
 ass35.err                         graph_Sample_35.path
 ass35.log                         graph_Sample_35.peGrads
@@ -192,7 +193,7 @@ graph_Sample_31.preArc            graph_Sample_41.edge.gz
 graph_Sample_31.preGraphBasic     graph_Sample_41.gapSeq
 graph_Sample_31.readInGap.gz      graph_Sample_41.kmerFreq
 graph_Sample_31.readOnContig.gz   graph_Sample_41.links
-_**graph_Sample**__31.scaf              graph_Sample_41.markOnEdge
+**graph_Sample_31.scaf**          graph_Sample_41.markOnEdge
 graph_Sample_31.scaf_gap          graph_Sample_41.newContigIndex
 graph_Sample_31.scafSeq           graph_Sample_41.path
 graph_Sample_31.scafStatistics    graph_Sample_41.peGrads
@@ -207,7 +208,7 @@ graph_Sample_35.edge.gz           graph_Sample_41.scafStatistics
 graph_Sample_35.gapSeq            graph_Sample_41.updated.edge
 graph_Sample_35.kmerFreq          graph_Sample_41.vertex
 graph_Sample_35.links
-```
+
 <a name="spades"></a>
 ### **Assembly with SPAdes:**
 
