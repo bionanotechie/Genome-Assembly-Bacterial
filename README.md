@@ -192,9 +192,9 @@ graph_Sample_31.preArc            graph_Sample_41.edge.gz
 graph_Sample_31.preGraphBasic     graph_Sample_41.gapSeq
 graph_Sample_31.readInGap.gz      graph_Sample_41.kmerFreq
 graph_Sample_31.readOnContig.gz   graph_Sample_41.links
-graph_Sample_31.scaf              graph_Sample_41.markOnEdge
+_**graph_Sample**__31.scaf              graph_Sample_41.markOnEdge
 graph_Sample_31.scaf_gap          graph_Sample_41.newContigIndex
-`**`graph_Sample_31.scafSeq`**`graph_Sample_41.path
+graph_Sample_31.scafSeq           graph_Sample_41.path
 graph_Sample_31.scafStatistics    graph_Sample_41.peGrads
 graph_Sample_31.updated.edge      graph_Sample_41.preArc
 graph_Sample_31.vertex            graph_Sample_41.preGraphBasic
