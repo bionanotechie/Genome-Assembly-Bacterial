@@ -179,7 +179,7 @@ graph_Sample_31.Arc               graph_Sample_35.readInGap.gz
 graph_Sample_31.bubbleInScaff     graph_Sample_35.readOnContig.gz
 graph_Sample_31.contig            graph_Sample_35.scaf
 graph_Sample_31.ContigIndex       graph_Sample_35.scaf_gap
-graph_Sample_31.contigPosInscaff  graph_Sample_35.scafSeq
+graph_Sample_31.contigPosInscaff  **graph_Sample_35.scafSeq**
 graph_Sample_31.edge.gz           graph_Sample_35.scafStatistics
 graph_Sample_31.gapSeq            graph_Sample_35.updated.edge
 graph_Sample_31.kmerFreq          graph_Sample_35.vertex
@@ -194,7 +194,7 @@ graph_Sample_31.readInGap.gz      graph_Sample_41.kmerFreq
 graph_Sample_31.readOnContig.gz   graph_Sample_41.links
 graph_Sample_31.scaf              graph_Sample_41.markOnEdge
 graph_Sample_31.scaf_gap          graph_Sample_41.newContigIndex
-graph_Sample_31.scafSeq           graph_Sample_41.path
+**graph_Sample_31.scafSeq**           graph_Sample_41.path
 graph_Sample_31.scafStatistics    graph_Sample_41.peGrads
 graph_Sample_31.updated.edge      graph_Sample_41.preArc
 graph_Sample_31.vertex            graph_Sample_41.preGraphBasic
@@ -202,7 +202,7 @@ graph_Sample_35.Arc               graph_Sample_41.readInGap.gz
 graph_Sample_35.bubbleInScaff     graph_Sample_41.readOnContig.gz
 graph_Sample_35.contig            graph_Sample_41.scaf
 graph_Sample_35.ContigIndex       graph_Sample_41.scaf_gap
-graph_Sample_35.contigPosInscaff  graph_Sample_41.scafSeq
+graph_Sample_35.contigPosInscaff  **graph_Sample_41.scafSeq**
 graph_Sample_35.edge.gz           graph_Sample_41.scafStatistics
 graph_Sample_35.gapSeq            graph_Sample_41.updated.edge
 graph_Sample_35.kmerFreq          graph_Sample_41.vertex
