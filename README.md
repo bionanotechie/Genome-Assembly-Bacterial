@@ -193,9 +193,9 @@ Here are the following outputted files in the  /UCHC/PublicShare/Genome-Assembly
 >graph_Sample_31.preGraphBasic				           
 >graph_Sample_31.readInGap.gz				                         
 >graph_Sample_31.readOnContig.gz	          				                          	
->**graph_Sample_31.scaf**			    		                        
+>graph_Sample_31.scaf			    		                        
 >graph_Sample_31.scaf_gap				     		                      
->graph_Sample_31.scafSeq					              
+>**graph_Sample_31.scafSeq**                  				              
 >graph_Sample_31.scafStatistics    					              
 >graph_Sample_31.updated.edge					               
 >graph_Sample_31.vertex					                  
@@ -245,7 +245,9 @@ Here are the following outputted files in the  /UCHC/PublicShare/Genome-Assembly
 >graph_Sample_41.scafStatistics						                              
 >graph_Sample_41.updated.edge							        	             
 >graph_Sample_41.vertex							                               
-		              
+		             
+The files bolded above are the .scafSeq files which are the main output sequence files from SOAPdenovo which we will analyze in QUAST and BUSCO in the next steps. 
+
 <a name="spades"></a>
 ### **Assembly with SPAdes:**
 
@@ -272,7 +274,7 @@ The meanings of the flags are:
 The following will be outputed after running SPAdes:
 
 ```
- /UCHC/PublicShare/Genome-Assembly-Bacterial/Short Read/1-assembly/SOAP/
+ /UCHC/PublicShare/Genome-Assembly-Bacterial/Short Read/1-assembly/SPades/
   |---  before_rr.fasta
   |---  before_rr.fastg 
   |--- contigs.fasta
@@ -295,6 +297,9 @@ The following will be outputed after running SPAdes:
   |---  warnings.log
 
 ```
+
+In this folder, the main output file is the scaffolds.fasta file which contains the main assembly data. 
+
 ***If desired, a list of kmers can be specified with the -k flag which will override automatic kmer selection.
 <a name="ma"></a>
 ### **Assembly with MaSuRCA:**
@@ -417,6 +422,7 @@ The directory after running MaSuRCA should like loke the following:
   |--- unitig_layout.txt
   |--- work1
 ```
+Inside the CA directory there is data on the scaffolds and a file called final.genome.scf.fasta which contains the final assembly.
 
 <a name="genome"></a>
 ## Step 4: Assessing Genome size
@@ -573,6 +579,8 @@ You can run Bowtie2 by running [short_read_bowtie2.sh](https://github.com/CBC-UC
 |54 (0.01%) aligned  >1 times              |
 |54.57% overall alignment rate             |
 
+The bowtie 2 results are contained in the output .err file after you run the batch job on the cluster. 
+
 <a name="bus"></a>
 ## Step 7: BUSCO Evaluation
 BUSCO stands for Benchmarking Universal Single-Copy Orthologs. This program assists with checking assemblies, annotations, and transcriptomes to see if they appear complete. It does this by taking an orthologous gene set of your species of interest and comparing it back to the genome of interest, taking into consideration possibly evolutionary changes.
@@ -617,6 +625,9 @@ C:98.6%[S:98.6%,D:0.0%],F:0.0%,M:1.4%,n:148
 	2	Missing BUSCOs (M)
 	148	Total BUSCO groups searched
 ```  
+
+The BUSCO results are conatined in the output .out file after running it on the cluster as well as the short summary text file in each respective assemblers outputtedf run directory. 
+
 <a name="long"></a>
 # Long Read Genome Assembly
 For long read assembly there is an additional step that is not used for short read data called **base calling**. This is performed first before any long read assembly. The process involves taking the data that the sequencer outputs, which appears as a squiggle line, and applying a base to the hills and valleys of the squiggle. For this step we will use the basecaller [Guppy](https://github.com/rrwick/Basecalling-comparison/blob/master/basecalling_scripts/guppy_basecalling.sh). To complete the assemblies, we will use the assemblers [Flye](https://github.com/fenderglass/Flye), [Shasta](https://chanzuckerberg.github.io/shasta/), and [Falcon](https://pb-falcon.readthedocs.io/en/latest/). [Purge Haplotags](https://bitbucket.org/mroachawri/purge_haplotigs/src/master/) will be used to assure that the contigs that are assembled are not being combined with the Haplotig of that sequence. After this, the assembly will be polished via [Nanopolish](https://github.com/nanoporetech/nanopolish). Assessment of the quality of the genome assembled will be completed through the same program as with the short read data, QUAST.
@@ -676,7 +687,9 @@ The flye output directory should like like the following:
   |--- scaffolds.fasta
  
  ```
-
+ The main outputted assembly file is assembly.fasta. 
+ 
+ 
 <a name="canu"></a>
 ### Assembly with Shasta
 Similar to Flye, the Shasta long read assemblers purpose is to rapidly produce an accurate assembled sequence using Oxford Nanopoore sequencing data.
@@ -710,6 +723,10 @@ The directory will look like th following afterwards:
   |--- shasta.sh
  
  ```
+ 
+ The main outputted assembly file is asssembly.fasta. 
+ 
+ 
 <a name="falcon"></a>
 ### Assembly with Falcon
 
