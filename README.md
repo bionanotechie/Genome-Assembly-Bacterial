@@ -215,9 +215,9 @@ Here are the following outputted files in the  /UCHC/PublicShare/Genome-Assembly
 >graph_Sample_35.preArc							              
 >graph_Sample_35.preGraphBasic							              
 >graph_Sample_35.readInGap.gz						           
->graph_Sample_35.readOnContig.gz						              	
->graph_Sample_35.scaf						            	                
->graph_Sample_35.scaf_gap						           	              
+>graph_Sample_35.readOnContig.gz	                                 
+>graph_Sample_35.scaf						                          	                
+>graph_Sample_35.scaf_gap						           	                         
 >**graph_Sample_35.scafSeq**							                   
 >graph_Sample_35.scafStatistics						                        
 >graph_Sample_35.updated.edge							                      
