@@ -23,7 +23,7 @@ This repository is a usable, publicly available tutorial. All steps have been pr
      - [Assembly with Falcon](#falcon)
    - [Polishing with Nanopolish](#nano)
    - [Organizing with Purge Haplotigs](#ph)
-   - [Checking completeness with BUSCO](#bus2)
+   - [BUSCO and QUAST evaluation](#bus2)
 4. [Hybrid Assembly](#ha)
    - [Preprocessing with CCS](#ccs)
    - [Assembly with MaSuRCA](#mas)
@@ -737,7 +737,7 @@ Falcon is another de novo assembler which is used for PacBio Long Read data.
 Falcon has 3 inputs:
 - your PacBio data in fasta format (can be one or many files), 
 - a text file telling FALCON where to find your fasta files,
-- and a configuration file
+- and a configuration file [fc_run.cfg](https://github.com/CBC-UCONN/Genome-Assembly-Bacterial/blob/master/Long%20Read/1-assembly/falcon/fc_run.cfg) 
 
 for falcon there is fc_run and fc_unzip. FALCON is a diploid-aware assembler which is optimized for large genome assembly and produces a set of primary contigs wheras fc_unzip is a true diploid assembler which takes the contigs from FALCON and phases the reads based on heterozygous SNPs identified in the initial assembly to produce a set of partially phased primary contigs and fully phased haplotigs to represent different haplotyes.
 
@@ -786,11 +786,14 @@ To run purge haplotigs, you mut run each script seperately. you must run [purge_
 ## Step 3: Checking completeness with BUSCO
 BUSCO was discussed earlier during the short read tutorial, here we will use it to assess the genome before and after polishing. Which was described earlier during the short read assembly.
 
-**Running BUSCO:**
+**Running BUSCO and QUAST:**
 
 **Current Working Directory: /UCHC/PublicShare/Genome-Assembly-Bacterial/Long Read/2-busco**
 
 You can run BUSCO with [long_read_BUSCO.sh](https://github.com/CBC-UCONN/Genome-Assembly-Bacterial/blob/master/Long_read_busco.sh)
+
+the command looks like the following:
+>run_BUSCO.py -i /labs/Wegrzyn/Moss/Physcomitrellopsis_africana/Physcomitrellopsis_africana_Genome/RawData_Nanopore_5074/5074_test_LSK109_30JAN19/flye_assembly/assembly.fasta -l /labs/Wegrzyn/Moss/Physcomitrium/viridiplantae_odb10/ -o physcomitrellopsis_africana_tutorial_busco -m geno -c 1
 
 **BUSCO Results:**
 
@@ -854,8 +857,14 @@ BUSCO with Shasta after purge haplotigs:
 
 
 
-##QUAST Final Analysis:
+## QUAST Final Analysis:
 
+We finally run [quast](https://github.com/CBC-UCONN/Genome-Assembly-Bacterial/blob/master/Long%20Read/5-quast/quast_long.sh) with the following command
+
+>quast.py /labs/Wegrzyn/Moss/Physcomitrellopsis_africana/Physcomitrellopsis_africana_Genome/RawData_Nanopore_5074/5074_test_LSK109_30JAN19/flye_assembly/flye_assembly_initial/assembly.fasta -o Flye
+>quast.py /labs/Wegrzyn/Moss/Physcomitrellopsis_africana/Physcomitrellopsis_africana_Genome/RawData_Nanopore_5074/5074_test_LSK109_30JAN19/test_shasta_assembly/ShastaRun_pafricana_rmv_contam_minreadlen_500/Assembly.fasta -o Shasta
+
+The script is located in the long read folder.
 
 |Info                    | Shasta    | Flye        |Falcon     | 
 | -------------          | --------- | ----------  | --------- |    
