@@ -510,7 +510,7 @@ According to our requirements regarding n50 and contigs it would appear that the
 
 <a name="bow"></a>
 ## Step 6: Read Alignment with Bowtie2
-Bowtie2 is a tool you would use for comparitive genomics via alignment. Alignment is the process where we discover how and where the read sequences are similar to a reference sequence. An alignment is a way of lining up the characters in the read with some characters from the reference to reveal how they are similar. 
+[Bowtie2](http://bowtie-bio.sourceforge.net/bowtie2/manual.shtml#the-bowtie2-aligner) is a tool you would use for comparitive genomics via alignment. bowtie2 takes a Bowtie 2 index and a set of sequencing read files and outputs a set of alignments in a SAM file. Alignment is the process where we discover how and where the read sequences are similar to a reference sequence. An alignment is a way of lining up the characters in the read with some characters from the reference to reveal how they are similar. 
 
 Bowtie2 in our case takes read sequences and aligns them with long reference sequences. Since this is de novo assembly you will take the data from the assemblies you have and align them back to the raw read data. You want to use unpaired data. 
 
@@ -602,6 +602,8 @@ When preparing to run BUSCO you first need to have Augustus in your home directo
 
 To run BUSCO use the command [short_read_busco.sh](https://github.com/CBC-UCONN/Genome-Assembly-Bacterial/blob/master/Short%20Read/short_read_busco.sh)
 
+The actual command looks like the following:
+>run_BUSCO.py -i /UCHC/PublicShare/Tutorials/Assembly_Tutorial/Assembly/SPAdes/scaffolds.fasta -l /output_dir_location/ -o bacterial_short_read_tutorial_busco -m geno -c 1
 
 Using the SPAdes data the BUSCO results in the .out file should look like:
 ```
@@ -748,9 +750,7 @@ To run Flye run [falcon.sh](https://github.com/CBC-UCONN/Genome-Assembly-Bacteri
 
 <a name="nano"></a>
 ## Step 4: Polishing with Nanopolish 
-Nanopolish is used to strengthen consensus data from your assembly.It will take the assembly you have created and align it, break it into segments, and then a consensus algorithm can run through the segments to polish them.
-
-The original purpose of nanopolish was to improve the consensus accuracy of an assembly of Oxford Nanopore Technology sequencing reads. 
+Nanopolish is used to strengthen consensus data from your assembly. It will take the assembly you have created and align it, break it into segments, and then a consensus algorithm can run through the segments to polish them. By polishing it means calculates a better consensus sequence for a draft genome assembly, find base modifications, and call SNPs with respect to a reference genome. 
 
 **Running Nanopolish**
 
