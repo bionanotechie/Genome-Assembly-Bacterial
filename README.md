@@ -2,7 +2,7 @@
 
 This repository is a usable, publicly available tutorial. All steps have been provided for the UConn CBC Xanadu cluster here with appropriate headers for the Slurm scheduler that can be modified simply to run.  Commands should never be executed on the submit nodes of any HPC machine.  If working on the Xanadu cluster, you should use sbatch scriptname after modifying the script for each stage.  Basic editing of all scripts can be performed on the server with tools such as nano, vim, or emacs.  If you are new to Linux, please use [this](https://bioinformatics.uconn.edu/unix-basics) handy guide for the operating system commands.  In this guide, you will be working with common bioinformatic file formats, such as [FASTA](https://en.wikipedia.org/wiki/FASTA_format), [FASTQ](https://en.wikipedia.org/wiki/FASTQ_format), [SAM/BAM](https://en.wikipedia.org/wiki/SAM_(file_format)), and [GFF3/GTF](https://en.wikipedia.org/wiki/General_feature_format). You can learn even more about each file format [here](https://bioinformatics.uconn.edu/resources-and-events/tutorials/file-formats-tutorial/). If you do not have a Xanadu account and are an affiliate of UConn/UCHC, please apply for one **[here](https://bioinformatics.uconn.edu/contact-us/)**. 
 
-## Table of Contents  
+## Table of Contents  <a name="tab"></a>
 1. [Overview](#over)
 2. [Short Read Genome Assembly](#short)  
    - [Copy the Assembly Directory to your account node](#copy)
@@ -21,9 +21,9 @@ This repository is a usable, publicly available tutorial. All steps have been pr
      - [Assembly with Flye](#flye)
      - [Assembly with Shasta](#shas)
      - [Assembly with Falcon](#falcon)
-   - [Checking completeness with BUSCO](#bus2)
    - [Polishing with Nanopolish](#nano)
    - [Organizing with Purge Haplotigs](#ph)
+   - [Checking completeness with BUSCO](#bus2)
 4. [Hybrid Assembly](#ha)
    - [Preprocessing with CCS](#ccs)
    - [Assembly with MaSuRCA](#mas)
@@ -32,6 +32,10 @@ This repository is a usable, publicly available tutorial. All steps have been pr
 ## Overview  
 
 This tutorial will teach you how to use open source quality control, genome assembly, and assembly assessment tools to complete a high quality de novo assembly which is commonly utilized when you dont have a reference genome. Moving through the tutorial, you will take pair end short read data from a bacterial species and perform assemblies via various commonly used genome assmeblers. With these assemblies completed we will then need to assess the quality of the data produced. Once finished with the short read data we will move on to performing a long read assembly with long read nanopore data using basecalling and commonly used long read assemblers. Finally, we will then move on to Hybrid PacBio data. 
+
+**Structure:**
+
+The tutorial is organized into 3 parts: the short read, long read and hybrid sections as shown in the [Table of Contents](#tab). In the main github repository there are 3 folders with those names that contain each of the folders/script files necessary to run each job on the cluster. Each script and path is also linked within the tutorial for quick reference as well. 
 
 <a name="short"></a>
 # Short Read Genome Assembly
@@ -53,9 +57,9 @@ If you would like to include your email to be notified when the jobs are done en
 Run the following command to download the directory:
 
 ```
-cp -avr /UCHC/PublicShare/Tutorials/Assembly_Tutorial your_directory
+cp -avr /UCHC/PublicShare/Genome-Assembly-Bacterial your_directory
 ```
-Wait for download to finish (3.6 gb file will take a bit).
+Wait for download to finish.
 
 Make sure to not be in the head node in order for the download to be quick and secure.
 
@@ -64,6 +68,9 @@ Enter the directory you created.
 
 <a name="sickle"></a>
 ## Step 2: Quality Control with Sickle
+
+**Current working Directory: /UCHC/PublicShare/Genome-Assembly-Bacterial/Short Read/0-quality_control**
+
 Sickle takes raw reads and outputs data with the 3’ and 5’ ends trimmed to assure that the quality of the read is high enough for assembly, it will also trim low quality reads. 
 
 The flags meanings are as follows:
@@ -84,7 +91,7 @@ Module load sickle/1.33
 sickle pe -f /UCHC/PublicShare/Tutorials/Assembly_Tutorial/Sample_R1.fastq -r /UCHC/PublicShare/Tutorials/Assembly_Tutorial/Sample_R2.fastq -t sanger -o Sample_1.fastq -p Sample_2.fastq -s Sample_s.fastq -q 30 -l 45
 ```
 
-The commands are located in Sample_QC.sh in Quality Control.
+The commands are located in [short_read_qc.sh](https://github.com/CBC-UCONN/Genome-Assembly-Bacterial/blob/master/Short%20Read/0-quality_control/short_read_qc.sh) in Quality Control.
 
 Run the shell script file with sbatch.
 
@@ -99,13 +106,15 @@ File_with_tutorial/
 <a name="short-assemble"></a>
 ## Step 3: Assembly with SOAPdenovo, SPAdes, and MaSuRCA
 
-Run Sample_assembly.sh in the Assembly folder to perform SOAPdenovo, SPAdes, and MaSuRCA at once.
+**Current working Directory: /UCHC/PublicShare/Genome-Assembly-Bacterial/Short Read/1-assembly**
+
+Run [short_read_assembly.sh](https://github.com/CBC-UCONN/Genome-Assembly-Bacterial/blob/master/Short%20Read/1-assembly/short_read_assembly.sh) in the Assembly folder to perform SOAPdenovo, SPAdes, and MaSuRCA at once.
 ```
-sbatch Sample_assembly.sh
+sbatch short_read_assembly.sh
 ```
 You should expect an output of an .out and .err file. Check these to assure your assembly ran properly.
 
-Here is an explanation of each step within Sample_assembly.sh:
+Here is an explanation of each step within short_read_assembly.sh:
 <a name="soap"></a>
 ### **Assembly with SOAPdenovo:**
 
@@ -156,6 +165,89 @@ The meaning of the flags within the command have these meanings:
 - 1 is for the assembly log and 2 is for the assembly errors. 
 
 For this assembly we use the reads that have been run through Sickle for quality control.
+
+Here are the following outputted files in the  /UCHC/PublicShare/Genome-Assembly-Bacterial/Short Read/1-assembly/SOAP/
+ directory:
+ 
+
+>ass31.err                         
+>ass31.log   
+>ass35.err                         
+>ass35.log        
+>ass41.err            
+>ass41.log                         
+>graph_Sample_31.Arc                            
+>graph_Sample_31.bubbleInScaff                         
+>graph_Sample_31.contig	                             
+>graph_Sample_31.ContigIndex	             	           		           	
+>graph_Sample_31.contigPosInscaff		                                       		
+>graph_Sample_31.edge.gz			                                     		           
+>graph_Sample_31.gapSeq			         	                   
+>graph_Sample_31.kmerFreq	                             
+>graph_Sample_31.links					                      
+>graph_Sample_31.markOnEdge			                
+>graph_Sample_31.newContigIndex					             
+>graph_Sample_31.path					              
+>graph_Sample_31.peGrads						                             	
+>graph_Sample_31.preArc					                           
+>graph_Sample_31.preGraphBasic				           
+>graph_Sample_31.readInGap.gz				                         
+>graph_Sample_31.readOnContig.gz	          				                          	
+>graph_Sample_31.scaf			    		                        
+>graph_Sample_31.scaf_gap				     		                      
+>**graph_Sample_31.scafSeq**                  				              
+>graph_Sample_31.scafStatistics    					              
+>graph_Sample_31.updated.edge					               
+>graph_Sample_31.vertex					                  
+>graph_Sample_35.Arc					                 
+>graph_Sample_35.bubbleInScaff				               
+>graph_Sample_35.contig						              
+>graph_Sample_35.ContigIndex			              
+>graph_Sample_35.contigPosInscaff				            
+>graph_Sample_35.edge.gz           			               
+>graph_Sample_35.gapSeq            			                
+>graph_Sample_35.kmerFreq          		               
+>graph_Sample_35.links						            
+>graph_Sample_35.markOnEdge					              
+>graph_Sample_35.newContigIndex						           
+>graph_Sample_35.path							          
+>graph_Sample_35.peGrads						             
+>graph_Sample_35.preArc							              
+>graph_Sample_35.preGraphBasic							              
+>graph_Sample_35.readInGap.gz						           
+>graph_Sample_35.readOnContig.gz	                                 
+>graph_Sample_35.scaf						                          	                
+>graph_Sample_35.scaf_gap						           	                         
+>**graph_Sample_35.scafSeq**							                   
+>graph_Sample_35.scafStatistics						                        
+>graph_Sample_35.updated.edge							                      
+>graph_Sample_35.vertex							                     
+>graph_Sample_41.Arc								                       
+>graph_Sample_41.bubbleInScaff							                   
+>graph_Sample_41.contig								               
+>graph_Sample_41.ContigIndex							     	              
+>graph_Sample_41.contigPosInscaff						                  
+>graph_Sample_41.edge.gz								                   
+>graph_Sample_41.gapSeq						                         
+>graph_Sample_41.kmerFreq						          	                
+>graph_Sample_41.links							                     
+>graph_Sample_41.markOnEdge							                       
+>graph_Sample_41.newContigIndex								                     
+>graph_Sample_41.path							                             
+>graph_Sample_41.peGrads							       	              
+>graph_Sample_41.preArc								                       
+>graph_Sample_41.preGraphBasic								                       
+>graph_Sample_41.readInGap.gz							                         
+>graph_Sample_41.readOnContig.gz							         	             
+>graph_Sample_41.scaf								                                
+>graph_Sample_41.scaf_gap							                             
+>**graph_Sample_41.scafSeq**								                        
+>graph_Sample_41.scafStatistics						                              
+>graph_Sample_41.updated.edge							        	             
+>graph_Sample_41.vertex							                               
+		             
+The files bolded above are the .scafSeq files which are the main output sequence files from SOAPdenovo which we will analyze in QUAST and BUSCO in the next steps. 
+
 <a name="spades"></a>
 ### **Assembly with SPAdes:**
 
@@ -178,6 +270,35 @@ The meanings of the flags are:
 - -1 for the location of forward reads file
 - -2 for the location of the reverse reads file
 - -s for the path to the singles reads 
+
+The following will be outputed after running SPAdes:
+
+```
+ /UCHC/PublicShare/Genome-Assembly-Bacterial/Short Read/1-assembly/SPades/
+  |---  before_rr.fasta
+  |---  before_rr.fastg 
+  |--- contigs.fasta
+  |---contigs.fastg
+  |--- corrected
+  |--- ass41.log
+  |--- dataset.info
+  |--- input_dataset.yaml
+  |---  K127
+  |---  K21
+  |--- K33
+  |--- K55
+  |--- K77
+  |---  K99
+  |---  misc
+  |--- params.txt
+  |---scaffolds.fasta
+  |--- scaffolds.fastg
+  |---  tmp
+  |---  warnings.log
+
+```
+
+In this folder, the main output file is the scaffolds.fasta file which contains the main assembly data. 
 
 ***If desired, a list of kmers can be specified with the -k flag which will override automatic kmer selection.
 <a name="ma"></a>
@@ -270,6 +391,39 @@ masurca config.txt
 bash assemble.sh
 ```
 
+The directory after running MaSuRCA should like loke the following:
+
+```
+ /UCHC/PublicShare/Genome-Assembly-Bacterial/Short Read/1-assembly/MaSuRCA/
+  |---  assemble.sh
+  |---  CA 
+  |--- config.txt
+  |---environment.sh
+  |--- ESTIMATED_GENOME_SIZE.txt
+  |--- genome.uid
+  |--- global_arrival_rate.txt
+  |--- KUnitigsAtLeast32bases_all.fasta
+  |--- KUnitigsAtLeast32bases_all.jump.fasta
+  |--- meanAndStdevByPrefix.pe.txt
+  |--- pe.cor.fa
+  |--- pe.cor.log
+  |--- pe_data.tmp
+  |--- pe.renamed.fastq
+  |--- PLOIDY.txt
+  |--- PLOIDY.txtTERMINATOR=9-terminator
+  |--- quorum.err
+  |--- quorum_mer_db.jf
+  |--- runCA1.out
+  |--- runCA2.out
+  |--- runCA3.out
+  |--- super1.err
+  |--- tigStore.err
+  |--- unitig_cov.txt
+  |--- unitig_layout.txt
+  |--- work1
+```
+Inside the CA directory there is data on the scaffolds and a file called final.genome.scf.fasta which contains the final assembly.
+
 <a name="genome"></a>
 ## Step 4: Assessing Genome size
 
@@ -298,6 +452,8 @@ The final step for short read data is to analyze the quality of the assemblies. 
 
 **Running QUAST:**
 
+**Current working directory: /UCHC/PublicShare/Genome-Assembly-Bacterial/Short Read/3-quast**
+
 We run QUAST with the following commands:
 
 ```
@@ -318,6 +474,8 @@ The following commands are located in the Sample_quast.sh file in the QUAST fold
 After running QUAST you will be able to access output files through two different processes. 
 The first process would be to use an application like Cyberduck and pull the files from the transfer server to you home for viewing. 
 The second would be to use pscp through the windows command prompt.
+
+After running quast, you should find quast.log files in each assembly directory that was created. 
 
 The statistics that are outputted via QUAST should follow this pattern.
 
@@ -358,7 +516,20 @@ Bowtie2 in our case takes read sequences and aligns them with long reference seq
 
 You will find the outputted data in the .err file, see the outputted results below. 
 
+The orgirinal directory should look like this:
+ ```
+/UCHC/PublicShare/Genome-Assembly-Bacterial/Short Read/3-quast/
+  |--- Sample_quast_93285.err
+  |--- Sample_quast_93285.out
+  |--- Sample_quast.sh
+  |--- SOAP
+  |--- SPAdes
+ 
+ ```
+
 **Running Bowtie2**
+
+**Current working directory: /UCHC/PublicShare/Genome-Assembly-Bacterial/Short Read/4-bowtie_2" 
 
 You can run Bowtie2 by running [short_read_bowtie2.sh](https://github.com/CBC-UCONN/Genome-Assembly-Bacterial/blob/master/Short%20Read/short_read_bowtie2.sh).
 
@@ -408,6 +579,8 @@ You can run Bowtie2 by running [short_read_bowtie2.sh](https://github.com/CBC-UC
 |54 (0.01%) aligned  >1 times              |
 |54.57% overall alignment rate             |
 
+The bowtie 2 results are contained in the output .err file after you run the batch job on the cluster. 
+
 <a name="bus"></a>
 ## Step 7: BUSCO Evaluation
 BUSCO stands for Benchmarking Universal Single-Copy Orthologs. This program assists with checking assemblies, annotations, and transcriptomes to see if they appear complete. It does this by taking an orthologous gene set of your species of interest and comparing it back to the genome of interest, taking into consideration possibly evolutionary changes.
@@ -423,10 +596,14 @@ When preparing to run BUSCO you first need to have Augustus in your home directo
 -cp avr /isg/shared/apps/augustus/3.2.3 your_directory
 ```
 
+**Running BUSCO**
+
+**Current working directory: /UCHC/PublicShare/Genome-Assembly-Bacterial/Short Read/5-busco**
+
 To run BUSCO use the command [short_read_busco.sh](https://github.com/CBC-UCONN/Genome-Assembly-Bacterial/blob/master/Short%20Read/short_read_busco.sh)
 
 
-Using the SPAdes data the BUSCO results look like:
+Using the SPAdes data the BUSCO results in the .out file should look like:
 ```
 C:98.6%[S:98.6%,D:0.0%],F:0.0%,M:1.4%,n:148
 
@@ -448,6 +625,9 @@ C:98.6%[S:98.6%,D:0.0%],F:0.0%,M:1.4%,n:148
 	2	Missing BUSCOs (M)
 	148	Total BUSCO groups searched
 ```  
+
+The BUSCO results are conatined in the output .out file after running it on the cluster as well as the short summary text file in each respective assemblers outputtedf run directory. 
+
 <a name="long"></a>
 # Long Read Genome Assembly
 For long read assembly there is an additional step that is not used for short read data called **base calling**. This is performed first before any long read assembly. The process involves taking the data that the sequencer outputs, which appears as a squiggle line, and applying a base to the hills and valleys of the squiggle. For this step we will use the basecaller [Guppy](https://github.com/rrwick/Basecalling-comparison/blob/master/basecalling_scripts/guppy_basecalling.sh). To complete the assemblies, we will use the assemblers [Flye](https://github.com/fenderglass/Flye), [Shasta](https://chanzuckerberg.github.io/shasta/), and [Falcon](https://pb-falcon.readthedocs.io/en/latest/). [Purge Haplotags](https://bitbucket.org/mroachawri/purge_haplotigs/src/master/) will be used to assure that the contigs that are assembled are not being combined with the Haplotig of that sequence. After this, the assembly will be polished via [Nanopolish](https://github.com/nanoporetech/nanopolish). Assessment of the quality of the genome assembled will be completed through the same program as with the short read data, QUAST.
@@ -478,6 +658,8 @@ This assembler takes data from Pacbio or Oxford Nanopore technologies sequencers
 
 **Running Flye**
 
+**Current working Directory: /UCHC/PublicShare/Genome-Assembly-Bacterial/Long Read/1-assembly/flye**
+
 To run Flye run [flye.sh](https://github.com/CBC-UCONN/Genome-Assembly-Bacterial/blob/master/flye.sh) located in the long read assembly folder.
 
 The flags in flye are:
@@ -486,6 +668,28 @@ The flags in flye are:
 - --genome-size
 - --threads
 
+The flye output directory should like like the following:
+
+ ```
+/UCHC/PublicShare/Genome-Assembly-Bacterial/Long Read/1-assembly/flye
+  |--- 00-assembly
+  |--- 10-consensus
+  |--- 20-repeat
+  |--- 21-trestle
+  |--- 30-contigger
+  |--- 40-polishing
+  |--- assembly.fasta
+  |--- assembly_graph.gfa
+  |--- assembly_graph.gv
+  |--- assembly_info.txt
+  |--- flye.log
+  |--- params.json
+  |--- scaffolds.fasta
+ 
+ ```
+ The main outputted assembly file is assembly.fasta. 
+ 
+ 
 <a name="canu"></a>
 ### Assembly with Shasta
 Similar to Flye, the Shasta long read assemblers purpose is to rapidly produce an accurate assembled sequence using Oxford Nanopoore sequencing data.
@@ -497,6 +701,8 @@ The computational methods used in the Shasta assembler are:
 
 **Running Shasta**
 
+**Current working Directory: /UCHC/PublicShare/Genome-Assembly-Bacterial/Long Read/1-assembly/shasta**
+
 To run Shasta run [shasta.sh](https://github.com/CBC-UCONN/Genome-Assembly-Bacterial/blob/master/shasta.sh) located in the long read assembly folder.
 
 The flags in Shasta are:
@@ -504,6 +710,23 @@ The flags in Shasta are:
 - -d specifies the directory
 - -s imports parameters from the specification file. 
 
+The directory will look like th following afterwards:
+```
+/UCHC/PublicShare/Genome-Assembly-Bacterial/Long Read/1-assembly/flye
+  |--- 5074_test_LSK109_30JAN19-reads-pass.fasta
+  |--- shasta_assembly_tut_379544.err
+  |--- shasta_assembly_tut_379544.out
+  |--- shasta_assembly_tut_388309.err
+  |--- shasta_assembly_tut_388309.out
+  |--- ShastaRun
+  |--- assembly.fasta
+  |--- shasta.sh
+ 
+ ```
+ 
+ The main outputted assembly file is asssembly.fasta. 
+ 
+ 
 <a name="falcon"></a>
 ### Assembly with Falcon
 
@@ -518,48 +741,11 @@ for falcon there is fc_run and fc_unzip. FALCON is a diploid-aware assembler whi
 
 **Running Falcon**
 
+**Current working Directory: /UCHC/PublicShare/Genome-Assembly-Bacterial/Long Read/1-assembly/falcon**
+
 To run Flye run [falcon.sh](https://github.com/CBC-UCONN/Genome-Assembly-Bacterial/blob/master/Long%20Read/1-assembly/falcon/falcon.sh) located in the hybrid assembly directory. falcon is run by inputting subreads.bam.fofn and subreads.fasta.fofn and loading miniconda and denovo_py3 modules. You have the options of either running fc_run on fc_run.cfg or fc_unzip.py on fc_unzip.cfg.
 
-<a name="bus2"></a>
-## Step 3: Checking completeness with BUSCO
-BUSCO was discussed earlier during the short read tutorial, here we will use it to assess the genome before and after polishing. Which was described earlier during the short read assembly.
-You can run BUSCO with [long_read_BUSCO.sh](https://github.com/CBC-UCONN/Genome-Assembly-Bacterial/blob/master/Long_read_busco.sh)
 
-BUSCO with flye before polishing:
-```
-C:56.1%[S:48.4%,D:7.7%],F:14.4%,M:29.5%,n:430
-
-	241	Complete BUSCOs (C)
-	208	Complete and single-copy BUSCOs (S)
-	33	Complete and duplicated BUSCOs (D)
-	62	Fragmented BUSCOs (F)
-	127	Missing BUSCOs (M)
-	430	Total BUSCO groups searched
-```
-
-BUSCO with flye after polishing:
-```
-C:82.8%[S:71.4%,D:11.4%],F:4.7%,M:12.5%,n:430
-
-	356	Complete BUSCOs (C)
-	307	Complete and single-copy BUSCOs (S)
-	49	Complete and duplicated BUSCOs (D)
-	20	Fragmented BUSCOs (F)
-	54	Missing BUSCOs (M)
-	430	Total BUSCO groups searched
-```
-
-BUSCO with flye after Purge Haplotigs:
-``` 
-C:81.1%[S:72.3%,D:8.8%],F:5.1%,M:13.8%,n:430
-
-	349    Complete BUSCOs (C)
-	311    Complete and single-copy BUSCOs (S)
-	38     Complete and duplicated BUSCOs (D)
-	22     Fragmented BUSCOs (F)
-	59     Missing BUSCOs (M)
-	430    Total BUSCO groups searched
-```
 <a name="nano"></a>
 ## Step 4: Polishing with Nanopolish 
 Nanopolish is used to strengthen consensus data from your assembly.It will take the assembly you have created and align it, break it into segments, and then a consensus algorithm can run through the segments to polish them.
@@ -567,6 +753,9 @@ Nanopolish is used to strengthen consensus data from your assembly.It will take 
 The original purpose of nanopolish was to improve the consensus accuracy of an assembly of Oxford Nanopore Technology sequencing reads. 
 
 **Running Nanopolish**
+
+**Current working directory: /UCHC/PublicShare/Genome-Assembly-Bacterial/Long Read/3-nanopolish**
+
 To run nanopolish run the [nanopolish0-10kb.sh](https://github.com/CBC-UCONN/Genome-Assembly-Bacterial/blob/master/Long%20Read/3-nanopolish/nanopolish.sh) file located in the long read folder inside folder 3.
 
 In our script we first run nanopolish_makerange.py in order to split the draft of larger genomes so that the algorithm can run in parallel on each part. In our case we first run the divide_genome.py script on our full genome assembly (whichever you want to access, we used the flye output). then we run nanopolish_0-10kb.sh and just run nanopolish on that portion.
@@ -589,7 +778,108 @@ This part must be done in seperate steps as the parameters in each part depend o
 
 **Running Purge Haplotigs**
 
+**Current Working Directory: /UCHC/PublicShare/Genome-Assembly-Bacterial/Long Read/4-purge_haplotigs** 
+
 To run purge haplotigs, you mut run each script seperately. you must run [purge_haplotigs_step1.sh](https://github.com/CBC-UCONN/Genome-Assembly-Bacterial/blob/master/purge_haplotigs_step1.sh), [purge_haplotigs_step2.sh](https://github.com/CBC-UCONN/Genome-Assembly-Bacterial/blob/master/purge_haplotigs_step2.sh), and [purge_haplotigs_step3.sh](https://github.com/CBC-UCONN/Genome-Assembly-Bacterial/blob/master/purge_haplotigs_step3.sh) in the long read folder.
+
+<a name="bus2"></a>
+## Step 3: Checking completeness with BUSCO
+BUSCO was discussed earlier during the short read tutorial, here we will use it to assess the genome before and after polishing. Which was described earlier during the short read assembly.
+
+**Running BUSCO:**
+
+**Current Working Directory: /UCHC/PublicShare/Genome-Assembly-Bacterial/Long Read/2-busco**
+
+You can run BUSCO with [long_read_BUSCO.sh](https://github.com/CBC-UCONN/Genome-Assembly-Bacterial/blob/master/Long_read_busco.sh)
+
+**BUSCO Results:**
+
+We got the following BUSCO results after running it using the embrophyta database:
+
+BUSCO with flye before polishing:
+```
+        C:57.9%[S:54.3%,D:3.6%],F:11.3%,M:30.8%,n:1375
+
+        796     Complete BUSCOs (C)
+        746     Complete and single-copy BUSCOs (S)
+        50      Complete and duplicated BUSCOs (D)
+        155     Fragmented BUSCOs (F)
+        424     Missing BUSCOs (M)
+        1375    Total BUSCO groups searched
+
+```
+
+BUSCO with flye after polishing:
+```
+C:70.9%[S:63.6%,D:7.3%],F:6.0%,M:23.1%,n:1375
+
+        974     Complete BUSCOs (C)
+        874     Complete and single-copy BUSCOs (S)
+        100     Complete and duplicated BUSCOs (D)
+        82      Fragmented BUSCOs (F)
+        319     Missing BUSCOs (M)
+        1375    Total BUSCO groups searched
+```
+
+BUSCO with flye after Purge Haplotigs:
+``` 
+C:71.1%[S:65.3%,D:5.8%],F:6.5%,M:22.4%,n:1375
+
+        978     Complete BUSCOs (C)
+        898     Complete and single-copy BUSCOs (S)
+        80      Complete and duplicated BUSCOs (D)
+        90      Fragmented BUSCOs (F)
+        307     Missing BUSCOs (M)
+        1375    Total BUSCO groups searched
+```
+
+BUSCO with Shasta before polishing:
+
+```
+        C:30.4%[S:29.2%,D:1.2%],F:13.5%,M:56.1%,n:1375
+
+        419     Complete BUSCOs (C)
+        402     Complete and single-copy BUSCOs (S)
+        17      Complete and duplicated BUSCOs (D)
+        186     Fragmented BUSCOs (F)
+        770     Missing BUSCOs (M)
+        1375    Total BUSCO groups searched
+```
+
+BUSCO with Shasta after polishing:
+
+
+
+BUSCO with Shasta after purge haplotigs:
+
+
+
+##QUAST Final Analysis:
+
+
+|Info                    | Shasta    | Flye        |Falcon     | 
+| -------------          | --------- | ----------  | --------- |    
+|# contigs (>=0bp)       |11999      |9815         |           |
+|# contigs (>= 1000bp)   |7964       |9350         |           |
+|# contigs (>= 5000bp)   |6122       |7674         |           |              
+|# contigs (>=10000bp)   |4724       |6367         |           |                
+|# contigs(>=25000bp)    |2333       |4278         |           |                 
+|# contigs (>=50000bp)   |830        |2793         |           |           
+|Total length (>=0bp)    |212224887  |540824188    |           |
+|Total length (>=1000bp) |211289492  |540497864    |           |
+|Total length (>=5000bp) |206025185  |535836831    |           |
+|Total length (>=10000bp)|195732425  |526298687    |           |   
+|Total length (>=25000bp)|156716488  |492309793    |           |
+|Total length (>=50000bp)|104188099  |438907904    |           |
+|# contigs               |8515       |9796         |           |    
+|Largest contig          |4100869    |6909738      |           |
+|Total length            |211680036  |540816378    |           |
+|GC (%)                  |44.16      |38.13        |           |
+|N50                     |48947      |151896       |           |
+|N75                     |24221      |65368        |           |
+|L50                     |864        |830          |           |
+|L75                     |2417       |2215         |           |
+|# N's per 100 kbp       |0          |0.07         |           |
 
 
 <a name="ha"></a>
@@ -600,17 +890,25 @@ For the long read assembly section, we have been working with long read Nanopore
 To perform a hybrid assembly it requires you have both short and long read data to complete the genome. Hybrid assembly uses short read data to resolve ambiguity in the long read data as it is assembled. For this tutorial we are using data from a boxelder genome. We will begin with preprocessing with PacBio Circular Consensus Sequence analysis application (CCS), run the Falcon, Kraken, and MaSuRCA assemblers,
 
 <a name="ccs"></a>
-## Step 1:Preprocessing with PacBio CCS
+## Step 1: Preprocessing with PacBio CCS
 CCS takes multiple subreads of the same molecule and combines them using a statistical model to produce one accurate consensus sequence (HiFi read), with base quality values. For more information, refer to the [PacBio Website](https://www.pacb.com/smrt-science/smrt-sequencing/smrt-sequencing-modes/)
 
 For our data, CCS was already run on the boxelder data. For more information on CCS please refer to [this PacBio CCS Tutorial](https://www.pacb.com/videos/tutorial-circular-consensus-sequence-analysis-application/) And if you have a UConn PacBio account please refer to [this tutorial](https://bioinformatics.uconn.edu/resources-and-events/tutorials-2/pacbio-v7/).
 
 
-
-
-
-
 <a name="fkm"></a>
 ## Step 2: Assembly with MaSuRCA
+
+MaSuRCA was introduced in the Short Read Section and was used in the case of short read assembly but can also be used as a Hybrid Assembler if inputed long read PacBio Data and short read illumina data. 
+
+**Running MaSuRCA**
+
+**Current working directory: /UCHC/PublicShare/Genome-Assembly-Bacterial/Hybrid/MaSuRCA**
+
+To run MaSuRCA you can run the [masurca.sh](https://github.com/CBC-UCONN/Genome-Assembly-Bacterial/blob/master/Hybrid/MaSuRCA/masurca.sh) file in the Hybrid Folder. 
+ 
+ You first need to load masurca and then run it on a config file. you can find a sample [here](https://github.com/CBC-UCONN/Genome-Assembly-Bacterial/blob/master/Hybrid/MaSuRCA/config.txt) and edit to the genome size and path you need for your inputs. 
+ 
+ After running it on the config file, you then need to run assemble.sh which should be outputted afterwards. 
 
 
