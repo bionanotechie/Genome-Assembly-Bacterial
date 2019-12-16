@@ -786,22 +786,26 @@ This part must be done in seperate steps as the parameters in each part depend o
 
 To run purge haplotigs, you mut run each script seperately. you must run [purge_haplotigs_step1.sh](https://github.com/CBC-UCONN/Genome-Assembly-Bacterial/blob/master/purge_haplotigs_step1.sh), [purge_haplotigs_step2.sh](https://github.com/CBC-UCONN/Genome-Assembly-Bacterial/blob/master/purge_haplotigs_step2.sh), and [purge_haplotigs_step3.sh](https://github.com/CBC-UCONN/Genome-Assembly-Bacterial/blob/master/purge_haplotigs_step3.sh) in the long read folder.
 
-Purge Step 1:
+**Purge Step 1:**
 
 The output will be a .png file which will contain a histogram. Within the file you should have two peaks for 'haploid' and 'diploid' level. Based off this you have read-depth cutoffs for low read depth, the midpoint between the 'haploid' and 'diploid' peaks, and high read-depth cutoff which you will need to determine for step 2. More information can be found on [this page](https://bitbucket.org/mroachawri/purge_haplotigs/wiki/Tutorial).
 
 The command looks like the following:
 >purge_haplotigs readhist -b /labs/Wegrzyn/Moss/Physcomitrellopsis_africana/Physcomitrellopsis_africana_Genome/RawData_Nanopore_5074/5074_test_LSK109_30JAN19/physcomitrellopsis_africana_genome.reads.sorted.bam -g /labs/Wegrzyn/Moss/Physcomitrellopsis_africana/Physcomitrellopsis_africana_Genome/RawData_Nanopore_5074/5074_test_LSK109_30JAN19/flye_assembly/assembly.fasta
 
-Purge Step 2:
+**Purge Step 2:**
+
 This step will use the cutoffs you've chosen and the read-depth information in the previous step's coverage output file to flag 'suspect' and 'junk' contigs.
 
 The command looks like the following:
 >purge_haplotigs contigcov -i physcomitrellopsis_africana_genome.reads.sorted.bam.gencov -l 3 -m 57 -h 195
 
 
-Purge Step 3:
-This step will performs operations to identify and remove haplotigs. If you want to generate dotplots, the first stage will be parallel bedtools genomecov runs over genome windows; this read-depth trace will be juxtaposed with dotplots. The second stage will perform minimap2 alignments of the suspect contigs to all the other contigs. 
+**Purge Step 3:**
+
+This step will performs operations to identify and remove haplotigs. It involves iterative contig purging where each iteration the pipeline will run pull the alignments for each suspect contig's best hit contigs, analyse the alignments to determine if they satisfy the conditions for reassigning as a haplotig and check for conflicts before reassigning.
+
+The final main output after wards will be curated.fasta and curated.haplotigs.fasta wihch are the curated assembly files with curated.fasta being the new haploid assembly, and curated.haplotigs.fasta being the reassinged contigs.
 
 The command looks like the following:
 >purge_haplotigs purge -g /labs/Wegrzyn/Moss/Physcomitrellopsis_africana/Physcomitrellopsis_africana_Genome/RawData_Nanopore_5074/5074_test_LSK109_30JAN19/flye_assembly/assembly.fasta -c coverage_stats.csv -a 60 -d -b /labs/Wegrzyn/Moss/Physcomitrellopsis_africana/Physcomitrellopsis_africana_Genome/RawData_Nanopore_5074/5074_test_LSK109_30JAN19/physcomitrellopsis_africana_genome.reads.sorted.bam
