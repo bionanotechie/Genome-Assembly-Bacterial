@@ -605,7 +605,9 @@ When preparing to run BUSCO you first need to have Augustus in your home directo
 To run BUSCO use the command [short_read_busco.sh](https://github.com/CBC-UCONN/Genome-Assembly-Bacterial/blob/master/Short%20Read/short_read_busco.sh)
 
 The actual command looks like the following:
->run_BUSCO.py -i /UCHC/PublicShare/Tutorials/Assembly_Tutorial/Assembly/SPAdes/scaffolds.fasta -l /output_dir_location/ -o bacterial_short_read_tutorial_busco -m geno -c 1
+>run_BUSCO.py -i /UCHC/PublicShare/Tutorials/Assembly_Tutorial/Assembly/SPAdes/scaffolds.fasta -l /database_location/ -o bacterial_short_read_tutorial_busco -m geno -c 1
+
+The -l paramater is for the location of the datbase you are using for to check for the genomes completion. The path for the database we use is only for the Xanadu Cluster and those outside the cluster should refer to the [busco site](https://busco.ezlab.org/frame_wget.html) for a list of available databases. In this busco run we used the bacteria_odb9 databse dowloaded from the main site
 
 Using the SPAdes data the BUSCO results in the .out file should look like:
 ```
