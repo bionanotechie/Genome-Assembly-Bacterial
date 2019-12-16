@@ -171,17 +171,17 @@ Here are the following outputted files in the  /UCHC/PublicShare/Genome-Assembly
  
 
 >ass31.err                         
->ass31.log                         
+>ass31.log   
 >ass35.err                         
->ass35.log                         
->ass41.err                         
->ass41.log				
->graph_Sample_31.Arc
->graph_Sample_31.bubbleInScaff    	 			
->graph_Sample_31.contig					
->graph_Sample_31.ContigIndex					
->graph_Sample_31.contigPosInscaff				
->graph_Sample_31.edge.gz					
+>ass35.log        
+>ass41.err 
+>ass41.log
+>graph_Sample_31.Arc                   
+>graph_Sample_31.bubbleInScaff             
+>graph_Sample_31.contig	              
+>graph_Sample_31.ContigIndex		           			
+>graph_Sample_31.contigPosInscaff		                  		
+>graph_Sample_31.edge.gz					           
 >graph_Sample_31.gapSeq				
 >graph_Sample_31.kmerFreq	
 >graph_Sample_31.links					
