@@ -533,6 +533,8 @@ The orgirinal directory should look like this:
 
 You can run Bowtie2 by running [short_read_bowtie2.sh](https://github.com/CBC-UCONN/Genome-Assembly-Bacterial/blob/master/Short%20Read/short_read_bowtie2.sh).
 
+The first step is bowtie build which takes in the fasta file and outputs the index file of the assembly. Given those indexes, we run bowtie on the fasta file to align the reads then output a final sam file which contains the alignments. 
+
 ### Bowtie2 Results:
 |MaSuRCA                                   |
 |------------------------------------------|
