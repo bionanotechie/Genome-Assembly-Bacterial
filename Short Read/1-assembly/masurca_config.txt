@@ -1,4 +1,4 @@
-DATA
+DATA 
 PE= pe 180 20  /home/CAM/ssarker/Assembly_Tutorial/Sample_R1.fastq /home/CAM/ssarker/Assembly_Tutorial/Sample_R2.fastq
 
 # sh 3600 200  /FULL_PATH/short_1.fastq  /FULL_PATH/short_2.fastq

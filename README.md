@@ -23,7 +23,7 @@ This repository is a usable, publicly available tutorial. All steps have been pr
      - [Assembly with Falcon](#falcon)
    - [Polishing with Nanopolish](#nano)
    - [Organizing with Purge Haplotigs](#ph)
-   - [Checking completeness with BUSCO](#bus2)
+   - [BUSCO and QUAST evaluation](#bus2)
 4. [Hybrid Assembly](#ha)
    - [Preprocessing with CCS](#ccs)
    - [Assembly with MaSuRCA](#mas)
@@ -510,7 +510,7 @@ According to our requirements regarding n50 and contigs it would appear that the
 
 <a name="bow"></a>
 ## Step 6: Read Alignment with Bowtie2
-Bowtie2 is a tool you would use for comparitive genomics via alignment. Alignment is the process where we discover how and where the read sequences are similar to a reference sequence. An alignment is a way of lining up the characters in the read with some characters from the reference to reveal how they are similar. 
+[Bowtie2](http://bowtie-bio.sourceforge.net/bowtie2/manual.shtml#the-bowtie2-aligner) is a tool you would use for comparitive genomics via alignment. bowtie2 takes a Bowtie 2 index and a set of sequencing read files and outputs a set of alignments in a SAM file. Alignment is the process where we discover how and where the read sequences are similar to a reference sequence. An alignment is a way of lining up the characters in the read with some characters from the reference to reveal how they are similar. 
 
 Bowtie2 in our case takes read sequences and aligns them with long reference sequences. Since this is de novo assembly you will take the data from the assemblies you have and align them back to the raw read data. You want to use unpaired data. 
 
@@ -532,6 +532,8 @@ The orgirinal directory should look like this:
 **Current working directory: /UCHC/PublicShare/Genome-Assembly-Bacterial/Short Read/4-bowtie_2" 
 
 You can run Bowtie2 by running [short_read_bowtie2.sh](https://github.com/CBC-UCONN/Genome-Assembly-Bacterial/blob/master/Short%20Read/short_read_bowtie2.sh).
+
+The first step is bowtie build which takes in the fasta file and outputs the index file of the assembly. Given those indexes, we run bowtie on the fasta file to align the reads then output a final sam file which contains the alignments. 
 
 ### Bowtie2 Results:
 |MaSuRCA                                   |
@@ -602,6 +604,8 @@ When preparing to run BUSCO you first need to have Augustus in your home directo
 
 To run BUSCO use the command [short_read_busco.sh](https://github.com/CBC-UCONN/Genome-Assembly-Bacterial/blob/master/Short%20Read/short_read_busco.sh)
 
+The actual command looks like the following:
+>run_BUSCO.py -i /UCHC/PublicShare/Tutorials/Assembly_Tutorial/Assembly/SPAdes/scaffolds.fasta -l /output_dir_location/ -o bacterial_short_read_tutorial_busco -m geno -c 1
 
 Using the SPAdes data the BUSCO results in the .out file should look like:
 ```
@@ -735,7 +739,7 @@ Falcon is another de novo assembler which is used for PacBio Long Read data.
 Falcon has 3 inputs:
 - your PacBio data in fasta format (can be one or many files), 
 - a text file telling FALCON where to find your fasta files,
-- and a configuration file
+- and a configuration file [fc_run.cfg](https://github.com/CBC-UCONN/Genome-Assembly-Bacterial/blob/master/Long%20Read/1-assembly/falcon/fc_run.cfg) 
 
 for falcon there is fc_run and fc_unzip. FALCON is a diploid-aware assembler which is optimized for large genome assembly and produces a set of primary contigs wheras fc_unzip is a true diploid assembler which takes the contigs from FALCON and phases the reads based on heterozygous SNPs identified in the initial assembly to produce a set of partially phased primary contigs and fully phased haplotigs to represent different haplotyes.
 
@@ -748,9 +752,7 @@ To run Flye run [falcon.sh](https://github.com/CBC-UCONN/Genome-Assembly-Bacteri
 
 <a name="nano"></a>
 ## Step 4: Polishing with Nanopolish 
-Nanopolish is used to strengthen consensus data from your assembly.It will take the assembly you have created and align it, break it into segments, and then a consensus algorithm can run through the segments to polish them.
-
-The original purpose of nanopolish was to improve the consensus accuracy of an assembly of Oxford Nanopore Technology sequencing reads. 
+Nanopolish is used to strengthen consensus data from your assembly. It will take the assembly you have created and align it, break it into segments, and then a consensus algorithm can run through the segments to polish them. By polishing it means calculates a better consensus sequence for a draft genome assembly, find base modifications, and call SNPs with respect to a reference genome. 
 
 **Running Nanopolish**
 
@@ -786,11 +788,14 @@ To run purge haplotigs, you mut run each script seperately. you must run [purge_
 ## Step 3: Checking completeness with BUSCO
 BUSCO was discussed earlier during the short read tutorial, here we will use it to assess the genome before and after polishing. Which was described earlier during the short read assembly.
 
-**Running BUSCO:**
+**Running BUSCO and QUAST:**
 
 **Current Working Directory: /UCHC/PublicShare/Genome-Assembly-Bacterial/Long Read/2-busco**
 
 You can run BUSCO with [long_read_BUSCO.sh](https://github.com/CBC-UCONN/Genome-Assembly-Bacterial/blob/master/Long_read_busco.sh)
+
+the command looks like the following:
+>run_BUSCO.py -i /labs/Wegrzyn/Moss/Physcomitrellopsis_africana/Physcomitrellopsis_africana_Genome/RawData_Nanopore_5074/5074_test_LSK109_30JAN19/flye_assembly/assembly.fasta -l /labs/Wegrzyn/Moss/Physcomitrium/viridiplantae_odb10/ -o physcomitrellopsis_africana_tutorial_busco -m geno -c 1
 
 **BUSCO Results:**
 
@@ -854,8 +859,14 @@ BUSCO with Shasta after purge haplotigs:
 
 
 
-##QUAST Final Analysis:
+## QUAST Final Analysis:
 
+We finally run [quast](https://github.com/CBC-UCONN/Genome-Assembly-Bacterial/blob/master/Long%20Read/5-quast/quast_long.sh) with the following command
+
+>quast.py /labs/Wegrzyn/Moss/Physcomitrellopsis_africana/Physcomitrellopsis_africana_Genome/RawData_Nanopore_5074/5074_test_LSK109_30JAN19/flye_assembly/flye_assembly_initial/assembly.fasta -o Flye
+>quast.py /labs/Wegrzyn/Moss/Physcomitrellopsis_africana/Physcomitrellopsis_africana_Genome/RawData_Nanopore_5074/5074_test_LSK109_30JAN19/test_shasta_assembly/ShastaRun_pafricana_rmv_contam_minreadlen_500/Assembly.fasta -o Shasta
+
+The script is located in the long read folder.
 
 |Info                    | Shasta    | Flye        |Falcon     | 
 | -------------          | --------- | ----------  | --------- |    
