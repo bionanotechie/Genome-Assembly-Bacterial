@@ -1,0 +1,126 @@
+xanadu-33
+/isg/shared/apps/quast/5.0.2/quast.py /labs/Wegrzyn/Moss/Physcomitrellopsis_africana/Physcomitrellopsis_africana_Genome/RawData_Nanopore_5074/5074_test_LSK109_30JAN19/flye_assembly/flye_assembly_initial/assembly.fasta -o Flye
+
+Version: 5.0.2, 0bb1dd1b
+
+System information:
+  OS: Linux-3.10.0-957.5.1.el7.x86_64-x86_64-with-centos-7.6.1810-Core (linux_64)
+  Python version: 2.7.14
+  CPUs number: 64
+
+Started: 2019-12-02 11:01:01
+
+Logging to /labs/Wegrzyn/genome_assembly_tutorial/quast_long/Flye/quast.log
+NOTICE: Maximum number of threads is set to 16 (use --threads option to set it manually)
+
+CWD: /labs/Wegrzyn/genome_assembly_tutorial/quast_long
+Main parameters: 
+  MODE: default, threads: 16, minimum contig length: 500, minimum alignment length: 65, \
+  ambiguity: one, threshold for extensive misassembly size: 1000
+
+Contigs:
+  Pre-processing...
+  /labs/Wegrzyn/Moss/Physcomitrellopsis_africana/Physcomitrellopsis_africana_Genome/RawData_Nanopore_5074/5074_test_LSK109_30JAN19/flye_assembly/flye_assembly_initial/assembly.fasta ==> assembly
+
+2019-12-02 11:02:26
+Running Basic statistics processor...
+  Contig files: 
+    assembly
+  Calculating N50 and L50...
+    assembly, N50 = 151896, L50 = 830, Total length = 540816378, GC % = 38.13, # N's per 100 kbp =  0.07
+  Drawing Nx plot...
+    saved to /labs/Wegrzyn/genome_assembly_tutorial/quast_long/Flye/basic_stats/Nx_plot.pdf
+  Drawing cumulative plot...
+    saved to /labs/Wegrzyn/genome_assembly_tutorial/quast_long/Flye/basic_stats/cumulative_plot.pdf
+  Drawing GC content plot...
+    saved to /labs/Wegrzyn/genome_assembly_tutorial/quast_long/Flye/basic_stats/GC_content_plot.pdf
+  Drawing assembly GC content plot...
+    saved to /labs/Wegrzyn/genome_assembly_tutorial/quast_long/Flye/basic_stats/assembly_GC_content_plot.pdf
+Done.
+
+NOTICE: Genes are not predicted by default. Use --gene-finding or --glimmer option to enable it.
+
+2019-12-02 11:03:37
+Creating large visual summaries...
+This may take a while: press Ctrl-C to skip this step..
+  1 of 2: Creating Icarus viewers...
+  2 of 2: Creating PDF with all tables and plots...
+Done
+
+2019-12-02 11:03:56
+RESULTS:
+  Text versions of total report are saved to /labs/Wegrzyn/genome_assembly_tutorial/quast_long/Flye/report.txt, report.tsv, and report.tex
+  Text versions of transposed total report are saved to /labs/Wegrzyn/genome_assembly_tutorial/quast_long/Flye/transposed_report.txt, transposed_report.tsv, and transposed_report.tex
+  HTML version (interactive tables and plots) is saved to /labs/Wegrzyn/genome_assembly_tutorial/quast_long/Flye/report.html
+  PDF version (tables and plots) is saved to /labs/Wegrzyn/genome_assembly_tutorial/quast_long/Flye/report.pdf
+  Icarus (contig browser) is saved to /labs/Wegrzyn/genome_assembly_tutorial/quast_long/Flye/icarus.html
+  Log is saved to /labs/Wegrzyn/genome_assembly_tutorial/quast_long/Flye/quast.log
+
+Finished: 2019-12-02 11:03:56
+Elapsed time: 0:02:55.296111
+NOTICEs: 2; WARNINGs: 0; non-fatal ERRORs: 0
+
+Thank you for using QUAST!
+/isg/shared/apps/quast/5.0.2/quast.py /labs/Wegrzyn/Moss/Physcomitrellopsis_africana/Physcomitrellopsis_africana_Genome/RawData_Nanopore_5074/5074_test_LSK109_30JAN19/test_shasta_assembly/ShastaRun_pafricana_rmv_contam_minreadlen_500/Assembly.fasta -o Shasta
+
+Version: 5.0.2, 0bb1dd1b
+
+System information:
+  OS: Linux-3.10.0-957.5.1.el7.x86_64-x86_64-with-centos-7.6.1810-Core (linux_64)
+  Python version: 2.7.14
+  CPUs number: 64
+
+Started: 2019-12-02 11:03:57
+
+Logging to /labs/Wegrzyn/genome_assembly_tutorial/quast_long/Shasta/quast.log
+NOTICE: Output directory already exists and looks like a QUAST output dir. Existing results can be reused (e.g. previously generated alignments)!
+NOTICE: Maximum number of threads is set to 16 (use --threads option to set it manually)
+
+CWD: /labs/Wegrzyn/genome_assembly_tutorial/quast_long
+Main parameters: 
+  MODE: default, threads: 16, minimum contig length: 500, minimum alignment length: 65, \
+  ambiguity: one, threshold for extensive misassembly size: 1000
+
+Contigs:
+  Pre-processing...
+  /labs/Wegrzyn/Moss/Physcomitrellopsis_africana/Physcomitrellopsis_africana_Genome/RawData_Nanopore_5074/5074_test_LSK109_30JAN19/test_shasta_assembly/ShastaRun_pafricana_rmv_contam_minreadlen_500/Assembly.fasta ==> Assembly
+
+2019-12-02 11:04:17
+Running Basic statistics processor...
+  Contig files: 
+    Assembly
+  Calculating N50 and L50...
+    Assembly, N50 = 48947, L50 = 864, Total length = 211680036, GC % = 44.16, # N's per 100 kbp =  0.00
+  Drawing Nx plot...
+    saved to /labs/Wegrzyn/genome_assembly_tutorial/quast_long/Shasta/basic_stats/Nx_plot.pdf
+  Drawing cumulative plot...
+    saved to /labs/Wegrzyn/genome_assembly_tutorial/quast_long/Shasta/basic_stats/cumulative_plot.pdf
+  Drawing GC content plot...
+    saved to /labs/Wegrzyn/genome_assembly_tutorial/quast_long/Shasta/basic_stats/GC_content_plot.pdf
+  Drawing Assembly GC content plot...
+    saved to /labs/Wegrzyn/genome_assembly_tutorial/quast_long/Shasta/basic_stats/Assembly_GC_content_plot.pdf
+Done.
+
+NOTICE: Genes are not predicted by default. Use --gene-finding or --glimmer option to enable it.
+
+2019-12-02 11:04:47
+Creating large visual summaries...
+This may take a while: press Ctrl-C to skip this step..
+  1 of 2: Creating Icarus viewers...
+  2 of 2: Creating PDF with all tables and plots...
+Done
+
+2019-12-02 11:04:55
+RESULTS:
+  Text versions of total report are saved to /labs/Wegrzyn/genome_assembly_tutorial/quast_long/Shasta/report.txt, report.tsv, and report.tex
+  Text versions of transposed total report are saved to /labs/Wegrzyn/genome_assembly_tutorial/quast_long/Shasta/transposed_report.txt, transposed_report.tsv, and transposed_report.tex
+  HTML version (interactive tables and plots) is saved to /labs/Wegrzyn/genome_assembly_tutorial/quast_long/Shasta/report.html
+  PDF version (tables and plots) is saved to /labs/Wegrzyn/genome_assembly_tutorial/quast_long/Shasta/report.pdf
+  Icarus (contig browser) is saved to /labs/Wegrzyn/genome_assembly_tutorial/quast_long/Shasta/icarus.html
+  Log is saved to /labs/Wegrzyn/genome_assembly_tutorial/quast_long/Shasta/quast.log
+
+Finished: 2019-12-02 11:04:55
+Elapsed time: 0:00:58.532422
+NOTICEs: 3; WARNINGs: 0; non-fatal ERRORs: 0
+
+Thank you for using QUAST!
