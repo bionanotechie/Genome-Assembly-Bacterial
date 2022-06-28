@@ -21,4 +21,4 @@ quast.py /UCHC/PublicShare/Tutorials/Assembly_Tutorial/Assembly/SOAP/graph_Sampl
 quast.py /UCHC/PublicShare/Tutorials/Assembly_Tutorial/Assembly/SPAdes/scaffolds.fasta -o SPAdes
 
 #MaSuRCA statistics
-quast.py /Path_to_tutorial/Assembly_Tutorial/samples/CA -o MaSuRCA
+quast.py /Path_to_tutorial/Assembly_Tutorial/samples/CA/final.genome.scf.fasta -o MaSuRCA
